@@ -1,0 +1,142 @@
+name: Release
+
+# Publishes a release whenever the version in apps/coscene-mobile/pubspec.yaml
+# changes on main and no tag for it exists yet.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  version:
+    name: Check version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.read.outputs.version }}
+      release: ${{ steps.read.outputs.release }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - id: read
+        run: |
+          version=$(sed -n 's/^version: *\([0-9][0-9.]*\).*/\1/p' apps/coscene-mobile/pubspec.yaml)
+          if [ -z "$version" ]; then
+            echo "::error::No version found in apps/coscene-mobile/pubspec.yaml"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --tags origin "refs/tags/v$version" > /dev/null; then
+            echo "v$version is already released."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  android:
+    name: Release Android
+    needs: version
+    if: needs.version.outputs.release == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.44.2
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Test
+        run: |
+          for p in coscene-core coscene-content coscene-i18n; do
+            (cd packages/$p && dart test)
+          done
+          (cd packages/coscene-render && flutter test)
+          (cd apps/coscene-mobile && flutter test)
+
+      - name: Set up signing
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          missing=0
+          for name in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Repository secret $name is not set."
+              missing=1
+            fi
+          done
+          [ "$missing" = 0 ] || exit 1
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/upload-keystore.jks"
+          {
+            echo "storeFile=$RUNNER_TEMP/upload-keystore.jks"
+            echo "storePassword=$ANDROID_KEYSTORE_PASSWORD"
+            echo "keyAlias=$ANDROID_KEY_ALIAS"
+            echo "keyPassword=$ANDROID_KEY_PASSWORD"
+          } > apps/coscene-mobile/android/key.properties
+
+      - name: Build
+        working-directory: apps/coscene-mobile
+        run: |
+          flutter build apk --release
+          flutter build appbundle --release
+
+      - name: Verify signatures and collect files
+        run: |
+          apksigner="$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)/apksigner"
+          mkdir dist
+          cp apps/coscene-mobile/build/app/outputs/flutter-apk/app-release.apk dist/coscene-android.apk
+          cp apps/coscene-mobile/build/app/outputs/bundle/release/app-release.aab dist/coscene-android.aab
+          # Refuse to publish anything signed with the debug key.
+          "$apksigner" verify --print-certs dist/coscene-android.apk | tee apk-certs.txt
+          grep -q "CN=vecvel" apk-certs.txt
+          keytool -printcert -jarfile dist/coscene-android.aab | tee aab-certs.txt
+          grep -q "CN=vecvel" aab-certs.txt
+          cd dist && sha256sum coscene-android.apk coscene-android.aab > SHA256SUMS
+
+      - name: Release notes
+        run: |
+          awk -v v="$VERSION" '
+            $0 ~ "^## \\[" v "\\]" { found = 1; next }
+            found && /^## \[/ { exit }
+            found && /^\[/ { exit }
+            found { print }
+          ' CHANGELOG.md > notes.md
+          [ -s notes.md ] || echo "coscene $VERSION" > notes.md
+          cat notes.md
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          target_commitish: ${{ github.sha }}
+          name: coscene ${{ env.VERSION }}
+          body_path: notes.md
+          files: |
+            dist/coscene-android.apk
+            dist/coscene-android.aab
+            dist/SHA256SUMS
+
+      - name: Remove signing files
+        if: always()
+        run: rm -f "$RUNNER_TEMP/upload-keystore.jks" apps/coscene-mobile/android/key.properties

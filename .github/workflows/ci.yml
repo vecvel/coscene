@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Analyze and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.44.2
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Format
+        run: dart format --output=none --set-exit-if-changed apps packages
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: App version matches pubspec
+        run: |
+          pubspec=$(sed -n 's/^version: *\([0-9.]*\).*/\1/p' apps/coscene-mobile/pubspec.yaml)
+          app=$(sed -n "s/^const String appVersion = '\(.*\)';/\1/p" apps/coscene-mobile/lib/screens/settings_screen.dart)
+          if [ "$pubspec" != "$app" ]; then
+            echo "::error::pubspec.yaml says $pubspec but settings_screen.dart says $app"
+            exit 1
+          fi
+
+      - name: Test Dart packages
+        run: |
+          for p in coscene-core coscene-content coscene-i18n; do
+            (cd packages/$p && dart test)
+          done
+
+      - name: Test Flutter packages
+        run: |
+          (cd packages/coscene-render && flutter test)
+          (cd apps/coscene-mobile && flutter test)
