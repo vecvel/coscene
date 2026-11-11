@@ -1,0 +1,17 @@
+{
+  "id": "base",
+  "version": 1,
+  "minEngineVersion": 1,
+  "placeFiles": [
+    "place-01.json",
+    "place-02.json",
+    "place-03.json",
+    "place-04.json",
+    "place-05.json",
+    "place-06.json",
+    "place-07.json",
+    "place-08.json",
+    "place-09.json",
+    "place-10.json"
+  ]
+}

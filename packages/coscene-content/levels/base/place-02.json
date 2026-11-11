@@ -1,0 +1,473 @@
+{
+  "place": {
+    "number": 2,
+    "id": "lighthouse",
+    "archetypeIds": [
+      "ray_reflection"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p02-l01",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 1,
+      "difficulty": 1,
+      "i18nKey": "scene.ray.a",
+      "conceptId": "ray_a",
+      "hints": [
+        "hint.ray.a.1",
+        "hint.ray.a.2",
+        "hint.ray.a.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 10.0,
+          "y": 20.0,
+          "degrees": 30.0
+        },
+        "mirrors": [
+          {
+            "x": 31.65,
+            "y": 32.5,
+            "length": 14,
+            "degrees": 30.0,
+            "stepDegrees": 30.0
+          }
+        ],
+        "target": {
+          "x": 59.36,
+          "y": 16.5,
+          "radius": 5.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 5.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    },
+    {
+      "id": "p02-l02",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 2,
+      "difficulty": 1,
+      "i18nKey": "scene.ray.a",
+      "conceptId": "ray_a",
+      "hints": [
+        "hint.ray.a.1",
+        "hint.ray.a.2",
+        "hint.ray.a.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 10.0,
+          "y": 40.0,
+          "degrees": 0.0
+        },
+        "mirrors": [
+          {
+            "x": 45.0,
+            "y": 40.0,
+            "length": 14,
+            "degrees": 90.0,
+            "stepDegrees": 30.0
+          }
+        ],
+        "target": {
+          "x": 57.0,
+          "y": 19.22,
+          "radius": 5.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 5.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    },
+    {
+      "id": "p02-l03",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 3,
+      "difficulty": 2,
+      "i18nKey": "scene.ray.a",
+      "conceptId": "ray_a",
+      "hints": [
+        "hint.ray.a.1",
+        "hint.ray.a.2",
+        "hint.ray.a.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 90.0,
+          "y": 50.0,
+          "degrees": 210.0
+        },
+        "mirrors": [
+          {
+            "x": 60.56,
+            "y": 33.0,
+            "length": 14,
+            "degrees": 30.0,
+            "stepDegrees": 15.0
+          }
+        ],
+        "target": {
+          "x": 81.56,
+          "y": 69.37,
+          "radius": 5.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 5.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    },
+    {
+      "id": "p02-l04",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 4,
+      "difficulty": 2,
+      "i18nKey": "scene.ray.a",
+      "conceptId": "ray_a",
+      "hints": [
+        "hint.ray.a.1",
+        "hint.ray.a.2",
+        "hint.ray.a.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 90.0,
+          "y": 40.0,
+          "degrees": 225.0
+        },
+        "mirrors": [
+          {
+            "x": 65.96,
+            "y": 15.96,
+            "length": 14,
+            "degrees": 30.0,
+            "stepDegrees": 15.0
+          }
+        ],
+        "target": {
+          "x": 76.57,
+          "y": 55.56,
+          "radius": 5.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 5.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    },
+    {
+      "id": "p02-l05",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 5,
+      "difficulty": 3,
+      "i18nKey": "scene.ray.b",
+      "conceptId": "ray_b",
+      "hints": [
+        "hint.ray.b.1",
+        "hint.ray.b.2",
+        "hint.ray.b.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 70.0,
+          "y": 10.0,
+          "degrees": 90.0
+        },
+        "mirrors": [
+          {
+            "x": 70.0,
+            "y": 49.0,
+            "length": 14,
+            "degrees": 75.0,
+            "stepDegrees": 15.0
+          },
+          {
+            "x": 37.09,
+            "y": 68.0,
+            "length": 14,
+            "degrees": 105.0,
+            "stepDegrees": 15.0
+          }
+        ],
+        "target": {
+          "x": 63.94,
+          "y": 83.5,
+          "radius": 5.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 5.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    },
+    {
+      "id": "p02-l06",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 6,
+      "difficulty": 3,
+      "i18nKey": "scene.ray.b",
+      "conceptId": "ray_b",
+      "hints": [
+        "hint.ray.b.1",
+        "hint.ray.b.2",
+        "hint.ray.b.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 80.0,
+          "y": 10.0,
+          "degrees": 120.0
+        },
+        "mirrors": [
+          {
+            "x": 57.0,
+            "y": 49.84,
+            "length": 14,
+            "degrees": 30.0,
+            "stepDegrees": 15.0
+          },
+          {
+            "x": 25.82,
+            "y": 31.84,
+            "length": 14,
+            "degrees": 150.0,
+            "stepDegrees": 15.0
+          }
+        ],
+        "target": {
+          "x": 51.8,
+          "y": 16.84,
+          "radius": 5.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 5.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    },
+    {
+      "id": "p02-l07",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 7,
+      "difficulty": 4,
+      "i18nKey": "scene.ray.b",
+      "conceptId": "ray_b",
+      "hints": [
+        "hint.ray.b.1",
+        "hint.ray.b.2",
+        "hint.ray.b.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 60.0,
+          "y": 10.0,
+          "degrees": 45.0
+        },
+        "mirrors": [
+          {
+            "x": 84.04,
+            "y": 34.04,
+            "length": 14,
+            "degrees": 45.0,
+            "stepDegrees": 15.0
+          },
+          {
+            "x": 72.39,
+            "y": 77.51,
+            "length": 14,
+            "degrees": 15.0,
+            "stepDegrees": 15.0
+          }
+        ],
+        "target": {
+          "x": 48.24,
+          "y": 83.98,
+          "radius": 4.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 4.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    },
+    {
+      "id": "p02-l08",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 8,
+      "difficulty": 4,
+      "i18nKey": "scene.ray.b",
+      "conceptId": "ray_b",
+      "hints": [
+        "hint.ray.b.1",
+        "hint.ray.b.2",
+        "hint.ray.b.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 90.0,
+          "y": 30.0,
+          "degrees": 105.0
+        },
+        "mirrors": [
+          {
+            "x": 83.27,
+            "y": 55.11,
+            "length": 14,
+            "degrees": 120.0,
+            "stepDegrees": 15.0
+          },
+          {
+            "x": 51.45,
+            "y": 23.29,
+            "length": 14,
+            "degrees": 30.0,
+            "stepDegrees": 15.0
+          }
+        ],
+        "target": {
+          "x": 16.68,
+          "y": 32.61,
+          "radius": 4.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 4.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    },
+    {
+      "id": "p02-l09",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 9,
+      "difficulty": 5,
+      "i18nKey": "scene.ray.b",
+      "conceptId": "ray_b",
+      "hints": [
+        "hint.ray.b.1",
+        "hint.ray.b.2",
+        "hint.ray.b.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 70.0,
+          "y": 10.0,
+          "degrees": 105.0
+        },
+        "mirrors": [
+          {
+            "x": 62.49,
+            "y": 38.01,
+            "length": 14,
+            "degrees": 90.0,
+            "stepDegrees": 15.0
+          },
+          {
+            "x": 43.4,
+            "y": 18.92,
+            "length": 14,
+            "degrees": 45.0,
+            "stepDegrees": 15.0
+          }
+        ],
+        "target": {
+          "x": 18.65,
+          "y": 43.67,
+          "radius": 4.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 4.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    },
+    {
+      "id": "p02-l10",
+      "schemaVersion": 1,
+      "archetypeId": "ray_reflection",
+      "place": 2,
+      "index": 10,
+      "difficulty": 5,
+      "i18nKey": "scene.ray.b",
+      "conceptId": "ray_b",
+      "hints": [
+        "hint.ray.b.1",
+        "hint.ray.b.2",
+        "hint.ray.b.3"
+      ],
+      "initialState": {
+        "size": 100,
+        "emitter": {
+          "x": 80.0,
+          "y": 90.0,
+          "degrees": 195.0
+        },
+        "mirrors": [
+          {
+            "x": 52.95,
+            "y": 82.75,
+            "length": 14,
+            "degrees": 30.0,
+            "stepDegrees": 15.0
+          },
+          {
+            "x": 62.27,
+            "y": 47.98,
+            "length": 14,
+            "degrees": 105.0,
+            "stepDegrees": 15.0
+          }
+        ],
+        "target": {
+          "x": 87.38,
+          "y": 41.25,
+          "radius": 4.0
+        }
+      },
+      "validationRules": {
+        "hitTolerance": 4.0,
+        "minBounces": 0,
+        "maxBounces": 12
+      }
+    }
+  ]
+}

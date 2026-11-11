@@ -1,0 +1,387 @@
+{
+  "place": {
+    "number": 1,
+    "id": "dockyard",
+    "archetypeIds": [
+      "balance_levers"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p01-l01",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 1,
+      "difficulty": 1,
+      "i18nKey": "scene.balance.a",
+      "conceptId": "balance_a",
+      "hints": [
+        "hint.balance.a.1",
+        "hint.balance.a.2",
+        "hint.balance.a.3"
+      ],
+      "initialState": {
+        "halfSpan": 4,
+        "fixed": [
+          {
+            "weight": 1,
+            "slot": -3
+          }
+        ],
+        "movable": [
+          {
+            "weight": 1,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    },
+    {
+      "id": "p01-l02",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 2,
+      "difficulty": 1,
+      "i18nKey": "scene.balance.a",
+      "conceptId": "balance_a",
+      "hints": [
+        "hint.balance.a.1",
+        "hint.balance.a.2",
+        "hint.balance.a.3"
+      ],
+      "initialState": {
+        "halfSpan": 4,
+        "fixed": [
+          {
+            "weight": 2,
+            "slot": 4
+          }
+        ],
+        "movable": [
+          {
+            "weight": 2,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    },
+    {
+      "id": "p01-l03",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 3,
+      "difficulty": 2,
+      "i18nKey": "scene.balance.a",
+      "conceptId": "balance_a",
+      "hints": [
+        "hint.balance.a.1",
+        "hint.balance.a.2",
+        "hint.balance.a.3"
+      ],
+      "initialState": {
+        "halfSpan": 4,
+        "fixed": [
+          {
+            "weight": 2,
+            "slot": -1
+          }
+        ],
+        "movable": [
+          {
+            "weight": 1,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    },
+    {
+      "id": "p01-l04",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 4,
+      "difficulty": 2,
+      "i18nKey": "scene.balance.a",
+      "conceptId": "balance_a",
+      "hints": [
+        "hint.balance.a.1",
+        "hint.balance.a.2",
+        "hint.balance.a.3"
+      ],
+      "initialState": {
+        "halfSpan": 4,
+        "fixed": [
+          {
+            "weight": 1,
+            "slot": 2
+          }
+        ],
+        "movable": [
+          {
+            "weight": 2,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    },
+    {
+      "id": "p01-l05",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 5,
+      "difficulty": 3,
+      "i18nKey": "scene.balance.b",
+      "conceptId": "balance_b",
+      "hints": [
+        "hint.balance.b.1",
+        "hint.balance.b.2",
+        "hint.balance.b.3"
+      ],
+      "initialState": {
+        "halfSpan": 5,
+        "fixed": [
+          {
+            "weight": 4,
+            "slot": 3
+          }
+        ],
+        "movable": [
+          {
+            "weight": 4,
+            "slot": null
+          },
+          {
+            "weight": 1,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    },
+    {
+      "id": "p01-l06",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 6,
+      "difficulty": 3,
+      "i18nKey": "scene.balance.b",
+      "conceptId": "balance_b",
+      "hints": [
+        "hint.balance.b.1",
+        "hint.balance.b.2",
+        "hint.balance.b.3"
+      ],
+      "initialState": {
+        "halfSpan": 5,
+        "fixed": [
+          {
+            "weight": 3,
+            "slot": -3
+          }
+        ],
+        "movable": [
+          {
+            "weight": 4,
+            "slot": null
+          },
+          {
+            "weight": 1,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    },
+    {
+      "id": "p01-l07",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 7,
+      "difficulty": 4,
+      "i18nKey": "scene.balance.b",
+      "conceptId": "balance_b",
+      "hints": [
+        "hint.balance.b.1",
+        "hint.balance.b.2",
+        "hint.balance.b.3"
+      ],
+      "initialState": {
+        "halfSpan": 5,
+        "fixed": [
+          {
+            "weight": 1,
+            "slot": -3
+          },
+          {
+            "weight": 2,
+            "slot": -2
+          }
+        ],
+        "movable": [
+          {
+            "weight": 4,
+            "slot": null
+          },
+          {
+            "weight": 1,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    },
+    {
+      "id": "p01-l08",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 8,
+      "difficulty": 4,
+      "i18nKey": "scene.balance.b",
+      "conceptId": "balance_b",
+      "hints": [
+        "hint.balance.b.1",
+        "hint.balance.b.2",
+        "hint.balance.b.3"
+      ],
+      "initialState": {
+        "halfSpan": 5,
+        "fixed": [
+          {
+            "weight": 3,
+            "slot": 2
+          }
+        ],
+        "movable": [
+          {
+            "weight": 4,
+            "slot": null
+          },
+          {
+            "weight": 2,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    },
+    {
+      "id": "p01-l09",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 9,
+      "difficulty": 5,
+      "i18nKey": "scene.balance.b",
+      "conceptId": "balance_b",
+      "hints": [
+        "hint.balance.b.1",
+        "hint.balance.b.2",
+        "hint.balance.b.3"
+      ],
+      "initialState": {
+        "halfSpan": 5,
+        "fixed": [
+          {
+            "weight": 3,
+            "slot": -4
+          }
+        ],
+        "movable": [
+          {
+            "weight": 4,
+            "slot": null
+          },
+          {
+            "weight": 1,
+            "slot": null
+          },
+          {
+            "weight": 1,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    },
+    {
+      "id": "p01-l10",
+      "schemaVersion": 1,
+      "archetypeId": "balance_levers",
+      "place": 1,
+      "index": 10,
+      "difficulty": 5,
+      "i18nKey": "scene.balance.b",
+      "conceptId": "balance_b",
+      "hints": [
+        "hint.balance.b.1",
+        "hint.balance.b.2",
+        "hint.balance.b.3"
+      ],
+      "initialState": {
+        "halfSpan": 5,
+        "fixed": [
+          {
+            "weight": 4,
+            "slot": 3
+          }
+        ],
+        "movable": [
+          {
+            "weight": 5,
+            "slot": null
+          },
+          {
+            "weight": 2,
+            "slot": null
+          },
+          {
+            "weight": 1,
+            "slot": null
+          }
+        ]
+      },
+      "validationRules": {
+        "torqueTolerance": 0,
+        "requireAllPlaced": true
+      }
+    }
+  ]
+}

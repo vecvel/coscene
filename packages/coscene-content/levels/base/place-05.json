@@ -1,0 +1,933 @@
+{
+  "place": {
+    "number": 5,
+    "id": "sorting_hall",
+    "archetypeIds": [
+      "network_routing"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p05-l01",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 1,
+      "difficulty": 1,
+      "i18nKey": "scene.routing.a",
+      "conceptId": "routing_a",
+      "hints": [
+        "hint.routing.a.1",
+        "hint.routing.a.2",
+        "hint.routing.a.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal"
+        ],
+        "items": [
+          "coral",
+          "coral",
+          "coral",
+          "teal"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 59.5,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 31.0,
+            "y": 48.0,
+            "left": "b1",
+            "right": "b2",
+            "state": 1
+          },
+          {
+            "id": "j1",
+            "kind": "switch",
+            "x": 59.5,
+            "y": 26.0,
+            "left": "j2",
+            "right": "b3",
+            "state": 0
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 50.0,
+            "y": 90,
+            "accepts": "teal"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "coral"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    },
+    {
+      "id": "p05-l02",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 2,
+      "difficulty": 1,
+      "i18nKey": "scene.routing.a",
+      "conceptId": "routing_a",
+      "hints": [
+        "hint.routing.a.1",
+        "hint.routing.a.2",
+        "hint.routing.a.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal"
+        ],
+        "items": [
+          "coral",
+          "teal",
+          "teal",
+          "teal"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 40.5,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 69.0,
+            "y": 48.0,
+            "left": "b2",
+            "right": "b3",
+            "state": 1
+          },
+          {
+            "id": "j1",
+            "kind": "filter",
+            "x": 40.5,
+            "y": 26.0,
+            "left": "b1",
+            "right": "j2",
+            "state": 1
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 50.0,
+            "y": 90,
+            "accepts": "teal"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "coral"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    },
+    {
+      "id": "p05-l03",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 3,
+      "difficulty": 2,
+      "i18nKey": "scene.routing.a",
+      "conceptId": "routing_a",
+      "hints": [
+        "hint.routing.a.1",
+        "hint.routing.a.2",
+        "hint.routing.a.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal",
+          "mustard"
+        ],
+        "items": [
+          "coral",
+          "mustard",
+          "teal",
+          "mustard"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 50.01,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j3",
+            "kind": "filter",
+            "x": 24.67,
+            "y": 48.0,
+            "left": "b1",
+            "right": "b2",
+            "state": 2
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 75.34,
+            "y": 48.0,
+            "left": "b3",
+            "right": "b4",
+            "state": 2
+          },
+          {
+            "id": "j1",
+            "kind": "filter",
+            "x": 50.01,
+            "y": 26.0,
+            "left": "j3",
+            "right": "j2",
+            "state": 1
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "mustard"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 37.33,
+            "y": 90,
+            "accepts": "mustard"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 62.67,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b4",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "teal"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    },
+    {
+      "id": "p05-l04",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 4,
+      "difficulty": 2,
+      "i18nKey": "scene.routing.a",
+      "conceptId": "routing_a",
+      "hints": [
+        "hint.routing.a.1",
+        "hint.routing.a.2",
+        "hint.routing.a.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal",
+          "mustard"
+        ],
+        "items": [
+          "mustard",
+          "coral",
+          "teal",
+          "teal"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 34.17,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j3",
+            "kind": "switch",
+            "x": 75.34,
+            "y": 68.0,
+            "left": "b3",
+            "right": "b4",
+            "state": 0
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 56.34,
+            "y": 48.0,
+            "left": "b2",
+            "right": "j3",
+            "state": 1
+          },
+          {
+            "id": "j1",
+            "kind": "filter",
+            "x": 34.17,
+            "y": 26.0,
+            "left": "b1",
+            "right": "j2",
+            "state": 0
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 37.33,
+            "y": 90,
+            "accepts": "mustard"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 62.67,
+            "y": 90,
+            "accepts": "teal"
+          },
+          {
+            "id": "b4",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "coral"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    },
+    {
+      "id": "p05-l05",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 5,
+      "difficulty": 3,
+      "i18nKey": "scene.routing.b",
+      "conceptId": "routing_b",
+      "hints": [
+        "hint.routing.b.1",
+        "hint.routing.b.2",
+        "hint.routing.b.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal",
+          "mustard"
+        ],
+        "items": [
+          "coral",
+          "teal",
+          "mustard",
+          "teal",
+          "coral"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 50.01,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 24.67,
+            "y": 48.0,
+            "left": "b1",
+            "right": "b2",
+            "state": 0
+          },
+          {
+            "id": "j3",
+            "kind": "filter",
+            "x": 75.34,
+            "y": 48.0,
+            "left": "b3",
+            "right": "b4",
+            "state": 0
+          },
+          {
+            "id": "j1",
+            "kind": "filter",
+            "x": 50.01,
+            "y": 26.0,
+            "left": "j2",
+            "right": "j3",
+            "state": 0
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "mustard"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 37.33,
+            "y": 90,
+            "accepts": "mustard"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 62.67,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b4",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "teal"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    },
+    {
+      "id": "p05-l06",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 6,
+      "difficulty": 3,
+      "i18nKey": "scene.routing.b",
+      "conceptId": "routing_b",
+      "hints": [
+        "hint.routing.b.1",
+        "hint.routing.b.2",
+        "hint.routing.b.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal",
+          "mustard"
+        ],
+        "items": [
+          "mustard",
+          "coral",
+          "coral",
+          "teal",
+          "mustard"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 34.17,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j3",
+            "kind": "filter",
+            "x": 75.34,
+            "y": 68.0,
+            "left": "b3",
+            "right": "b4",
+            "state": 0
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 56.34,
+            "y": 48.0,
+            "left": "b2",
+            "right": "j3",
+            "state": 2
+          },
+          {
+            "id": "j1",
+            "kind": "filter",
+            "x": 34.17,
+            "y": 26.0,
+            "left": "b1",
+            "right": "j2",
+            "state": 1
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "mustard"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 37.33,
+            "y": 90,
+            "accepts": "teal"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 62.67,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b4",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "teal"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    },
+    {
+      "id": "p05-l07",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 7,
+      "difficulty": 4,
+      "i18nKey": "scene.routing.b",
+      "conceptId": "routing_b",
+      "hints": [
+        "hint.routing.b.1",
+        "hint.routing.b.2",
+        "hint.routing.b.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal",
+          "mustard"
+        ],
+        "items": [
+          "coral",
+          "teal",
+          "mustard",
+          "coral",
+          "coral"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 50.01,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j3",
+            "kind": "filter",
+            "x": 24.67,
+            "y": 48.0,
+            "left": "b1",
+            "right": "b2",
+            "state": 1
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 75.34,
+            "y": 48.0,
+            "left": "b3",
+            "right": "b4",
+            "state": 1
+          },
+          {
+            "id": "j1",
+            "kind": "filter",
+            "x": 50.01,
+            "y": 26.0,
+            "left": "j3",
+            "right": "j2",
+            "state": 0
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "teal"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 37.33,
+            "y": 90,
+            "accepts": "teal"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 62.67,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b4",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "mustard"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    },
+    {
+      "id": "p05-l08",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 8,
+      "difficulty": 4,
+      "i18nKey": "scene.routing.b",
+      "conceptId": "routing_b",
+      "hints": [
+        "hint.routing.b.1",
+        "hint.routing.b.2",
+        "hint.routing.b.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal",
+          "mustard"
+        ],
+        "items": [
+          "mustard",
+          "teal",
+          "mustard",
+          "coral",
+          "coral"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 50.01,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j3",
+            "kind": "filter",
+            "x": 24.67,
+            "y": 48.0,
+            "left": "b1",
+            "right": "b2",
+            "state": 1
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 75.34,
+            "y": 48.0,
+            "left": "b3",
+            "right": "b4",
+            "state": 1
+          },
+          {
+            "id": "j1",
+            "kind": "filter",
+            "x": 50.01,
+            "y": 26.0,
+            "left": "j3",
+            "right": "j2",
+            "state": 1
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "mustard"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 37.33,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 62.67,
+            "y": 90,
+            "accepts": "teal"
+          },
+          {
+            "id": "b4",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "mustard"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    },
+    {
+      "id": "p05-l09",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 9,
+      "difficulty": 5,
+      "i18nKey": "scene.routing.b",
+      "conceptId": "routing_b",
+      "hints": [
+        "hint.routing.b.1",
+        "hint.routing.b.2",
+        "hint.routing.b.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal",
+          "mustard"
+        ],
+        "items": [
+          "coral",
+          "mustard",
+          "teal",
+          "coral",
+          "coral"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 34.17,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j3",
+            "kind": "switch",
+            "x": 75.34,
+            "y": 68.0,
+            "left": "b3",
+            "right": "b4",
+            "state": 1
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 56.34,
+            "y": 48.0,
+            "left": "b2",
+            "right": "j3",
+            "state": 1
+          },
+          {
+            "id": "j1",
+            "kind": "filter",
+            "x": 34.17,
+            "y": 26.0,
+            "left": "b1",
+            "right": "j2",
+            "state": 1
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 37.33,
+            "y": 90,
+            "accepts": "teal"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 62.67,
+            "y": 90,
+            "accepts": "mustard"
+          },
+          {
+            "id": "b4",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "teal"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    },
+    {
+      "id": "p05-l10",
+      "schemaVersion": 1,
+      "archetypeId": "network_routing",
+      "place": 5,
+      "index": 10,
+      "difficulty": 5,
+      "i18nKey": "scene.routing.b",
+      "conceptId": "routing_b",
+      "hints": [
+        "hint.routing.b.1",
+        "hint.routing.b.2",
+        "hint.routing.b.3"
+      ],
+      "initialState": {
+        "colors": [
+          "coral",
+          "teal",
+          "mustard"
+        ],
+        "items": [
+          "teal",
+          "teal",
+          "coral",
+          "coral",
+          "mustard"
+        ],
+        "nodes": [
+          {
+            "id": "in",
+            "kind": "source",
+            "x": 34.17,
+            "y": 6,
+            "next": "j1"
+          },
+          {
+            "id": "j3",
+            "kind": "switch",
+            "x": 75.34,
+            "y": 68.0,
+            "left": "b3",
+            "right": "b4",
+            "state": 1
+          },
+          {
+            "id": "j2",
+            "kind": "filter",
+            "x": 56.34,
+            "y": 48.0,
+            "left": "b2",
+            "right": "j3",
+            "state": 1
+          },
+          {
+            "id": "j1",
+            "kind": "filter",
+            "x": 34.17,
+            "y": 26.0,
+            "left": "b1",
+            "right": "j2",
+            "state": 0
+          },
+          {
+            "id": "b1",
+            "kind": "bin",
+            "x": 12.0,
+            "y": 90,
+            "accepts": "teal"
+          },
+          {
+            "id": "b2",
+            "kind": "bin",
+            "x": 37.33,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b3",
+            "kind": "bin",
+            "x": 62.67,
+            "y": 90,
+            "accepts": "coral"
+          },
+          {
+            "id": "b4",
+            "kind": "bin",
+            "x": 88.0,
+            "y": 90,
+            "accepts": "mustard"
+          }
+        ]
+      },
+      "validationRules": {
+        "allSorted": true
+      }
+    }
+  ]
+}

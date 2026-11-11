@@ -1,0 +1,503 @@
+{
+  "place": {
+    "number": 6,
+    "id": "vault",
+    "archetypeIds": [
+      "permutation_locks"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p06-l01",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 1,
+      "difficulty": 1,
+      "i18nKey": "scene.locks.a",
+      "conceptId": "locks_a",
+      "hints": [
+        "hint.locks.a.1",
+        "hint.locks.a.2",
+        "hint.locks.a.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 4,
+            "value": 3,
+            "target": 0
+          },
+          {
+            "positions": 4,
+            "value": 1,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    },
+    {
+      "id": "p06-l02",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 2,
+      "difficulty": 1,
+      "i18nKey": "scene.locks.a",
+      "conceptId": "locks_a",
+      "hints": [
+        "hint.locks.a.1",
+        "hint.locks.a.2",
+        "hint.locks.a.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 4,
+            "value": 1,
+            "target": 0
+          },
+          {
+            "positions": 4,
+            "value": 3,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    },
+    {
+      "id": "p06-l03",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 3,
+      "difficulty": 2,
+      "i18nKey": "scene.locks.a",
+      "conceptId": "locks_a",
+      "hints": [
+        "hint.locks.a.1",
+        "hint.locks.a.2",
+        "hint.locks.a.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 6,
+            "value": 2,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 0,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    },
+    {
+      "id": "p06-l04",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 4,
+      "difficulty": 2,
+      "i18nKey": "scene.locks.a",
+      "conceptId": "locks_a",
+      "hints": [
+        "hint.locks.a.1",
+        "hint.locks.a.2",
+        "hint.locks.a.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 6,
+            "value": 4,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 4,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    },
+    {
+      "id": "p06-l05",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 5,
+      "difficulty": 3,
+      "i18nKey": "scene.locks.b",
+      "conceptId": "locks_b",
+      "hints": [
+        "hint.locks.b.1",
+        "hint.locks.b.2",
+        "hint.locks.b.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 6,
+            "value": 0,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 1,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 5,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    },
+    {
+      "id": "p06-l06",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 6,
+      "difficulty": 3,
+      "i18nKey": "scene.locks.b",
+      "conceptId": "locks_b",
+      "hints": [
+        "hint.locks.b.1",
+        "hint.locks.b.2",
+        "hint.locks.b.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 6,
+            "value": 3,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 3,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 0,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    },
+    {
+      "id": "p06-l07",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 7,
+      "difficulty": 4,
+      "i18nKey": "scene.locks.b",
+      "conceptId": "locks_b",
+      "hints": [
+        "hint.locks.b.1",
+        "hint.locks.b.2",
+        "hint.locks.b.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 6,
+            "value": 0,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 5,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 1,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            -1,
+            1,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    },
+    {
+      "id": "p06-l08",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 8,
+      "difficulty": 4,
+      "i18nKey": "scene.locks.b",
+      "conceptId": "locks_b",
+      "hints": [
+        "hint.locks.b.1",
+        "hint.locks.b.2",
+        "hint.locks.b.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 6,
+            "value": 2,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 5,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 4,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    },
+    {
+      "id": "p06-l09",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 9,
+      "difficulty": 5,
+      "i18nKey": "scene.locks.b",
+      "conceptId": "locks_b",
+      "hints": [
+        "hint.locks.b.1",
+        "hint.locks.b.2",
+        "hint.locks.b.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 6,
+            "value": 2,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 3,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 3,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            -1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            -1,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    },
+    {
+      "id": "p06-l10",
+      "schemaVersion": 1,
+      "archetypeId": "permutation_locks",
+      "place": 6,
+      "index": 10,
+      "difficulty": 5,
+      "i18nKey": "scene.locks.b",
+      "conceptId": "locks_b",
+      "hints": [
+        "hint.locks.b.1",
+        "hint.locks.b.2",
+        "hint.locks.b.3"
+      ],
+      "initialState": {
+        "dials": [
+          {
+            "positions": 6,
+            "value": 5,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 0,
+            "target": 0
+          },
+          {
+            "positions": 6,
+            "value": 0,
+            "target": 0
+          }
+        ],
+        "links": [
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ]
+      },
+      "validationRules": {
+        "allAligned": true
+      }
+    }
+  ]
+}

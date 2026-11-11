@@ -1,0 +1,543 @@
+{
+  "place": {
+    "number": 7,
+    "id": "clock_tower",
+    "archetypeIds": [
+      "gear_ratio"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p07-l01",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 1,
+      "difficulty": 1,
+      "i18nKey": "scene.gears.a",
+      "conceptId": "gears_a",
+      "textParams": {
+        "turns": 1,
+        "crank": 3
+      },
+      "hints": [
+        "hint.gears.a.1",
+        "hint.gears.a.2",
+        "hint.gears.a.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "teeth": 12
+            },
+            "driven": {
+              "slot": 0
+            }
+          }
+        ],
+        "tray": [
+          36,
+          24,
+          8,
+          10
+        ],
+        "slots": [
+          null
+        ],
+        "inputTurns": 3,
+        "target": {
+          "turns": 1
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    },
+    {
+      "id": "p07-l02",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 2,
+      "difficulty": 1,
+      "i18nKey": "scene.gears.a",
+      "conceptId": "gears_a",
+      "textParams": {
+        "turns": 2,
+        "crank": 3
+      },
+      "hints": [
+        "hint.gears.a.1",
+        "hint.gears.a.2",
+        "hint.gears.a.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "teeth": 16
+            },
+            "driven": {
+              "slot": 0
+            }
+          }
+        ],
+        "tray": [
+          10,
+          18,
+          32,
+          24
+        ],
+        "slots": [
+          null
+        ],
+        "inputTurns": 3,
+        "target": {
+          "turns": 2
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    },
+    {
+      "id": "p07-l03",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 3,
+      "difficulty": 2,
+      "i18nKey": "scene.gears.a",
+      "conceptId": "gears_a",
+      "textParams": {
+        "turns": 3,
+        "crank": 2
+      },
+      "hints": [
+        "hint.gears.a.1",
+        "hint.gears.a.2",
+        "hint.gears.a.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "slot": 0
+            },
+            "driven": {
+              "teeth": 10
+            }
+          }
+        ],
+        "tray": [
+          18,
+          12,
+          30,
+          15
+        ],
+        "slots": [
+          null
+        ],
+        "inputTurns": 2,
+        "target": {
+          "turns": 3
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    },
+    {
+      "id": "p07-l04",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 4,
+      "difficulty": 2,
+      "i18nKey": "scene.gears.a",
+      "conceptId": "gears_a",
+      "textParams": {
+        "turns": 2,
+        "crank": 3
+      },
+      "hints": [
+        "hint.gears.a.1",
+        "hint.gears.a.2",
+        "hint.gears.a.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "slot": 0
+            },
+            "driven": {
+              "teeth": 18
+            }
+          }
+        ],
+        "tray": [
+          12,
+          24,
+          40,
+          32
+        ],
+        "slots": [
+          null
+        ],
+        "inputTurns": 3,
+        "target": {
+          "turns": 2
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    },
+    {
+      "id": "p07-l05",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 5,
+      "difficulty": 3,
+      "i18nKey": "scene.gears.b",
+      "conceptId": "gears_b",
+      "textParams": {
+        "turns": 3,
+        "crank": 2
+      },
+      "hints": [
+        "hint.gears.b.1",
+        "hint.gears.b.2",
+        "hint.gears.b.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "teeth": 18
+            },
+            "driven": {
+              "slot": 0
+            }
+          },
+          {
+            "driver": {
+              "slot": 1
+            },
+            "driven": {
+              "teeth": 32
+            }
+          }
+        ],
+        "tray": [
+          20,
+          15,
+          40,
+          10
+        ],
+        "slots": [
+          null,
+          null
+        ],
+        "inputTurns": 2,
+        "target": {
+          "turns": 3
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    },
+    {
+      "id": "p07-l06",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 6,
+      "difficulty": 3,
+      "i18nKey": "scene.gears.b",
+      "conceptId": "gears_b",
+      "textParams": {
+        "turns": 4,
+        "crank": 3
+      },
+      "hints": [
+        "hint.gears.b.1",
+        "hint.gears.b.2",
+        "hint.gears.b.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "teeth": 8
+            },
+            "driven": {
+              "slot": 0
+            }
+          },
+          {
+            "driver": {
+              "slot": 1
+            },
+            "driven": {
+              "teeth": 18
+            }
+          }
+        ],
+        "tray": [
+          20,
+          16,
+          36,
+          12
+        ],
+        "slots": [
+          null,
+          null
+        ],
+        "inputTurns": 3,
+        "target": {
+          "turns": 4
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    },
+    {
+      "id": "p07-l07",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 7,
+      "difficulty": 4,
+      "i18nKey": "scene.gears.b",
+      "conceptId": "gears_b",
+      "textParams": {
+        "turns": 8,
+        "crank": 3
+      },
+      "hints": [
+        "hint.gears.b.1",
+        "hint.gears.b.2",
+        "hint.gears.b.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "slot": 0
+            },
+            "driven": {
+              "slot": 1
+            }
+          },
+          {
+            "driver": {
+              "slot": 2
+            },
+            "driven": {
+              "teeth": 30
+            }
+          }
+        ],
+        "tray": [
+          15,
+          48,
+          24,
+          36,
+          40
+        ],
+        "slots": [
+          null,
+          null,
+          null
+        ],
+        "inputTurns": 3,
+        "target": {
+          "turns": 8
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    },
+    {
+      "id": "p07-l08",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 8,
+      "difficulty": 4,
+      "i18nKey": "scene.gears.b",
+      "conceptId": "gears_b",
+      "textParams": {
+        "turns": 3,
+        "crank": 4
+      },
+      "hints": [
+        "hint.gears.b.1",
+        "hint.gears.b.2",
+        "hint.gears.b.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "slot": 0
+            },
+            "driven": {
+              "slot": 1
+            }
+          },
+          {
+            "driver": {
+              "slot": 2
+            },
+            "driven": {
+              "teeth": 32
+            }
+          }
+        ],
+        "tray": [
+          18,
+          16,
+          12,
+          10,
+          8
+        ],
+        "slots": [
+          null,
+          null,
+          null
+        ],
+        "inputTurns": 4,
+        "target": {
+          "turns": 3
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    },
+    {
+      "id": "p07-l09",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 9,
+      "difficulty": 5,
+      "i18nKey": "scene.gears.b",
+      "conceptId": "gears_b",
+      "textParams": {
+        "turns": 1,
+        "crank": 3
+      },
+      "hints": [
+        "hint.gears.b.1",
+        "hint.gears.b.2",
+        "hint.gears.b.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "slot": 0
+            },
+            "driven": {
+              "slot": 1
+            }
+          },
+          {
+            "driver": {
+              "slot": 2
+            },
+            "driven": {
+              "teeth": 36
+            }
+          }
+        ],
+        "tray": [
+          32,
+          18,
+          48,
+          12,
+          16
+        ],
+        "slots": [
+          null,
+          null,
+          null
+        ],
+        "inputTurns": 3,
+        "target": {
+          "turns": 1
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    },
+    {
+      "id": "p07-l10",
+      "schemaVersion": 1,
+      "archetypeId": "gear_ratio",
+      "place": 7,
+      "index": 10,
+      "difficulty": 5,
+      "i18nKey": "scene.gears.b",
+      "conceptId": "gears_b",
+      "textParams": {
+        "turns": 4,
+        "crank": 1
+      },
+      "hints": [
+        "hint.gears.b.1",
+        "hint.gears.b.2",
+        "hint.gears.b.3"
+      ],
+      "initialState": {
+        "stages": [
+          {
+            "driver": {
+              "slot": 0
+            },
+            "driven": {
+              "slot": 1
+            }
+          },
+          {
+            "driver": {
+              "slot": 2
+            },
+            "driven": {
+              "teeth": 24
+            }
+          }
+        ],
+        "tray": [
+          10,
+          32,
+          12,
+          8,
+          30
+        ],
+        "slots": [
+          null,
+          null,
+          null
+        ],
+        "inputTurns": 1,
+        "target": {
+          "turns": 4
+        }
+      },
+      "validationRules": {
+        "turnsTolerance": 0.001
+      }
+    }
+  ]
+}

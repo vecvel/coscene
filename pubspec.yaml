@@ -1,0 +1,13 @@
+name: coscene_workspace
+description: Monorepo for the coscene puzzle game.
+publish_to: none
+
+environment:
+  sdk: ^3.12.0
+
+workspace:
+  - packages/coscene-core
+  - packages/coscene-content
+  - packages/coscene-i18n
+  - packages/coscene-render
+  - apps/coscene-mobile

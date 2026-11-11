@@ -1,0 +1,35 @@
+# Release signing and pack signing keys
+secrets/
+
+# Build output
+.dart_tool/
+build/
+*.iml
+.idea/
+.DS_Store
+
+# Scratch from launch-asset work
+.postdev-work/
+
+# AI assistants and agents
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+GEMINI.md
+.gemini/
+.codex/
+.cursor/
+.cursorrules
+.cursorignore
+.windsurf/
+.windsurfrules
+.aider*
+.continue/
+.copilot/
+.github/copilot-instructions.md
+.roo/
+.clinerules
+.kiro/
+.junie/
+.mcp.json

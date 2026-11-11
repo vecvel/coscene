@@ -1,0 +1,30 @@
+name: coscene
+description: Everyday puzzles with the maths hidden inside.
+publish_to: none
+version: 1.0.0+1
+resolution: workspace
+
+environment:
+  sdk: ^3.12.0
+  flutter: ">=3.38.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  coscene_core: ^1.0.0
+  coscene_content: ^1.0.0
+  coscene_i18n: ^1.0.0
+  coscene_render: ^1.0.0
+  flutter_secure_storage: ^9.2.4
+  path_provider: ^2.1.5
+  share_plus: ^12.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  # Every icon is drawn in code (see coscene_render's GameIcon), so the
+  # Material icon font is not bundled.
+  uses-material-design: false

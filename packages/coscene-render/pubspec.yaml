@@ -1,0 +1,20 @@
+name: coscene_render
+description: Flat vector drawing pipeline, viewport scaling and scene input for coscene.
+version: 1.0.0
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.12.0
+  flutter: ">=3.38.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  coscene_core: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  coscene_content: ^1.0.0
+  flutter_lints: ^6.0.0

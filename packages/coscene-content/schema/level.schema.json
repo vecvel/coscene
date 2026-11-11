@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:coscene:level-schema:1",
+  "title": "coscene level",
+  "description": "One level. The engine reads initialState and validationRules according to archetypeId; see docs/level-schema.md for the shape each archetype expects.",
+  "type": "object",
+  "required": ["id", "archetypeId", "place", "index", "difficulty", "i18nKey", "conceptId", "hints", "initialState", "validationRules"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique across all packs. Bundled levels use pNN-lNN."
+    },
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1,
+      "default": 1
+    },
+    "archetypeId": {
+      "enum": [
+        "balance_levers",
+        "ray_reflection",
+        "area_projection",
+        "volume_flow",
+        "network_routing",
+        "permutation_locks",
+        "gear_ratio",
+        "cargo_packing"
+      ]
+    },
+    "place": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Chapter number. 0 is reserved for daily scenes."
+    },
+    "index": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Position inside the place, starting at 1."
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "i18nKey": {
+      "type": "string",
+      "description": "Base dictionary key. '<i18nKey>.objective' and '<i18nKey>.reveal' must exist in every language."
+    },
+    "conceptId": {
+      "type": "string",
+      "description": "The idea named on the reveal sheet. 'concept.<conceptId>.name', '.idea' and '.seen' must exist."
+    },
+    "textParams": {
+      "type": "object",
+      "description": "Values substituted into {placeholders} in the objective, reveal and hints.",
+      "additionalProperties": { "type": ["string", "number"] }
+    },
+    "hints": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Dictionary keys of the progressive hints, mildest first."
+    },
+    "initialState": {
+      "type": "object",
+      "description": "Where everything starts: positions, anchors, bounds, movable parts and targets."
+    },
+    "validationRules": {
+      "type": "object",
+      "description": "Tolerances and win-condition parameters, judged by the engine when the player submits."
+    }
+  }
+}

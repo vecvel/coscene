@@ -1,0 +1,451 @@
+{
+  "place": {
+    "number": 8,
+    "id": "harbour",
+    "archetypeIds": [
+      "cargo_packing"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p08-l01",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 1,
+      "difficulty": 1,
+      "i18nKey": "scene.cargo.a",
+      "conceptId": "cargo_a",
+      "hints": [
+        "hint.cargo.a.1",
+        "hint.cargo.a.2",
+        "hint.cargo.a.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 4,
+          "rows": 2
+        },
+        "pieces": [
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 2,
+            "h": 1
+          },
+          {
+            "w": 2,
+            "h": 1
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true
+      }
+    },
+    {
+      "id": "p08-l02",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 2,
+      "difficulty": 1,
+      "i18nKey": "scene.cargo.a",
+      "conceptId": "cargo_a",
+      "hints": [
+        "hint.cargo.a.1",
+        "hint.cargo.a.2",
+        "hint.cargo.a.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 4,
+          "rows": 2
+        },
+        "pieces": [
+          {
+            "w": 2,
+            "h": 1
+          },
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 2,
+            "h": 1
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true
+      }
+    },
+    {
+      "id": "p08-l03",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 3,
+      "difficulty": 2,
+      "i18nKey": "scene.cargo.a",
+      "conceptId": "cargo_a",
+      "hints": [
+        "hint.cargo.a.1",
+        "hint.cargo.a.2",
+        "hint.cargo.a.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 4,
+          "rows": 3
+        },
+        "pieces": [
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 2,
+            "h": 1
+          },
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 2,
+            "h": 1
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true
+      }
+    },
+    {
+      "id": "p08-l04",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 4,
+      "difficulty": 2,
+      "i18nKey": "scene.cargo.a",
+      "conceptId": "cargo_a",
+      "hints": [
+        "hint.cargo.a.1",
+        "hint.cargo.a.2",
+        "hint.cargo.a.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 4,
+          "rows": 3
+        },
+        "pieces": [
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 3,
+            "h": 1
+          },
+          {
+            "w": 3,
+            "h": 1
+          },
+          {
+            "w": 2,
+            "h": 1
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true
+      }
+    },
+    {
+      "id": "p08-l05",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 5,
+      "difficulty": 3,
+      "i18nKey": "scene.cargo.b",
+      "conceptId": "cargo_b",
+      "hints": [
+        "hint.cargo.b.1",
+        "hint.cargo.b.2",
+        "hint.cargo.b.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 5,
+          "rows": 3
+        },
+        "pieces": [
+          {
+            "w": 3,
+            "h": 2
+          },
+          {
+            "w": 3,
+            "h": 1,
+            "heavy": true
+          },
+          {
+            "w": 2,
+            "h": 1
+          },
+          {
+            "w": 2,
+            "h": 2
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true,
+        "balanceTolerance": 1.0
+      }
+    },
+    {
+      "id": "p08-l06",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 6,
+      "difficulty": 3,
+      "i18nKey": "scene.cargo.b",
+      "conceptId": "cargo_b",
+      "hints": [
+        "hint.cargo.b.1",
+        "hint.cargo.b.2",
+        "hint.cargo.b.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 5,
+          "rows": 3
+        },
+        "pieces": [
+          {
+            "w": 3,
+            "h": 1
+          },
+          {
+            "w": 3,
+            "h": 1,
+            "heavy": true
+          },
+          {
+            "w": 3,
+            "h": 2
+          },
+          {
+            "w": 3,
+            "h": 1
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true,
+        "balanceTolerance": 1.0
+      }
+    },
+    {
+      "id": "p08-l07",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 7,
+      "difficulty": 4,
+      "i18nKey": "scene.cargo.b",
+      "conceptId": "cargo_b",
+      "hints": [
+        "hint.cargo.b.1",
+        "hint.cargo.b.2",
+        "hint.cargo.b.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 6,
+          "rows": 3
+        },
+        "pieces": [
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 2,
+            "h": 1
+          },
+          {
+            "w": 2,
+            "h": 1,
+            "heavy": true
+          },
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 3,
+            "h": 2
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true,
+        "balanceTolerance": 1.0
+      }
+    },
+    {
+      "id": "p08-l08",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 8,
+      "difficulty": 4,
+      "i18nKey": "scene.cargo.b",
+      "conceptId": "cargo_b",
+      "hints": [
+        "hint.cargo.b.1",
+        "hint.cargo.b.2",
+        "hint.cargo.b.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 6,
+          "rows": 3
+        },
+        "pieces": [
+          {
+            "w": 3,
+            "h": 1
+          },
+          {
+            "w": 3,
+            "h": 1
+          },
+          {
+            "w": 3,
+            "h": 1
+          },
+          {
+            "w": 3,
+            "h": 2,
+            "heavy": true
+          },
+          {
+            "w": 3,
+            "h": 1
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true,
+        "balanceTolerance": 1.0
+      }
+    },
+    {
+      "id": "p08-l09",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 9,
+      "difficulty": 5,
+      "i18nKey": "scene.cargo.b",
+      "conceptId": "cargo_b",
+      "hints": [
+        "hint.cargo.b.1",
+        "hint.cargo.b.2",
+        "hint.cargo.b.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 6,
+          "rows": 3
+        },
+        "pieces": [
+          {
+            "w": 2,
+            "h": 1
+          },
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 2,
+            "h": 1,
+            "heavy": true
+          },
+          {
+            "w": 3,
+            "h": 2
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true,
+        "balanceTolerance": 1.0
+      }
+    },
+    {
+      "id": "p08-l10",
+      "schemaVersion": 1,
+      "archetypeId": "cargo_packing",
+      "place": 8,
+      "index": 10,
+      "difficulty": 5,
+      "i18nKey": "scene.cargo.b",
+      "conceptId": "cargo_b",
+      "hints": [
+        "hint.cargo.b.1",
+        "hint.cargo.b.2",
+        "hint.cargo.b.3"
+      ],
+      "initialState": {
+        "hold": {
+          "cols": 6,
+          "rows": 3
+        },
+        "pieces": [
+          {
+            "w": 2,
+            "h": 1
+          },
+          {
+            "w": 2,
+            "h": 1
+          },
+          {
+            "w": 3,
+            "h": 2
+          },
+          {
+            "w": 2,
+            "h": 2
+          },
+          {
+            "w": 2,
+            "h": 2,
+            "heavy": true
+          }
+        ]
+      },
+      "validationRules": {
+        "requireAllLoaded": true,
+        "balanceTolerance": 1.0
+      }
+    }
+  ]
+}

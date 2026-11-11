@@ -1,0 +1,531 @@
+{
+  "place": {
+    "number": 4,
+    "id": "waterworks",
+    "archetypeIds": [
+      "volume_flow"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p04-l01",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 1,
+      "difficulty": 1,
+      "i18nKey": "scene.flow.a",
+      "conceptId": "flow_a",
+      "hints": [
+        "hint.flow.a.1",
+        "hint.flow.a.2",
+        "hint.flow.a.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 2,
+            "height": 7,
+            "target": 6.0
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 4,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 4,
+          "max": 4,
+          "step": 1,
+          "value": 4
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    },
+    {
+      "id": "p04-l02",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 2,
+      "difficulty": 1,
+      "i18nKey": "scene.flow.a",
+      "conceptId": "flow_a",
+      "hints": [
+        "hint.flow.a.1",
+        "hint.flow.a.2",
+        "hint.flow.a.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 2,
+            "height": 7,
+            "target": 4.0
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 4,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 4,
+          "max": 4,
+          "step": 1,
+          "value": 4
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    },
+    {
+      "id": "p04-l03",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 3,
+      "difficulty": 2,
+      "i18nKey": "scene.flow.a",
+      "conceptId": "flow_a",
+      "hints": [
+        "hint.flow.a.1",
+        "hint.flow.a.2",
+        "hint.flow.a.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 1,
+            "height": 5,
+            "target": 4.0
+          },
+          {
+            "width": 2,
+            "height": 10,
+            "target": 8.0
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 4,
+            "rate": 0
+          },
+          {
+            "tank": 1,
+            "max": 4,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 4,
+          "max": 4,
+          "step": 1,
+          "value": 4
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    },
+    {
+      "id": "p04-l04",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 4,
+      "difficulty": 2,
+      "i18nKey": "scene.flow.a",
+      "conceptId": "flow_a",
+      "hints": [
+        "hint.flow.a.1",
+        "hint.flow.a.2",
+        "hint.flow.a.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 1,
+            "height": 10,
+            "target": 8.0
+          },
+          {
+            "width": 2,
+            "height": 5,
+            "target": 4.0
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 4,
+            "rate": 0
+          },
+          {
+            "tank": 1,
+            "max": 4,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 4,
+          "max": 4,
+          "step": 1,
+          "value": 4
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    },
+    {
+      "id": "p04-l05",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 5,
+      "difficulty": 3,
+      "i18nKey": "scene.flow.b",
+      "conceptId": "flow_b",
+      "hints": [
+        "hint.flow.b.1",
+        "hint.flow.b.2",
+        "hint.flow.b.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 4,
+            "height": 7,
+            "target": 5.0
+          },
+          {
+            "width": 2,
+            "height": 12,
+            "target": 10.0
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 1,
+            "max": 5,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 4,
+          "max": 4,
+          "step": 1,
+          "value": 4
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    },
+    {
+      "id": "p04-l06",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 6,
+      "difficulty": 3,
+      "i18nKey": "scene.flow.b",
+      "conceptId": "flow_b",
+      "hints": [
+        "hint.flow.b.1",
+        "hint.flow.b.2",
+        "hint.flow.b.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 3,
+            "height": 9,
+            "target": 8.0
+          },
+          {
+            "width": 4,
+            "height": 11,
+            "target": 7.5
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 1,
+            "max": 5,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 6,
+          "max": 6,
+          "step": 1,
+          "value": 6
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    },
+    {
+      "id": "p04-l07",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 7,
+      "difficulty": 4,
+      "i18nKey": "scene.flow.b",
+      "conceptId": "flow_b",
+      "hints": [
+        "hint.flow.b.1",
+        "hint.flow.b.2",
+        "hint.flow.b.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 2,
+            "height": 8,
+            "target": 6.0
+          },
+          {
+            "width": 3,
+            "height": 10,
+            "target": 8.0
+          },
+          {
+            "width": 3,
+            "height": 5,
+            "target": 4.0
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 1,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 2,
+            "max": 5,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 6,
+          "max": 6,
+          "step": 1,
+          "value": 6
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    },
+    {
+      "id": "p04-l08",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 8,
+      "difficulty": 4,
+      "i18nKey": "scene.flow.b",
+      "conceptId": "flow_b",
+      "hints": [
+        "hint.flow.b.1",
+        "hint.flow.b.2",
+        "hint.flow.b.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 4,
+            "height": 6,
+            "target": 4.5
+          },
+          {
+            "width": 2,
+            "height": 11,
+            "target": 9.0
+          },
+          {
+            "width": 2,
+            "height": 4,
+            "target": 3.0
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 1,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 2,
+            "max": 5,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 6,
+          "max": 6,
+          "step": 1,
+          "value": 6
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    },
+    {
+      "id": "p04-l09",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 9,
+      "difficulty": 5,
+      "i18nKey": "scene.flow.b",
+      "conceptId": "flow_b",
+      "hints": [
+        "hint.flow.b.1",
+        "hint.flow.b.2",
+        "hint.flow.b.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 4,
+            "height": 5,
+            "target": 3.0
+          },
+          {
+            "width": 3,
+            "height": 3,
+            "target": 2.0
+          },
+          {
+            "width": 3,
+            "height": 10,
+            "target": 8.0
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 1,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 2,
+            "max": 5,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 6,
+          "max": 6,
+          "step": 1,
+          "value": 6
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    },
+    {
+      "id": "p04-l10",
+      "schemaVersion": 1,
+      "archetypeId": "volume_flow",
+      "place": 4,
+      "index": 10,
+      "difficulty": 5,
+      "i18nKey": "scene.flow.b",
+      "conceptId": "flow_b",
+      "hints": [
+        "hint.flow.b.1",
+        "hint.flow.b.2",
+        "hint.flow.b.3"
+      ],
+      "initialState": {
+        "tanks": [
+          {
+            "width": 3,
+            "height": 5,
+            "target": 4.0
+          },
+          {
+            "width": 3,
+            "height": 6,
+            "target": 4.0
+          },
+          {
+            "width": 4,
+            "height": 9,
+            "target": 7.5
+          }
+        ],
+        "valves": [
+          {
+            "tank": 0,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 1,
+            "max": 5,
+            "rate": 0
+          },
+          {
+            "tank": 2,
+            "max": 5,
+            "rate": 0
+          }
+        ],
+        "duration": {
+          "min": 6,
+          "max": 6,
+          "step": 1,
+          "value": 6
+        }
+      },
+      "validationRules": {
+        "levelTolerance": 0.25
+      }
+    }
+  ]
+}
