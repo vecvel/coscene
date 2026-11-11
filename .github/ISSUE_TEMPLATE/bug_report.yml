@@ -1,0 +1,49 @@
+name: Bug report
+description: Something in the game does not work as it should.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the harbour, scene 4
+        2. Move the first crate to the back
+        3. Submit
+    validations:
+      required: true
+  - type: input
+    id: level
+    attributes:
+      label: Scene
+      description: The place and scene number, if it happened in a puzzle.
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: Shown at the bottom of Settings.
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device and OS
+      placeholder: Pixel 8, Android 15
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options: [English, Hindi, Bengali, Assamese, Tamil, Telugu, Indonesian, Korean]
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or recordings
