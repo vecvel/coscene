@@ -134,19 +134,16 @@ class GameIconPainter extends CustomPainter {
         canvas.scale(-1, 1);
         stroke(turnArrow());
       case GameIcons.share:
+        // A paper plane with its fold line.
         stroke(
           Path()
-            ..moveTo(12, 14)
-            ..lineTo(12, 4.2)
-            ..moveTo(8.2, 7.8)
-            ..lineTo(12, 4)
-            ..lineTo(15.8, 7.8)
-            ..moveTo(6, 11.5)
-            ..lineTo(6, 17.5)
-            ..arcToPoint(const Offset(8.5, 20), radius: const Radius.circular(2.5), clockwise: false)
-            ..lineTo(15.5, 20)
-            ..arcToPoint(const Offset(18, 17.5), radius: const Radius.circular(2.5), clockwise: false)
-            ..lineTo(18, 11.5),
+            ..moveTo(20, 4)
+            ..lineTo(3.8, 10.6)
+            ..lineTo(10.4, 13.4)
+            ..lineTo(13.2, 20)
+            ..close()
+            ..moveTo(10.4, 13.4)
+            ..lineTo(20, 4),
         );
       case GameIcons.star:
         const points = [
