@@ -36,7 +36,7 @@ Lines are 120 characters wide; `dart format` reads that from each package's `ana
 
 - Puzzle rules, validators and solvers: `packages/coscene-core`. Keep it pure Dart and deterministic: the same input must give the same result on every device.
 - Levels: `packages/coscene-content/levels/base/`. After editing, run `dart run tool/generate_levels.dart --embed` in `packages/coscene-content`. The tool refuses to write a level that has no solution.
-- Text: `packages/coscene-i18n/locales/<code>.json`, then `dart run tool/embed_locales.dart` in `packages/coscene-i18n`. English is the fallback, so a new key only has to exist in `en.json` to work; native speakers are very welcome to fill in the rest.
+- Text: `packages/coscene-i18n/locales/<code>.json`, then `dart run tool/embed_locales.dart` in `packages/coscene-i18n`. A new key has to be added to all eight files with the same `{placeholders}`, or the tool refuses to embed; native speakers are very welcome to improve the wording.
 - Drawing, logo and icons: `packages/coscene-render`.
 - Screens, sound and saving: `apps/coscene-mobile`.
 
@@ -44,7 +44,7 @@ Lines are 120 characters wide; `dart format` reads that from each package's `ana
 
 1. Fork the repo and branch from `main`.
 2. Keep each pull request to one change. Add or update tests for engine and content changes.
-3. Write commit messages in the imperative, short and plain: `Fix gear ratio rounding`, `Add Tamil hints for the harbour`.
+3. Write commit messages in the imperative, short and plain: `Fix probe budget rounding`, `Add Tamil hints for heaps`.
 4. Describe what changed and how you checked it. Screenshots help for anything visual.
 
 ## Releases

@@ -145,18 +145,24 @@ class Stars extends StatelessWidget {
 }
 
 /// Screen heading with a back button and an optional action on the right.
+/// A [subtitle] sits right under the title and starts where the title does.
 class TopBar extends StatelessWidget {
-  const TopBar({super.key, required this.title, this.trailing, this.onBack});
+  const TopBar({super.key, required this.title, this.subtitle, this.trailing, this.onBack});
   final String title;
+  final String? subtitle;
   final Widget? trailing;
   final VoidCallback? onBack;
+
+  static const double _row = 48;
 
   @override
   Widget build(BuildContext context) {
     final game = GameScope.of(context);
+    final sub = subtitle;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 8, 16, 4),
+      padding: EdgeInsets.fromLTRB(8, 4, 16, sub == null ? 4 : 10),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Semantics(
             button: true,
@@ -164,14 +170,113 @@ class TopBar extends StatelessWidget {
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: onBack ?? () => Navigator.of(context).maybePop(),
-              child: const SizedBox(width: 48, height: 48, child: Center(child: GameIcon(GameIcons.back, size: 26))),
+              child: const SizedBox(
+                width: _row,
+                height: _row,
+                child: Center(child: GameIcon(GameIcons.back, size: 26)),
+              ),
             ),
           ),
           Expanded(
-            child: Text(title, style: Type.heading, maxLines: 1, overflow: TextOverflow.ellipsis),
+            child: Padding(
+              // Centres the title line on the back button.
+              padding: EdgeInsets.only(top: (_row - Type.heading.fontSize! * Type.heading.height!) / 2),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: Type.heading, maxLines: 1, overflow: TextOverflow.ellipsis),
+                  if (sub != null) ...[const SizedBox(height: 2), Text(sub, style: Type.soft)],
+                ],
+              ),
+            ),
           ),
-          ?trailing,
+          if (trailing case final Widget action)
+            SizedBox(
+              height: _row,
+              child: Center(child: action),
+            ),
         ],
+      ),
+    );
+  }
+}
+
+/// Fades scrolled content out toward the top edge, so it slips under the
+/// status bar instead of being cut off. There is no fade until the content
+/// moves, and it eases in over the first 44 points of scrolling.
+class TopEdgeFade extends StatefulWidget {
+  const TopEdgeFade({super.key, required this.child});
+  final Widget child;
+
+  @override
+  State<TopEdgeFade> createState() => _TopEdgeFadeState();
+}
+
+class _TopEdgeFadeState extends State<TopEdgeFade> {
+  static const double _reach = 44;
+  double _strength = 0;
+
+  bool _onScroll(ScrollNotification n) {
+    if (n.depth != 0 || n.metrics.axis != Axis.vertical) return false;
+    final s = (n.metrics.pixels / _reach).clamp(0.0, 1.0);
+    if (s != _strength) setState(() => _strength = s);
+    return false;
+  }
+
+  static double _smootherstep(double t) => t * t * t * (t * (t * 6 - 15) + 10);
+
+  @override
+  Widget build(BuildContext context) {
+    final fadeEnd = MediaQuery.viewPaddingOf(context).top + _reach;
+    final strength = _strength;
+    return NotificationListener<ScrollNotification>(
+      onNotification: _onScroll,
+      // The mask stays in the tree at rest (fully opaque) so the scroll view
+      // underneath keeps its state when the fade switches on.
+      child: ShaderMask(
+        blendMode: BlendMode.dstIn,
+        shaderCallback: (rect) {
+          const steps = 16;
+          final end = (fadeEnd / rect.height).clamp(0.0, 1.0);
+          return LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              for (var i = 0; i < steps; i++)
+                Color.fromRGBO(0, 0, 0, 1 - strength * (1 - _smootherstep(i / (steps - 1)))),
+              const Color(0xFF000000),
+            ],
+            stops: [for (var i = 0; i < steps; i++) end * i / (steps - 1), 1],
+          ).createShader(rect);
+        },
+        child: widget.child,
+      ),
+    );
+  }
+}
+
+/// A full-height page: the header scrolls away with the content, which fades
+/// out under the status bar.
+class ScrollPage extends StatelessWidget {
+  const ScrollPage({super.key, required this.header, required this.body});
+  final Widget header;
+
+  /// The page content, as a sliver.
+  final Widget body;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      top: false,
+      bottom: false,
+      child: TopEdgeFade(
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: SizedBox(height: MediaQuery.viewPaddingOf(context).top)),
+            SliverToBoxAdapter(child: header),
+            SliverPadding(padding: EdgeInsets.fromLTRB(16, 4, 16, scrollEndPadding(context)), sliver: body),
+          ],
+        ),
       ),
     );
   }

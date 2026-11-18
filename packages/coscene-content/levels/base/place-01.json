@@ -1,386 +1,418 @@
 {
   "place": {
     "number": 1,
-    "id": "dockyard",
+    "id": "binary",
     "archetypeIds": [
-      "balance_levers"
+      "pick",
+      "answer"
     ]
   },
   "levels": [
     {
       "id": "p01-l01",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "pick",
       "place": 1,
       "index": 1,
       "difficulty": 1,
-      "i18nKey": "scene.balance.a",
-      "conceptId": "balance_a",
+      "i18nKey": "scene.binary.to_binary",
+      "conceptId": "binary",
+      "textParams": {
+        "n": 15
+      },
       "hints": [
-        "hint.balance.a.1",
-        "hint.balance.a.2",
-        "hint.balance.a.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 4,
-        "fixed": [
+        "layout": "bits",
+        "tiles": [
           {
-            "weight": 1,
-            "slot": -3
-          }
-        ],
-        "movable": [
+            "v": 8
+          },
           {
-            "weight": 1,
-            "slot": null
+            "v": 4
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 1
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "rule": "sum",
+        "target": 15
       }
     },
     {
       "id": "p01-l02",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "answer",
       "place": 1,
       "index": 2,
       "difficulty": 1,
-      "i18nKey": "scene.balance.a",
-      "conceptId": "balance_a",
+      "i18nKey": "scene.binary.from_binary",
+      "conceptId": "binary",
       "hints": [
-        "hint.balance.a.1",
-        "hint.balance.a.2",
-        "hint.balance.a.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 4,
-        "fixed": [
+        "board": [
           {
-            "weight": 2,
-            "slot": 4
+            "kind": "bits",
+            "cells": [
+              "1",
+              "1",
+              "0",
+              "0"
+            ]
           }
         ],
-        "movable": [
+        "fields": [
           {
-            "weight": 2,
-            "slot": null
+            "mode": "number",
+            "max": 15
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "answers": [
+          12
+        ]
       }
     },
     {
       "id": "p01-l03",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "pick",
       "place": 1,
       "index": 3,
-      "difficulty": 2,
-      "i18nKey": "scene.balance.a",
-      "conceptId": "balance_a",
+      "difficulty": 1,
+      "i18nKey": "scene.binary.to_binary",
+      "conceptId": "binary",
+      "textParams": {
+        "n": 13
+      },
       "hints": [
-        "hint.balance.a.1",
-        "hint.balance.a.2",
-        "hint.balance.a.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 4,
-        "fixed": [
+        "layout": "bits",
+        "tiles": [
           {
-            "weight": 2,
-            "slot": -1
-          }
-        ],
-        "movable": [
+            "v": 8
+          },
           {
-            "weight": 1,
-            "slot": null
+            "v": 4
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 1
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "rule": "sum",
+        "target": 13
       }
     },
     {
       "id": "p01-l04",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "answer",
       "place": 1,
       "index": 4,
-      "difficulty": 2,
-      "i18nKey": "scene.balance.a",
-      "conceptId": "balance_a",
+      "difficulty": 1,
+      "i18nKey": "scene.binary.from_binary",
+      "conceptId": "binary",
       "hints": [
-        "hint.balance.a.1",
-        "hint.balance.a.2",
-        "hint.balance.a.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 4,
-        "fixed": [
+        "board": [
           {
-            "weight": 1,
-            "slot": 2
+            "kind": "bits",
+            "cells": [
+              "1",
+              "1",
+              "1",
+              "0"
+            ]
           }
         ],
-        "movable": [
+        "fields": [
           {
-            "weight": 2,
-            "slot": null
+            "mode": "number",
+            "max": 15
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "answers": [
+          14
+        ]
       }
     },
     {
       "id": "p01-l05",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "pick",
       "place": 1,
       "index": 5,
-      "difficulty": 3,
-      "i18nKey": "scene.balance.b",
-      "conceptId": "balance_b",
+      "difficulty": 2,
+      "i18nKey": "scene.binary.to_binary",
+      "conceptId": "binary",
+      "textParams": {
+        "n": 18
+      },
       "hints": [
-        "hint.balance.b.1",
-        "hint.balance.b.2",
-        "hint.balance.b.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 5,
-        "fixed": [
+        "layout": "bits",
+        "tiles": [
           {
-            "weight": 4,
-            "slot": 3
-          }
-        ],
-        "movable": [
-          {
-            "weight": 4,
-            "slot": null
+            "v": 16
           },
           {
-            "weight": 1,
-            "slot": null
+            "v": 8
+          },
+          {
+            "v": 4
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 1
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "rule": "sum",
+        "target": 18
       }
     },
     {
       "id": "p01-l06",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "answer",
       "place": 1,
       "index": 6,
-      "difficulty": 3,
-      "i18nKey": "scene.balance.b",
-      "conceptId": "balance_b",
+      "difficulty": 2,
+      "i18nKey": "scene.binary.from_binary",
+      "conceptId": "binary",
       "hints": [
-        "hint.balance.b.1",
-        "hint.balance.b.2",
-        "hint.balance.b.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 5,
-        "fixed": [
+        "board": [
           {
-            "weight": 3,
-            "slot": -3
+            "kind": "bits",
+            "cells": [
+              "1",
+              "0",
+              "1",
+              "1",
+              "1"
+            ]
           }
         ],
-        "movable": [
+        "fields": [
           {
-            "weight": 4,
-            "slot": null
-          },
-          {
-            "weight": 1,
-            "slot": null
+            "mode": "number",
+            "max": 31
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "answers": [
+          23
+        ]
       }
     },
     {
       "id": "p01-l07",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "pick",
       "place": 1,
       "index": 7,
-      "difficulty": 4,
-      "i18nKey": "scene.balance.b",
-      "conceptId": "balance_b",
+      "difficulty": 2,
+      "i18nKey": "scene.binary.to_binary",
+      "conceptId": "binary",
+      "textParams": {
+        "n": 20
+      },
       "hints": [
-        "hint.balance.b.1",
-        "hint.balance.b.2",
-        "hint.balance.b.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 5,
-        "fixed": [
+        "layout": "bits",
+        "tiles": [
           {
-            "weight": 1,
-            "slot": -3
+            "v": 16
           },
           {
-            "weight": 2,
-            "slot": -2
-          }
-        ],
-        "movable": [
-          {
-            "weight": 4,
-            "slot": null
+            "v": 8
           },
           {
-            "weight": 1,
-            "slot": null
+            "v": 4
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 1
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "rule": "sum",
+        "target": 20
       }
     },
     {
       "id": "p01-l08",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "answer",
       "place": 1,
       "index": 8,
-      "difficulty": 4,
-      "i18nKey": "scene.balance.b",
-      "conceptId": "balance_b",
+      "difficulty": 3,
+      "i18nKey": "scene.binary.from_binary",
+      "conceptId": "binary",
       "hints": [
-        "hint.balance.b.1",
-        "hint.balance.b.2",
-        "hint.balance.b.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 5,
-        "fixed": [
+        "board": [
           {
-            "weight": 3,
-            "slot": 2
+            "kind": "bits",
+            "cells": [
+              "1",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ]
           }
         ],
-        "movable": [
+        "fields": [
           {
-            "weight": 4,
-            "slot": null
-          },
-          {
-            "weight": 2,
-            "slot": null
+            "mode": "number",
+            "max": 63
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "answers": [
+          40
+        ]
       }
     },
     {
       "id": "p01-l09",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "pick",
       "place": 1,
       "index": 9,
-      "difficulty": 5,
-      "i18nKey": "scene.balance.b",
-      "conceptId": "balance_b",
+      "difficulty": 3,
+      "i18nKey": "scene.binary.to_binary",
+      "conceptId": "binary",
+      "textParams": {
+        "n": 44
+      },
       "hints": [
-        "hint.balance.b.1",
-        "hint.balance.b.2",
-        "hint.balance.b.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 5,
-        "fixed": [
+        "layout": "bits",
+        "tiles": [
           {
-            "weight": 3,
-            "slot": -4
-          }
-        ],
-        "movable": [
-          {
-            "weight": 4,
-            "slot": null
+            "v": 32
           },
           {
-            "weight": 1,
-            "slot": null
+            "v": 16
           },
           {
-            "weight": 1,
-            "slot": null
+            "v": 8
+          },
+          {
+            "v": 4
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 1
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "rule": "sum",
+        "target": 44
       }
     },
     {
       "id": "p01-l10",
       "schemaVersion": 1,
-      "archetypeId": "balance_levers",
+      "archetypeId": "answer",
       "place": 1,
       "index": 10,
-      "difficulty": 5,
-      "i18nKey": "scene.balance.b",
-      "conceptId": "balance_b",
+      "difficulty": 3,
+      "i18nKey": "scene.binary.from_binary",
+      "conceptId": "binary",
       "hints": [
-        "hint.balance.b.1",
-        "hint.balance.b.2",
-        "hint.balance.b.3"
+        "hint.binary.1",
+        "hint.binary.2",
+        "hint.binary.3"
       ],
       "initialState": {
-        "halfSpan": 5,
-        "fixed": [
+        "board": [
           {
-            "weight": 4,
-            "slot": 3
+            "kind": "bits",
+            "cells": [
+              "1",
+              "0",
+              "0",
+              "1",
+              "1",
+              "1"
+            ]
           }
         ],
-        "movable": [
+        "fields": [
           {
-            "weight": 5,
-            "slot": null
-          },
-          {
-            "weight": 2,
-            "slot": null
-          },
-          {
-            "weight": 1,
-            "slot": null
+            "mode": "number",
+            "max": 63
           }
         ]
       },
       "validationRules": {
-        "torqueTolerance": 0,
-        "requireAllPlaced": true
+        "answers": [
+          39
+        ]
       }
     }
   ]

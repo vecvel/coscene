@@ -1,11 +1,8 @@
-import 'archetypes/balance.dart';
-import 'archetypes/cargo.dart';
-import 'archetypes/flow.dart';
-import 'archetypes/gears.dart';
-import 'archetypes/locks.dart';
-import 'archetypes/ray.dart';
-import 'archetypes/routing.dart';
-import 'archetypes/shadow.dart';
+import 'archetypes/answer.dart';
+import 'archetypes/ops.dart';
+import 'archetypes/pick.dart';
+import 'archetypes/probe.dart';
+import 'archetypes/route.dart';
 import 'level_spec.dart';
 import 'scene.dart';
 
@@ -32,14 +29,11 @@ class Engine {
   Engine(Iterable<Archetype> archetypes) : _archetypes = {for (final a in archetypes) a.id: a};
 
   static final Engine standard = Engine(const [
-    BalanceArchetype(),
-    RayArchetype(),
-    ShadowArchetype(),
-    FlowArchetype(),
-    RoutingArchetype(),
-    LockArchetype(),
-    GearArchetype(),
-    CargoArchetype(),
+    AnswerArchetype(),
+    ProbeArchetype(),
+    PickArchetype(),
+    OpsArchetype(),
+    RouteArchetype(),
   ]);
 
   /// A level that random setups solve more often than this is too easy to
@@ -117,11 +111,11 @@ class PlaySession {
   /// Tests the current setup. A solved session stays solved.
   SimResult submit() {
     final result = scene.simulate();
-    attempts++;
+    if (!result.outcome.isProgress) attempts++;
     lastOutcome = result.outcome;
     if (result.outcome.success) {
       solved = true;
-    } else {
+    } else if (!result.outcome.isProgress) {
       failedAttempts++;
       ghost = scene.snapshot();
     }

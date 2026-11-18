@@ -87,6 +87,17 @@ class _PlayScreenState extends State<PlayScreen> {
   Future<void> _onPlaybackEnd() async {
     final outcome = _playback?.outcome;
     if (outcome == null || !mounted) return;
+    if (outcome.isProgress) {
+      // One check in a search: say what it showed and keep going.
+      final say = outcome.detail['say'] as String? ?? 'start';
+      setState(() {
+        _busy = false;
+        _playback = null;
+        _statusIsError = false;
+        _status = '${_game.t('probe.$say')}. ${_game.t('probe.left', {'left': outcome.detail['left']})}';
+      });
+      return;
+    }
     if (!outcome.success) {
       _game.play(Sfx.fail);
       _game.buzz(3);
@@ -174,6 +185,7 @@ class _PlayScreenState extends State<PlayScreen> {
         ),
       ),
     ];
+    sceneText = game.t;
     return Scaffold(
       body: SafeArea(
         bottom: false,

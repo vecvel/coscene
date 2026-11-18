@@ -1,0 +1,445 @@
+{
+  "place": {
+    "number": 26,
+    "id": "xor_tricks",
+    "archetypeIds": [
+      "pick",
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p26-l01",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 26,
+      "index": 1,
+      "difficulty": 7,
+      "i18nKey": "scene.xor_tricks.subset",
+      "conceptId": "xor_tricks",
+      "textParams": {
+        "target": 27
+      },
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 1
+          },
+          {
+            "v": 11
+          },
+          {
+            "v": 24
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 18
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "xor",
+        "target": 27
+      }
+    },
+    {
+      "id": "p26-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 26,
+      "index": 2,
+      "difficulty": 7,
+      "i18nKey": "scene.xor_tricks.single",
+      "conceptId": "xor_tricks",
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "27",
+              "28",
+              "28",
+              "5",
+              "27"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 40
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "p26-l03",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 26,
+      "index": 3,
+      "difficulty": 7,
+      "i18nKey": "scene.xor_tricks.subset",
+      "conceptId": "xor_tricks",
+      "textParams": {
+        "target": 18
+      },
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 13
+          },
+          {
+            "v": 14
+          },
+          {
+            "v": 8
+          },
+          {
+            "v": 29
+          },
+          {
+            "v": 15
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "xor",
+        "target": 18
+      }
+    },
+    {
+      "id": "p26-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 26,
+      "index": 4,
+      "difficulty": 7,
+      "i18nKey": "scene.xor_tricks.single",
+      "conceptId": "xor_tricks",
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "24",
+              "16",
+              "16",
+              "18",
+              "18"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 40
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          24
+        ]
+      }
+    },
+    {
+      "id": "p26-l05",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 26,
+      "index": 5,
+      "difficulty": 8,
+      "i18nKey": "scene.xor_tricks.subset",
+      "conceptId": "xor_tricks",
+      "textParams": {
+        "target": 17
+      },
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 2
+          },
+          {
+            "v": 27
+          },
+          {
+            "v": 26
+          },
+          {
+            "v": 10
+          },
+          {
+            "v": 14
+          },
+          {
+            "v": 3
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "xor",
+        "target": 17
+      }
+    },
+    {
+      "id": "p26-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 26,
+      "index": 6,
+      "difficulty": 8,
+      "i18nKey": "scene.xor_tricks.single",
+      "conceptId": "xor_tricks",
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "4",
+              "9",
+              "31",
+              "31",
+              "35",
+              "9",
+              "35"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 40
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p26-l07",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 26,
+      "index": 7,
+      "difficulty": 8,
+      "i18nKey": "scene.xor_tricks.subset",
+      "conceptId": "xor_tricks",
+      "textParams": {
+        "target": 9
+      },
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 8
+          },
+          {
+            "v": 25
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 11
+          },
+          {
+            "v": 27
+          },
+          {
+            "v": 17
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "xor",
+        "target": 9
+      }
+    },
+    {
+      "id": "p26-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 26,
+      "index": 8,
+      "difficulty": 9,
+      "i18nKey": "scene.xor_tricks.single",
+      "conceptId": "xor_tricks",
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "39",
+              "20",
+              "19",
+              "20",
+              "28",
+              "4",
+              "19",
+              "39",
+              "4"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 40
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          28
+        ]
+      }
+    },
+    {
+      "id": "p26-l09",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 26,
+      "index": 9,
+      "difficulty": 9,
+      "i18nKey": "scene.xor_tricks.subset",
+      "conceptId": "xor_tricks",
+      "textParams": {
+        "target": 3
+      },
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 19
+          },
+          {
+            "v": 22
+          },
+          {
+            "v": 12
+          },
+          {
+            "v": 6
+          },
+          {
+            "v": 24
+          },
+          {
+            "v": 31
+          },
+          {
+            "v": 13
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "xor",
+        "target": 3
+      }
+    },
+    {
+      "id": "p26-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 26,
+      "index": 10,
+      "difficulty": 9,
+      "i18nKey": "scene.xor_tricks.swap",
+      "conceptId": "xor_tricks",
+      "hints": [
+        "hint.xor_tricks.1",
+        "hint.xor_tricks.2",
+        "hint.xor_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "a = 7,  b = 12"
+          },
+          {
+            "kind": "expr",
+            "text": "a ^= b;  b ^= a;  a ^= b"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 15,
+            "label": "a"
+          },
+          {
+            "mode": "number",
+            "max": 15,
+            "label": "b"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          12,
+          7
+        ]
+      }
+    }
+  ]
+}

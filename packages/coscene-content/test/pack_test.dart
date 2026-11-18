@@ -10,14 +10,21 @@ import 'package:coscene_i18n/coscene_i18n.dart';
 import 'package:test/test.dart';
 
 const failKinds = {
-  'balance': ['unplaced', 'tips_left', 'tips_right'],
-  'ray': ['missed', 'too_direct'],
-  'shadow': ['too_wide', 'too_narrow', 'off_left', 'off_right'],
-  'flow': ['overflow', 'too_low', 'too_high'],
-  'routing': ['misplaced'],
-  'locks': ['jammed'],
-  'gears': ['missing_gear', 'too_fast', 'too_slow'],
-  'cargo': ['left_behind', 'lists_left', 'lists_right'],
+  'answer': ['empty', 'wrong', 'some_wrong'],
+  'probe': ['out_of_checks'],
+  'pick': [
+    'empty',
+    'wrong_count',
+    'too_much',
+    'too_little',
+    'wrong_xor',
+    'not_together',
+    'not_best',
+    'overlap',
+    'over_cap',
+  ],
+  'ops': ['wrong_order', 'unfinished', 'unsorted', 'too_many_moves', 'too_early'],
+  'route': ['unfinished', 'longer'],
 };
 
 void main() {
@@ -26,9 +33,12 @@ void main() {
   final levels = registry.levels;
 
   group('bundled pack', () {
-    test('has 100 levels: ten places of ten', () {
-      expect(levels, hasLength(100));
-      expect(registry.places, hasLength(10));
+    test('has 300 levels: thirty topics of ten, ten topics per tier', () {
+      expect(levels, hasLength(300));
+      expect(registry.places, hasLength(30));
+      for (var tier = 0; tier < 3; tier++) {
+        expect(registry.places.where((p) => p.tier == tier), hasLength(10));
+      }
       for (final place in registry.places) {
         final inPlace = registry.levelsOf(place.number);
         expect(inPlace.map((l) => l.index), List.generate(10, (i) => i + 1), reason: place.id);
@@ -55,13 +65,21 @@ void main() {
       }
     });
 
-    test('lock levels can be opened by legal turns alone', () {
-      for (final level in levels.where((l) => l.archetypeId == 'permutation_locks')) {
-        final scene = engine.createScene(level) as LockScene;
+    test('searches can be won by halving within the budget', () {
+      for (final level in levels.where((l) => l.archetypeId == 'probe')) {
+        final scene = engine.createScene(level) as ProbeScene;
         for (final move in engine.solve(level)!.moves) {
-          scene.turn(move[0], move[1]);
+          scene.check(move[0]);
         }
         expect(scene.evaluate().success, isTrue, reason: level.id);
+        expect(scene.checks.length, scene.budget, reason: '${level.id}: the budget has no slack');
+      }
+    });
+
+    test('easy, medium and hard sit in their own difficulty bands', () {
+      for (final level in levels) {
+        final tier = tierOfPlace(level.place);
+        expect(level.difficulty, inInclusiveRange(tier * 3 + 1, tier * 3 + 3), reason: level.id);
       }
     });
 
@@ -70,7 +88,10 @@ void main() {
         final d = registry.levelsOf(place.number).map((l) => l.difficulty).toList();
         expect(d, [...d]..sort(), reason: '${place.id} gets easier somewhere');
       }
-      expect(levels.map((l) => jsonEncode(l.initialState)).toSet(), hasLength(levels.length));
+      expect(
+        levels.map((l) => jsonEncode([l.initialState, l.validationRules, l.textParams])).toSet(),
+        hasLength(levels.length),
+      );
     });
 
     test('survives a JSON round trip unchanged', () {
@@ -95,9 +116,9 @@ void main() {
         id: first.id,
         place: first.place,
         index: first.index,
-        archetypeId: first.archetypeId,
+        topic: registry.place(first.place)!.id,
         difficulty: first.difficulty,
-        seed: Rng.hash('coscene-base-${first.id}-v1'),
+        seed: Rng.hash('coscene-base-${first.id}-v2'),
       );
       expect(jsonEncode(again.toJson()), jsonEncode(first.toJson()));
     });
@@ -126,10 +147,14 @@ void main() {
           for (final kind in failKinds[short]!) 'fail.$short.$kind',
         ];
         expect(level.hints.length, greaterThanOrEqualTo(3), reason: level.id);
+        for (final key in keys) {
+          expect(dictionaries['en']![key], isNotNull, reason: '${level.id}: "$key" missing in English');
+        }
         for (final entry in dictionaries.entries) {
+          final dictionary = LocaleManager.instance.dictionary(entry.key);
           for (final key in keys) {
-            expect(entry.value[key], isNotNull, reason: '${level.id}: "$key" missing in ${entry.key}');
-            expect(entry.value[key]!.trim(), isNotEmpty);
+            // Until a language is translated it falls back to English.
+            expect(dictionary.t(key), isNot(key), reason: '${level.id}: "$key" in ${entry.key}');
           }
           // Numbers in the text come from the level, with nothing left over.
           final objective = LocaleManager.instance.dictionary(entry.key).t(level.objectiveKey, level.textParams);
@@ -140,9 +165,14 @@ void main() {
 
     test('every place has a name and tagline in every language', () {
       for (final place in registry.places) {
-        for (final entry in dictionaries.entries) {
-          expect(entry.value['place.${place.id}.name'], isNotNull, reason: '${place.id} in ${entry.key}');
-          expect(entry.value['place.${place.id}.tagline'], isNotNull, reason: '${place.id} in ${entry.key}');
+        for (final code in dictionaries.keys) {
+          final dictionary = LocaleManager.instance.dictionary(code);
+          expect(
+            dictionary.t('place.${place.id}.name'),
+            isNot('place.${place.id}.name'),
+            reason: '${place.id} in $code',
+          );
+          expect(dictionary.t('place.${place.id}.tagline'), isNot('place.${place.id}.tagline'));
         }
       }
     });
@@ -151,8 +181,9 @@ void main() {
       // Random setups on every level must only fail in ways we have text for.
       for (final level in levels) {
         final short = archetypeShortNames[level.archetypeId]!;
-        final kind = engine.createScene(level).evaluate().kind;
-        expect(failKinds[short], contains(kind), reason: level.id);
+        final outcome = engine.createScene(level).evaluate();
+        if (outcome.isProgress) continue;
+        expect(failKinds[short], contains(outcome.kind), reason: level.id);
       }
     });
   });

@@ -1,0 +1,345 @@
+{
+  "place": {
+    "number": 20,
+    "id": "combinatorics",
+    "archetypeIds": [
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p20-l01",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 1,
+      "difficulty": 4,
+      "i18nKey": "scene.combinatorics.sweets",
+      "conceptId": "combinatorics",
+      "textParams": {
+        "k": 4,
+        "n": 3
+      },
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          15
+        ]
+      }
+    },
+    {
+      "id": "p20-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 2,
+      "difficulty": 4,
+      "i18nKey": "scene.combinatorics.socks",
+      "conceptId": "combinatorics",
+      "textParams": {
+        "c": 5,
+        "m": 2
+      },
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          6
+        ]
+      }
+    },
+    {
+      "id": "p20-l03",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 3,
+      "difficulty": 4,
+      "i18nKey": "scene.combinatorics.divisible",
+      "conceptId": "combinatorics",
+      "textParams": {
+        "n": 57,
+        "a": 5,
+        "b": 7
+      },
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          18
+        ]
+      }
+    },
+    {
+      "id": "p20-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 4,
+      "difficulty": 4,
+      "i18nKey": "scene.combinatorics.choose",
+      "conceptId": "combinatorics",
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "C(9, 4)"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          126
+        ]
+      }
+    },
+    {
+      "id": "p20-l05",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 5,
+      "difficulty": 5,
+      "i18nKey": "scene.combinatorics.sweets",
+      "conceptId": "combinatorics",
+      "textParams": {
+        "k": 8,
+        "n": 4
+      },
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          165
+        ]
+      }
+    },
+    {
+      "id": "p20-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 6,
+      "difficulty": 5,
+      "i18nKey": "scene.combinatorics.socks",
+      "conceptId": "combinatorics",
+      "textParams": {
+        "c": 3,
+        "m": 2
+      },
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p20-l07",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 7,
+      "difficulty": 5,
+      "i18nKey": "scene.combinatorics.divisible",
+      "conceptId": "combinatorics",
+      "textParams": {
+        "n": 63,
+        "a": 3,
+        "b": 5
+      },
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          29
+        ]
+      }
+    },
+    {
+      "id": "p20-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 8,
+      "difficulty": 6,
+      "i18nKey": "scene.combinatorics.choose",
+      "conceptId": "combinatorics",
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "C(9, 3)"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          84
+        ]
+      }
+    },
+    {
+      "id": "p20-l09",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 9,
+      "difficulty": 6,
+      "i18nKey": "scene.combinatorics.sweets",
+      "conceptId": "combinatorics",
+      "textParams": {
+        "k": 4,
+        "n": 2
+      },
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "p20-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 20,
+      "index": 10,
+      "difficulty": 6,
+      "i18nKey": "scene.combinatorics.socks",
+      "conceptId": "combinatorics",
+      "textParams": {
+        "c": 5,
+        "m": 4
+      },
+      "hints": [
+        "hint.combinatorics.1",
+        "hint.combinatorics.2",
+        "hint.combinatorics.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          16
+        ]
+      }
+    }
+  ]
+}

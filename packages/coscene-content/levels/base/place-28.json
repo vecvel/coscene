@@ -1,0 +1,370 @@
+{
+  "place": {
+    "number": 28,
+    "id": "probability",
+    "archetypeIds": [
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p28-l01",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 1,
+      "difficulty": 7,
+      "i18nKey": "scene.probability.heads",
+      "conceptId": "probability",
+      "textParams": {
+        "n": 4,
+        "k": 3
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "2^4 outcomes"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p28-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 2,
+      "difficulty": 7,
+      "i18nKey": "scene.probability.at_least_one_six",
+      "conceptId": "probability",
+      "textParams": {
+        "n": 4
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "6^4 outcomes"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 9999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          671
+        ]
+      }
+    },
+    {
+      "id": "p28-l03",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 3,
+      "difficulty": 7,
+      "i18nKey": "scene.probability.dice_sum",
+      "conceptId": "probability",
+      "textParams": {
+        "s": 3
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 36
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          2
+        ]
+      }
+    },
+    {
+      "id": "p28-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 4,
+      "difficulty": 7,
+      "i18nKey": "scene.probability.heads",
+      "conceptId": "probability",
+      "textParams": {
+        "n": 5,
+        "k": 3
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "2^5 outcomes"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          10
+        ]
+      }
+    },
+    {
+      "id": "p28-l05",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 5,
+      "difficulty": 8,
+      "i18nKey": "scene.probability.at_least_one_six",
+      "conceptId": "probability",
+      "textParams": {
+        "n": 2
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "6^2 outcomes"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          11
+        ]
+      }
+    },
+    {
+      "id": "p28-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 6,
+      "difficulty": 8,
+      "i18nKey": "scene.probability.dice_sum",
+      "conceptId": "probability",
+      "textParams": {
+        "s": 9
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 36
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p28-l07",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 7,
+      "difficulty": 8,
+      "i18nKey": "scene.probability.heads",
+      "conceptId": "probability",
+      "textParams": {
+        "n": 5,
+        "k": 1
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "2^5 outcomes"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "p28-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 8,
+      "difficulty": 9,
+      "i18nKey": "scene.probability.at_least_one_six",
+      "conceptId": "probability",
+      "textParams": {
+        "n": 3
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "6^3 outcomes"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          91
+        ]
+      }
+    },
+    {
+      "id": "p28-l09",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 9,
+      "difficulty": 9,
+      "i18nKey": "scene.probability.dice_sum",
+      "conceptId": "probability",
+      "textParams": {
+        "s": 8
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 36
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "p28-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 28,
+      "index": 10,
+      "difficulty": 9,
+      "i18nKey": "scene.probability.heads",
+      "conceptId": "probability",
+      "textParams": {
+        "n": 8,
+        "k": 4
+      },
+      "hints": [
+        "hint.probability.1",
+        "hint.probability.2",
+        "hint.probability.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "2^8 outcomes"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          70
+        ]
+      }
+    }
+  ]
+}

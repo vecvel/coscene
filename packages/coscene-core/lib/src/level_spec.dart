@@ -72,7 +72,7 @@ class LevelSpec {
   final String id;
   final int schemaVersion;
 
-  /// Interaction pattern, for example `balance_levers`.
+  /// Interaction pattern, for example `answer` or `probe`.
   final String archetypeId;
 
   /// 1-based place (chapter) and position inside it.
@@ -98,7 +98,7 @@ class LevelSpec {
   final Map<String, dynamic> textParams;
 
   String get objectiveKey => '$i18nKey.objective';
-  String get revealKey => '$i18nKey.reveal';
+  String get revealKey => 'reveal.$conceptId';
 
   Map<String, dynamic> toJson() => {
     'id': id,

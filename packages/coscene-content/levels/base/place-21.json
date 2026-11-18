@@ -1,0 +1,532 @@
+{
+  "place": {
+    "number": 21,
+    "id": "dynamic_programming",
+    "archetypeIds": [
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p21-l01",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 1,
+      "difficulty": 7,
+      "i18nKey": "scene.dynamic_programming.coins",
+      "conceptId": "dynamic_programming",
+      "textParams": {
+        "amount": 15
+      },
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "1",
+              "5",
+              "6"
+            ],
+            "label": "coins"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          3
+        ]
+      }
+    },
+    {
+      "id": "p21-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 2,
+      "difficulty": 7,
+      "i18nKey": "scene.dynamic_programming.grid_paths",
+      "conceptId": "dynamic_programming",
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "■",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "■"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "·"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          14
+        ]
+      }
+    },
+    {
+      "id": "p21-l03",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 3,
+      "difficulty": 7,
+      "i18nKey": "scene.dynamic_programming.stairs",
+      "conceptId": "dynamic_programming",
+      "textParams": {
+        "n": 13
+      },
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 or 2"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          377
+        ]
+      }
+    },
+    {
+      "id": "p21-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 4,
+      "difficulty": 7,
+      "i18nKey": "scene.dynamic_programming.coins",
+      "conceptId": "dynamic_programming",
+      "textParams": {
+        "amount": 14
+      },
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "1",
+              "3",
+              "4"
+            ],
+            "label": "coins"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p21-l05",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 5,
+      "difficulty": 8,
+      "i18nKey": "scene.dynamic_programming.grid_paths",
+      "conceptId": "dynamic_programming",
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "·",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "■",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "■",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "·",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "■",
+              "■",
+              "·"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          11
+        ]
+      }
+    },
+    {
+      "id": "p21-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 6,
+      "difficulty": 8,
+      "i18nKey": "scene.dynamic_programming.stairs",
+      "conceptId": "dynamic_programming",
+      "textParams": {
+        "n": 14
+      },
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 or 2"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 9999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          610
+        ]
+      }
+    },
+    {
+      "id": "p21-l07",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 7,
+      "difficulty": 8,
+      "i18nKey": "scene.dynamic_programming.coins",
+      "conceptId": "dynamic_programming",
+      "textParams": {
+        "amount": 14
+      },
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "1",
+              "4",
+              "6"
+            ],
+            "label": "coins"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          3
+        ]
+      }
+    },
+    {
+      "id": "p21-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 8,
+      "difficulty": 9,
+      "i18nKey": "scene.dynamic_programming.grid_paths",
+      "conceptId": "dynamic_programming",
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "·",
+              "■",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "·",
+              "■",
+              "■"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "·",
+              "·",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "·",
+              "·",
+              "·",
+              "·",
+              "■",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "■",
+              "·",
+              "·",
+              "·",
+              "·",
+              "·"
+            ]
+          },
+          {
+            "kind": "cells",
+            "cells": [
+              "■",
+              "·",
+              "·",
+              "·",
+              "·",
+              "·"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          130
+        ]
+      }
+    },
+    {
+      "id": "p21-l09",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 9,
+      "difficulty": 9,
+      "i18nKey": "scene.dynamic_programming.stairs",
+      "conceptId": "dynamic_programming",
+      "textParams": {
+        "n": 11
+      },
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 or 2"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          144
+        ]
+      }
+    },
+    {
+      "id": "p21-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 21,
+      "index": 10,
+      "difficulty": 9,
+      "i18nKey": "scene.dynamic_programming.coins",
+      "conceptId": "dynamic_programming",
+      "textParams": {
+        "amount": 33
+      },
+      "hints": [
+        "hint.dynamic_programming.1",
+        "hint.dynamic_programming.2",
+        "hint.dynamic_programming.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "1",
+              "4",
+              "6"
+            ],
+            "label": "coins"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          7
+        ]
+      }
+    }
+  ]
+}

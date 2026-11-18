@@ -14,7 +14,7 @@ body:
     attributes:
       label: Steps to reproduce
       placeholder: |
-        1. Open the harbour, scene 4
+        1. Open Medium, Sliding window, scene 4
         2. Move the first crate to the back
         3. Submit
     validations:

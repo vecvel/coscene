@@ -1,0 +1,546 @@
+{
+  "place": {
+    "number": 17,
+    "id": "greedy",
+    "archetypeIds": [
+      "pick"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p17-l01",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 1,
+      "difficulty": 4,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 6,
+            "e": 8
+          },
+          {
+            "v": 1,
+            "s": 9,
+            "e": 11
+          },
+          {
+            "v": 1,
+            "s": 2,
+            "e": 6
+          },
+          {
+            "v": 1,
+            "s": 0,
+            "e": 4
+          },
+          {
+            "v": 1,
+            "s": 3,
+            "e": 4
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 3
+      }
+    },
+    {
+      "id": "p17-l02",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 2,
+      "difficulty": 4,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 1,
+            "e": 2
+          },
+          {
+            "v": 1,
+            "s": 7,
+            "e": 9
+          },
+          {
+            "v": 1,
+            "s": 8,
+            "e": 10
+          },
+          {
+            "v": 1,
+            "s": 1,
+            "e": 5
+          },
+          {
+            "v": 1,
+            "s": 8,
+            "e": 10
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 2
+      }
+    },
+    {
+      "id": "p17-l03",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 3,
+      "difficulty": 4,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 3,
+            "e": 7
+          },
+          {
+            "v": 1,
+            "s": 0,
+            "e": 4
+          },
+          {
+            "v": 1,
+            "s": 2,
+            "e": 4
+          },
+          {
+            "v": 1,
+            "s": 9,
+            "e": 10
+          },
+          {
+            "v": 1,
+            "s": 3,
+            "e": 7
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 2
+      }
+    },
+    {
+      "id": "p17-l04",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 4,
+      "difficulty": 4,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 3,
+            "e": 4
+          },
+          {
+            "v": 1,
+            "s": 9,
+            "e": 12
+          },
+          {
+            "v": 1,
+            "s": 10,
+            "e": 12
+          },
+          {
+            "v": 1,
+            "s": 3,
+            "e": 5
+          },
+          {
+            "v": 1,
+            "s": 2,
+            "e": 4
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 2
+      }
+    },
+    {
+      "id": "p17-l05",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 5,
+      "difficulty": 5,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 7,
+            "e": 8
+          },
+          {
+            "v": 1,
+            "s": 1,
+            "e": 4
+          },
+          {
+            "v": 1,
+            "s": 5,
+            "e": 6
+          },
+          {
+            "v": 1,
+            "s": 5,
+            "e": 9
+          },
+          {
+            "v": 1,
+            "s": 6,
+            "e": 7
+          },
+          {
+            "v": 1,
+            "s": 5,
+            "e": 8
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 4
+      }
+    },
+    {
+      "id": "p17-l06",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 6,
+      "difficulty": 5,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 0,
+            "e": 3
+          },
+          {
+            "v": 1,
+            "s": 1,
+            "e": 5
+          },
+          {
+            "v": 1,
+            "s": 8,
+            "e": 11
+          },
+          {
+            "v": 1,
+            "s": 4,
+            "e": 5
+          },
+          {
+            "v": 1,
+            "s": 0,
+            "e": 3
+          },
+          {
+            "v": 1,
+            "s": 9,
+            "e": 12
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 3
+      }
+    },
+    {
+      "id": "p17-l07",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 7,
+      "difficulty": 5,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 0,
+            "e": 3
+          },
+          {
+            "v": 1,
+            "s": 1,
+            "e": 5
+          },
+          {
+            "v": 1,
+            "s": 0,
+            "e": 2
+          },
+          {
+            "v": 1,
+            "s": 3,
+            "e": 5
+          },
+          {
+            "v": 1,
+            "s": 4,
+            "e": 6
+          },
+          {
+            "v": 1,
+            "s": 6,
+            "e": 7
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 3
+      }
+    },
+    {
+      "id": "p17-l08",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 8,
+      "difficulty": 6,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 4,
+            "e": 6
+          },
+          {
+            "v": 1,
+            "s": 7,
+            "e": 9
+          },
+          {
+            "v": 1,
+            "s": 9,
+            "e": 12
+          },
+          {
+            "v": 1,
+            "s": 7,
+            "e": 9
+          },
+          {
+            "v": 1,
+            "s": 10,
+            "e": 12
+          },
+          {
+            "v": 1,
+            "s": 4,
+            "e": 8
+          },
+          {
+            "v": 1,
+            "s": 2,
+            "e": 3
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 4
+      }
+    },
+    {
+      "id": "p17-l09",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 9,
+      "difficulty": 6,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 9,
+            "e": 12
+          },
+          {
+            "v": 1,
+            "s": 10,
+            "e": 11
+          },
+          {
+            "v": 1,
+            "s": 10,
+            "e": 12
+          },
+          {
+            "v": 1,
+            "s": 1,
+            "e": 5
+          },
+          {
+            "v": 1,
+            "s": 10,
+            "e": 12
+          },
+          {
+            "v": 1,
+            "s": 3,
+            "e": 7
+          },
+          {
+            "v": 1,
+            "s": 6,
+            "e": 10
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 3
+      }
+    },
+    {
+      "id": "p17-l10",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 17,
+      "index": 10,
+      "difficulty": 6,
+      "i18nKey": "scene.greedy.meetings",
+      "conceptId": "greedy",
+      "hints": [
+        "hint.greedy.1",
+        "hint.greedy.2",
+        "hint.greedy.3"
+      ],
+      "initialState": {
+        "layout": "bars",
+        "tiles": [
+          {
+            "v": 1,
+            "s": 6,
+            "e": 7
+          },
+          {
+            "v": 1,
+            "s": 10,
+            "e": 12
+          },
+          {
+            "v": 1,
+            "s": 8,
+            "e": 11
+          },
+          {
+            "v": 1,
+            "s": 8,
+            "e": 9
+          },
+          {
+            "v": 1,
+            "s": 6,
+            "e": 10
+          },
+          {
+            "v": 1,
+            "s": 3,
+            "e": 5
+          },
+          {
+            "v": 1,
+            "s": 7,
+            "e": 8
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "intervals",
+        "best": 5
+      }
+    }
+  ]
+}

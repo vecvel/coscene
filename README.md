@@ -4,7 +4,7 @@
 
 <h1 align="center">coscene</h1>
 
-<p align="center">A puzzle game where everyday setups turn out to be maths.</p>
+<p align="center">A puzzle game that teaches logic, maths and algorithms by hand, no code required.</p>
 
 <p align="center">
   <a href="https://github.com/vecvel/coscene/actions/workflows/ci.yml"><img src="https://github.com/vecvel/coscene/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
@@ -13,9 +13,9 @@
   <img src="https://img.shields.io/badge/platform-Android%20%7C%20iOS-lightgrey" alt="Android and iOS">
 </p>
 
-Cranes, mirrors, taps, gears, conveyor belts and cargo ships each hide a piece of maths: moments, reflection, ratios, permutations, volume. In coscene you set up the scene, submit it, and watch it play out. Nothing is judged until you submit, and every hint points at something you have seen in real life. After each solve the game names the idea you just used and adds it to your notebook.
+Binary and bitwise operators, logic, logarithms, counting, binary search, stacks, hashing, sliding windows, heaps, graphs, dynamic programming, caching and rate limiting: coscene turns each concept into puzzles you solve by reasoning and working things out, not by writing code. Topics run from easy to medium to hard, and after each solve the game names the idea you used and where it comes up.
 
-It is made for anyone who likes puzzles, and works well for students who want to feel the maths rather than memorise it. It plays offline, in eight languages, with no ads and no account.
+It is made for students and developers who want to understand the ideas behind programming interviews, and for anyone who likes logic puzzles. It plays offline, with no ads and no account.
 
 <!--
 Demo: add a screen recording or screenshots at .github/media/demo.gif and uncomment.
@@ -35,13 +35,15 @@ Demo: add a screen recording or screenshots at .github/media/demo.gif and uncomm
 
 ## Features
 
-- 100 scenes across 10 places, built on eight puzzle types: balance levers, light and mirrors, shadows, water flow, parcel routing, combination locks, gear ratios and cargo packing.
+- 300 scenes in 30 topics: 10 easy, 10 medium and 10 hard, each with 10 scenes that get harder.
+- Five kinds of puzzle: work out an answer, search with limited checks, pick the tiles that fit a rule, make a sequence of moves, and draw the cheapest path.
+- Medium opens after 30 easy scenes and hard after 30 medium ones.
 - A new daily scene, generated from the date.
-- Explicit submit: the result plays out step by step, with a ghost of your last attempt to compare against.
-- Real-world hints, and a reveal after every solve that names the concept behind it.
+- Explicit submit: nothing is judged until you check, and your last attempt stays on screen as a ghost.
+- Hints that build from a nudge to the method, and a reveal after every solve that names the concept and where it comes up.
 - A notebook of every concept you have met.
 - A profile with a cosIQ score, ranks and a card you can share.
-- English, Hindi, Bengali, Assamese, Tamil, Telugu, Indonesian and Korean.
+- Eight languages, puzzles included: English, Hindi, Bengali, Assamese, Tamil, Telugu, Indonesian and Korean.
 - Sound effects synthesized in code, haptics, and a reduced motion setting.
 - Every puzzle is deterministic and checked by a solver, so each scene is known to have an answer.
 - Optional level packs from a server, signed with Ed25519 and re-validated before they are played.
@@ -113,19 +115,21 @@ Each package keeps its tests in `test/` and its scripts in `tool/`.
 
 ## Levels and translations
 
-Levels live in `packages/coscene-content/levels/base/`, one file per place, and follow `packages/coscene-content/schema/level.schema.json`. After editing them, embed them into the app:
+Levels live in `packages/coscene-content/levels/base/`, one file per topic, and follow `packages/coscene-content/schema/level.schema.json`. After editing them, embed them into the app:
 
 ```bash
 cd packages/coscene-content && dart run tool/generate_levels.dart --embed
 ```
 
-Without `--embed` the tool regenerates all 100 levels from their seeds. Either way, nothing is written unless every level can be solved.
+Without `--embed` the tool regenerates all 300 levels from their seeds. Either way, nothing is written unless every level can be solved.
 
 Text lives in `packages/coscene-i18n/locales/<code>.json`. After editing:
 
 ```bash
 cd packages/coscene-i18n && dart run tool/embed_locales.dart
 ```
+
+Every language needs every key in `en.json` with the same `{placeholders}`; the tool embeds nothing until they all match.
 
 App icons and launch images are drawn from `packages/coscene-render/lib/src/logo.dart`. Store icons and the feature graphic are written to `build/store/`:
 

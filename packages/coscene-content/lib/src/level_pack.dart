@@ -20,9 +20,9 @@ class PackException implements Exception {
 /// ```json
 /// {
 ///   "id": "base", "version": 1, "minEngineVersion": 1,
-///   "places": [{"number": 1, "id": "dockyard", "archetypeIds": ["balance_levers"]}],
+///   "places": [{"number": 31, "id": "graphs", "archetypeIds": ["route"]}],
 ///   "levels": [ ...level objects... ],
-///   "strings": {"en": {"place.dockyard.name": "Dockyard"}}
+///   "strings": {"en": {"place.graphs.name": "Graphs"}}
 /// }
 /// ```
 class LevelPack {

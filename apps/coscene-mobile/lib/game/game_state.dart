@@ -29,7 +29,8 @@ class LevelRecord {
 }
 
 /// How many levels of a place must be solved to open the next one.
-const int levelsToOpenNextPlace = 7;
+/// Scenes to solve in one tier before the next tier's topics open.
+const int scenesToOpenNextTier = 30;
 
 /// Testing only: build with `--dart-define=COSCENE_UNLOCK_ALL=true` to open
 /// every place and scene. Off in normal builds.
@@ -106,13 +107,16 @@ class GameState extends ChangeNotifier {
   int solvedIn(int place) => registry.levelsOf(place).where((l) => isSolved(l.id)).length;
   int starsIn(int place) => registry.levelsOf(place).fold(0, (a, l) => a + starsOf(l.id));
 
+  /// Easy topics are open from the start; each later tier opens once enough
+  /// scenes of the tier before it are solved.
   bool isPlaceOpen(int place) {
     if (unlockAllForTesting) return true;
-    final places = registry.places;
-    final i = places.indexWhere((p) => p.number == place);
-    if (i <= 0) return true;
-    return solvedIn(places[i - 1].number) >= levelsToOpenNextPlace;
+    final tier = tierOfPlace(place);
+    return tier == 0 || solvedInTier(tier - 1) >= scenesToOpenNextTier;
   }
+
+  int solvedInTier(int tier) =>
+      registry.places.where((p) => p.tier == tier).fold(0, (sum, p) => sum + solvedIn(p.number));
 
   bool isLevelOpen(LevelSpec level) {
     if (level.place == dailyPlace || unlockAllForTesting) return true;

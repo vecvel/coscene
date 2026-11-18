@@ -1,0 +1,434 @@
+{
+  "place": {
+    "number": 30,
+    "id": "rate_limiting",
+    "archetypeIds": [
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p30-l01",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 1,
+      "difficulty": 7,
+      "i18nKey": "scene.rate_limiting.token_bucket",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "cap": 2,
+        "rate": 1
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "2",
+              "1",
+              "3",
+              "3",
+              "0"
+            ],
+            "label": "s",
+            "index": true
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 9
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "p30-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 2,
+      "difficulty": 7,
+      "i18nKey": "scene.rate_limiting.token_bucket",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "cap": 4,
+        "rate": 1
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "0",
+              "4",
+              "2",
+              "1",
+              "0"
+            ],
+            "label": "s",
+            "index": true
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 7
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          6
+        ]
+      }
+    },
+    {
+      "id": "p30-l03",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 3,
+      "difficulty": 7,
+      "i18nKey": "scene.rate_limiting.round_robin",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "m": 4,
+        "n": 68
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 4
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p30-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 4,
+      "difficulty": 7,
+      "i18nKey": "scene.rate_limiting.token_bucket",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "cap": 2,
+        "rate": 1
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "4",
+              "1",
+              "2",
+              "2",
+              "2"
+            ],
+            "label": "s",
+            "index": true
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 11
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          6
+        ]
+      }
+    },
+    {
+      "id": "p30-l05",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 5,
+      "difficulty": 8,
+      "i18nKey": "scene.rate_limiting.token_bucket",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "cap": 2,
+        "rate": 1
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "3",
+              "2",
+              "1",
+              "1",
+              "2",
+              "1"
+            ],
+            "label": "s",
+            "index": true
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 10
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          7
+        ]
+      }
+    },
+    {
+      "id": "p30-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 6,
+      "difficulty": 8,
+      "i18nKey": "scene.rate_limiting.round_robin",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "m": 9,
+        "n": 82
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 9
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "p30-l07",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 7,
+      "difficulty": 8,
+      "i18nKey": "scene.rate_limiting.token_bucket",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "cap": 3,
+        "rate": 1
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "3",
+              "1",
+              "0",
+              "2",
+              "3",
+              "2"
+            ],
+            "label": "s",
+            "index": true
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 11
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          8
+        ]
+      }
+    },
+    {
+      "id": "p30-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 8,
+      "difficulty": 9,
+      "i18nKey": "scene.rate_limiting.least_loaded",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "servers": 3
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "4",
+              "6",
+              "4",
+              "7",
+              "8",
+              "9",
+              "3"
+            ],
+            "label": "jobs"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 60
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          15
+        ]
+      }
+    },
+    {
+      "id": "p30-l09",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 9,
+      "difficulty": 9,
+      "i18nKey": "scene.rate_limiting.round_robin",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "m": 8,
+        "n": 49
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 8
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "p30-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 30,
+      "index": 10,
+      "difficulty": 9,
+      "i18nKey": "scene.rate_limiting.least_loaded",
+      "conceptId": "rate_limiting",
+      "textParams": {
+        "servers": 3
+      },
+      "hints": [
+        "hint.rate_limiting.1",
+        "hint.rate_limiting.2",
+        "hint.rate_limiting.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "5",
+              "7",
+              "8",
+              "9",
+              "6",
+              "1",
+              "6"
+            ],
+            "label": "jobs"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 60
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          15
+        ]
+      }
+    }
+  ]
+}

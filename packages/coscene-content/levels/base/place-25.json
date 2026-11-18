@@ -1,0 +1,421 @@
+{
+  "place": {
+    "number": 25,
+    "id": "search_the_answer",
+    "archetypeIds": [
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p25-l01",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 1,
+      "difficulty": 7,
+      "i18nKey": "scene.search_the_answer.ship",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "days": 2
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "5",
+              "10",
+              "1",
+              "1",
+              "7"
+            ],
+            "label": "kg"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          15
+        ]
+      }
+    },
+    {
+      "id": "p25-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 2,
+      "difficulty": 7,
+      "i18nKey": "scene.search_the_answer.ship",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "days": 3
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "5",
+              "4",
+              "10",
+              "10",
+              "12"
+            ],
+            "label": "kg"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          19
+        ]
+      }
+    },
+    {
+      "id": "p25-l03",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 3,
+      "difficulty": 7,
+      "i18nKey": "scene.search_the_answer.isqrt",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "n": 54
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          7
+        ]
+      }
+    },
+    {
+      "id": "p25-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 4,
+      "difficulty": 7,
+      "i18nKey": "scene.search_the_answer.ship",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "days": 2
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "1",
+              "7",
+              "2",
+              "12",
+              "8"
+            ],
+            "label": "kg"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          20
+        ]
+      }
+    },
+    {
+      "id": "p25-l05",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 5,
+      "difficulty": 8,
+      "i18nKey": "scene.search_the_answer.ship",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "days": 3
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "9",
+              "10",
+              "11",
+              "1",
+              "1",
+              "4"
+            ],
+            "label": "kg"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          17
+        ]
+      }
+    },
+    {
+      "id": "p25-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 6,
+      "difficulty": 8,
+      "i18nKey": "scene.search_the_answer.isqrt",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "n": 1367
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          36
+        ]
+      }
+    },
+    {
+      "id": "p25-l07",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 7,
+      "difficulty": 8,
+      "i18nKey": "scene.search_the_answer.ship",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "days": 2
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "6",
+              "12",
+              "9",
+              "4",
+              "5",
+              "8"
+            ],
+            "label": "kg"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          26
+        ]
+      }
+    },
+    {
+      "id": "p25-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 8,
+      "difficulty": 9,
+      "i18nKey": "scene.search_the_answer.ship",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "days": 2
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "6",
+              "11",
+              "11",
+              "5",
+              "11",
+              "1",
+              "1"
+            ],
+            "label": "kg"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          28
+        ]
+      }
+    },
+    {
+      "id": "p25-l09",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 9,
+      "difficulty": 9,
+      "i18nKey": "scene.search_the_answer.isqrt",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "n": 6269
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          79
+        ]
+      }
+    },
+    {
+      "id": "p25-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 25,
+      "index": 10,
+      "difficulty": 9,
+      "i18nKey": "scene.search_the_answer.ship",
+      "conceptId": "search_the_answer",
+      "textParams": {
+        "days": 3
+      },
+      "hints": [
+        "hint.search_the_answer.1",
+        "hint.search_the_answer.2",
+        "hint.search_the_answer.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "cells",
+            "cells": [
+              "12",
+              "4",
+              "3",
+              "7",
+              "1",
+              "3",
+              "3"
+            ],
+            "label": "kg"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          14
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,391 @@
+{
+  "place": {
+    "number": 11,
+    "id": "bit_tricks",
+    "archetypeIds": [
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p11-l01",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 1,
+      "difficulty": 4,
+      "i18nKey": "scene.bit_tricks.clear_low",
+      "conceptId": "bit_tricks",
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "n = 29"
+          },
+          {
+            "kind": "expr",
+            "text": "n & (n − 1)"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          28
+        ]
+      }
+    },
+    {
+      "id": "p11-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 2,
+      "difficulty": 4,
+      "i18nKey": "scene.bit_tricks.power_of_two",
+      "conceptId": "bit_tricks",
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "bool",
+            "label": "8"
+          },
+          {
+            "mode": "bool",
+            "label": "36"
+          },
+          {
+            "mode": "bool",
+            "label": "16"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "p11-l03",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 3,
+      "difficulty": 4,
+      "i18nKey": "scene.bit_tricks.popcount",
+      "conceptId": "bit_tricks",
+      "textParams": {
+        "n": 56
+      },
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "n = 56"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 12
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          3
+        ]
+      }
+    },
+    {
+      "id": "p11-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 4,
+      "difficulty": 4,
+      "i18nKey": "scene.bit_tricks.clear_low",
+      "conceptId": "bit_tricks",
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "n = 45"
+          },
+          {
+            "kind": "expr",
+            "text": "n & (n − 1)"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          44
+        ]
+      }
+    },
+    {
+      "id": "p11-l05",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 5,
+      "difficulty": 5,
+      "i18nKey": "scene.bit_tricks.power_of_two",
+      "conceptId": "bit_tricks",
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "bool",
+            "label": "80"
+          },
+          {
+            "mode": "bool",
+            "label": "16"
+          },
+          {
+            "mode": "bool",
+            "label": "128"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "p11-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 6,
+      "difficulty": 5,
+      "i18nKey": "scene.bit_tricks.popcount",
+      "conceptId": "bit_tricks",
+      "textParams": {
+        "n": 171
+      },
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "n = 171"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 12
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "p11-l07",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 7,
+      "difficulty": 5,
+      "i18nKey": "scene.bit_tricks.clear_low",
+      "conceptId": "bit_tricks",
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "n = 240"
+          },
+          {
+            "kind": "expr",
+            "text": "n & (n − 1)"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          224
+        ]
+      }
+    },
+    {
+      "id": "p11-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 8,
+      "difficulty": 6,
+      "i18nKey": "scene.bit_tricks.power_of_two",
+      "conceptId": "bit_tricks",
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [],
+        "fields": [
+          {
+            "mode": "bool",
+            "label": "37"
+          },
+          {
+            "mode": "bool",
+            "label": "67"
+          },
+          {
+            "mode": "bool",
+            "label": "64"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "p11-l09",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 9,
+      "difficulty": 6,
+      "i18nKey": "scene.bit_tricks.popcount",
+      "conceptId": "bit_tricks",
+      "textParams": {
+        "n": 913
+      },
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "n = 913"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 12
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "p11-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 11,
+      "index": 10,
+      "difficulty": 6,
+      "i18nKey": "scene.bit_tricks.clear_low",
+      "conceptId": "bit_tricks",
+      "hints": [
+        "hint.bit_tricks.1",
+        "hint.bit_tricks.2",
+        "hint.bit_tricks.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "n = 875"
+          },
+          {
+            "kind": "expr",
+            "text": "n & (n − 1)"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 9999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          874
+        ]
+      }
+    }
+  ]
+}
