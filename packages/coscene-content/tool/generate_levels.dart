@@ -1,4 +1,4 @@
-// Builds the bundled 100-level pack.
+// Builds the bundled 300-level pack.
 //
 //   dart run tool/generate_levels.dart           regenerate levels, then embed
 //   dart run tool/generate_levels.dart --embed   only re-embed the JSON files
@@ -29,19 +29,18 @@ void main(List<String> args) {
     for (final place in basePlaces) {
       for (var index = 1; index <= levelsPerPlace; index++) {
         final id = levelId(place.number, index);
-        final archetype = place.archetypeIds[(index - 1) % place.archetypeIds.length];
         final level = generateLevel(
           id: id,
           place: place.number,
           index: index,
-          archetypeId: archetype,
+          topic: place.id,
           difficulty: baseDifficulty(place.number, index),
-          seed: Rng.hash('coscene-base-$id-v1'),
+          seed: Rng.hash('coscene-base-$id-v2'),
           engine: engine,
-          accept: (l) => seen.add(jsonEncode(l.initialState)),
+          accept: (l) => seen.add(jsonEncode([l.initialState, l.validationRules, l.textParams])),
         );
         levels.add(level);
-        stdout.writeln('$id  ${archetype.padRight(18)} difficulty ${level.difficulty}');
+        stdout.writeln('$id  ${place.id.padRight(20)} ${level.archetypeId.padRight(7)} difficulty ${level.difficulty}');
       }
     }
     writePackDirectory(

@@ -1,0 +1,442 @@
+{
+  "place": {
+    "number": 27,
+    "id": "union_find",
+    "archetypeIds": [
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p27-l01",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 1,
+      "difficulty": 7,
+      "i18nKey": "scene.union_find.groups",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 6
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 6"
+          },
+          {
+            "kind": "expr",
+            "text": "4–3"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 6
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "p27-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 2,
+      "difficulty": 7,
+      "i18nKey": "scene.union_find.groups",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 6
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 6"
+          },
+          {
+            "kind": "expr",
+            "text": "1–4   3–1"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 6
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p27-l03",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 3,
+      "difficulty": 7,
+      "i18nKey": "scene.union_find.groups",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 6
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 6"
+          },
+          {
+            "kind": "expr",
+            "text": "4–6"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 6
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "p27-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 4,
+      "difficulty": 7,
+      "i18nKey": "scene.union_find.groups",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 6
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 6"
+          },
+          {
+            "kind": "expr",
+            "text": "4–6   1–3"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 6
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p27-l05",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 5,
+      "difficulty": 8,
+      "i18nKey": "scene.union_find.groups",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 8
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 8"
+          },
+          {
+            "kind": "expr",
+            "text": "5–6   4–6   3–1   7–5   2–7"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 8
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          3
+        ]
+      }
+    },
+    {
+      "id": "p27-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 6,
+      "difficulty": 8,
+      "i18nKey": "scene.union_find.groups",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 8
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 8"
+          },
+          {
+            "kind": "expr",
+            "text": "3–2   4–8   6–4   5–7   5–7"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 8
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p27-l07",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 7,
+      "difficulty": 8,
+      "i18nKey": "scene.union_find.groups",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 8
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 8"
+          },
+          {
+            "kind": "expr",
+            "text": "7–4   2–6   1–3   5–4"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 8
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "p27-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 8,
+      "difficulty": 9,
+      "i18nKey": "scene.union_find.groups_biggest",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 10
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 10"
+          },
+          {
+            "kind": "expr",
+            "text": "7–9   1–8   3–9   1–10   4–7   10–9"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 10,
+            "label": "@field.groups"
+          },
+          {
+            "mode": "number",
+            "max": 10,
+            "label": "@field.biggest"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4,
+          7
+        ]
+      }
+    },
+    {
+      "id": "p27-l09",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 9,
+      "difficulty": 9,
+      "i18nKey": "scene.union_find.groups_biggest",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 10
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 10"
+          },
+          {
+            "kind": "expr",
+            "text": "7–10   4–8   4–8   1–6   2–3   3–2   1–8"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 10,
+            "label": "@field.groups"
+          },
+          {
+            "mode": "number",
+            "max": 10,
+            "label": "@field.biggest"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          5,
+          4
+        ]
+      }
+    },
+    {
+      "id": "p27-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 27,
+      "index": 10,
+      "difficulty": 9,
+      "i18nKey": "scene.union_find.groups_biggest",
+      "conceptId": "union_find",
+      "textParams": {
+        "n": 10
+      },
+      "hints": [
+        "hint.union_find.1",
+        "hint.union_find.2",
+        "hint.union_find.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "1 … 10"
+          },
+          {
+            "kind": "expr",
+            "text": "2–9   10–3   10–7   10–9   9–6   8–3   9–2"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 10,
+            "label": "@field.groups"
+          },
+          {
+            "mode": "number",
+            "max": 10,
+            "label": "@field.biggest"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4,
+          7
+        ]
+      }
+    }
+  ]
+}

@@ -1,450 +1,497 @@
 {
   "place": {
     "number": 8,
-    "id": "harbour",
+    "id": "two_pointers",
     "archetypeIds": [
-      "cargo_packing"
+      "pick"
     ]
   },
   "levels": [
     {
       "id": "p08-l01",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 1,
       "difficulty": 1,
-      "i18nKey": "scene.cargo.a",
-      "conceptId": "cargo_a",
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 20
+      },
       "hints": [
-        "hint.cargo.a.1",
-        "hint.cargo.a.2",
-        "hint.cargo.a.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 4,
-          "rows": 2
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 2,
-            "h": 2
+            "v": 1
           },
           {
-            "w": 2,
-            "h": 1
+            "v": 2
           },
           {
-            "w": 2,
-            "h": 1
+            "v": 5
+          },
+          {
+            "v": 9
+          },
+          {
+            "v": 10
+          },
+          {
+            "v": 11
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true
+        "rule": "sum",
+        "target": 20,
+        "count": 2
       }
     },
     {
       "id": "p08-l02",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 2,
       "difficulty": 1,
-      "i18nKey": "scene.cargo.a",
-      "conceptId": "cargo_a",
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 17
+      },
       "hints": [
-        "hint.cargo.a.1",
-        "hint.cargo.a.2",
-        "hint.cargo.a.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 4,
-          "rows": 2
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 2,
-            "h": 1
+            "v": 1
           },
           {
-            "w": 2,
-            "h": 2
+            "v": 2
           },
           {
-            "w": 2,
-            "h": 1
+            "v": 3
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 8
+          },
+          {
+            "v": 9
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true
+        "rule": "sum",
+        "target": 17,
+        "count": 2
       }
     },
     {
       "id": "p08-l03",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 3,
-      "difficulty": 2,
-      "i18nKey": "scene.cargo.a",
-      "conceptId": "cargo_a",
+      "difficulty": 1,
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 22
+      },
       "hints": [
-        "hint.cargo.a.1",
-        "hint.cargo.a.2",
-        "hint.cargo.a.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 4,
-          "rows": 3
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 2,
-            "h": 2
+            "v": 1
           },
           {
-            "w": 2,
-            "h": 1
+            "v": 4
           },
           {
-            "w": 2,
-            "h": 2
+            "v": 6
           },
           {
-            "w": 2,
-            "h": 1
+            "v": 10
+          },
+          {
+            "v": 11
+          },
+          {
+            "v": 12
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true
+        "rule": "sum",
+        "target": 22,
+        "count": 2
       }
     },
     {
       "id": "p08-l04",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 4,
-      "difficulty": 2,
-      "i18nKey": "scene.cargo.a",
-      "conceptId": "cargo_a",
+      "difficulty": 1,
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 17
+      },
       "hints": [
-        "hint.cargo.a.1",
-        "hint.cargo.a.2",
-        "hint.cargo.a.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 4,
-          "rows": 3
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 2,
-            "h": 2
+            "v": 1
           },
           {
-            "w": 3,
-            "h": 1
+            "v": 3
           },
           {
-            "w": 3,
-            "h": 1
+            "v": 4
           },
           {
-            "w": 2,
-            "h": 1
+            "v": 6
+          },
+          {
+            "v": 10
+          },
+          {
+            "v": 11
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true
+        "rule": "sum",
+        "target": 17,
+        "count": 2
       }
     },
     {
       "id": "p08-l05",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 5,
-      "difficulty": 3,
-      "i18nKey": "scene.cargo.b",
-      "conceptId": "cargo_b",
+      "difficulty": 2,
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 16
+      },
       "hints": [
-        "hint.cargo.b.1",
-        "hint.cargo.b.2",
-        "hint.cargo.b.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 5,
-          "rows": 3
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 3,
-            "h": 2
+            "v": 3
           },
           {
-            "w": 3,
-            "h": 1,
-            "heavy": true
+            "v": 4
           },
           {
-            "w": 2,
-            "h": 1
+            "v": 13
           },
           {
-            "w": 2,
-            "h": 2
+            "v": 18
+          },
+          {
+            "v": 23
+          },
+          {
+            "v": 24
+          },
+          {
+            "v": 26
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true,
-        "balanceTolerance": 1.0
+        "rule": "sum",
+        "target": 16,
+        "count": 2
       }
     },
     {
       "id": "p08-l06",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 6,
-      "difficulty": 3,
-      "i18nKey": "scene.cargo.b",
-      "conceptId": "cargo_b",
+      "difficulty": 2,
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 45
+      },
       "hints": [
-        "hint.cargo.b.1",
-        "hint.cargo.b.2",
-        "hint.cargo.b.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 5,
-          "rows": 3
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 3,
-            "h": 1
+            "v": 1
           },
           {
-            "w": 3,
-            "h": 1,
-            "heavy": true
+            "v": 2
           },
           {
-            "w": 3,
-            "h": 2
+            "v": 12
           },
           {
-            "w": 3,
-            "h": 1
+            "v": 14
+          },
+          {
+            "v": 16
+          },
+          {
+            "v": 21
+          },
+          {
+            "v": 24
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true,
-        "balanceTolerance": 1.0
+        "rule": "sum",
+        "target": 45,
+        "count": 2
       }
     },
     {
       "id": "p08-l07",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 7,
-      "difficulty": 4,
-      "i18nKey": "scene.cargo.b",
-      "conceptId": "cargo_b",
+      "difficulty": 2,
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 28
+      },
       "hints": [
-        "hint.cargo.b.1",
-        "hint.cargo.b.2",
-        "hint.cargo.b.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 6,
-          "rows": 3
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 2,
-            "h": 2
+            "v": 1
           },
           {
-            "w": 2,
-            "h": 1
+            "v": 9
           },
           {
-            "w": 2,
-            "h": 1,
-            "heavy": true
+            "v": 10
           },
           {
-            "w": 2,
-            "h": 2
+            "v": 19
           },
           {
-            "w": 3,
-            "h": 2
+            "v": 21
+          },
+          {
+            "v": 22
+          },
+          {
+            "v": 25
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true,
-        "balanceTolerance": 1.0
+        "rule": "sum",
+        "target": 28,
+        "count": 2
       }
     },
     {
       "id": "p08-l08",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 8,
-      "difficulty": 4,
-      "i18nKey": "scene.cargo.b",
-      "conceptId": "cargo_b",
+      "difficulty": 3,
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 65
+      },
       "hints": [
-        "hint.cargo.b.1",
-        "hint.cargo.b.2",
-        "hint.cargo.b.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 6,
-          "rows": 3
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 3,
-            "h": 1
+            "v": 2
           },
           {
-            "w": 3,
-            "h": 1
+            "v": 5
           },
           {
-            "w": 3,
-            "h": 1
+            "v": 10
           },
           {
-            "w": 3,
-            "h": 2,
-            "heavy": true
+            "v": 11
           },
           {
-            "w": 3,
-            "h": 1
+            "v": 23
+          },
+          {
+            "v": 24
+          },
+          {
+            "v": 26
+          },
+          {
+            "v": 39
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true,
-        "balanceTolerance": 1.0
+        "rule": "sum",
+        "target": 65,
+        "count": 2
       }
     },
     {
       "id": "p08-l09",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 9,
-      "difficulty": 5,
-      "i18nKey": "scene.cargo.b",
-      "conceptId": "cargo_b",
+      "difficulty": 3,
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 33
+      },
       "hints": [
-        "hint.cargo.b.1",
-        "hint.cargo.b.2",
-        "hint.cargo.b.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 6,
-          "rows": 3
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 2,
-            "h": 1
+            "v": 4
           },
           {
-            "w": 2,
-            "h": 2
+            "v": 6
           },
           {
-            "w": 2,
-            "h": 2
+            "v": 12
           },
           {
-            "w": 2,
-            "h": 1,
-            "heavy": true
+            "v": 15
           },
           {
-            "w": 3,
-            "h": 2
+            "v": 22
+          },
+          {
+            "v": 27
+          },
+          {
+            "v": 32
+          },
+          {
+            "v": 36
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true,
-        "balanceTolerance": 1.0
+        "rule": "sum",
+        "target": 33,
+        "count": 2
       }
     },
     {
       "id": "p08-l10",
       "schemaVersion": 1,
-      "archetypeId": "cargo_packing",
+      "archetypeId": "pick",
       "place": 8,
       "index": 10,
-      "difficulty": 5,
-      "i18nKey": "scene.cargo.b",
-      "conceptId": "cargo_b",
+      "difficulty": 3,
+      "i18nKey": "scene.two_pointers.pair_sum",
+      "conceptId": "two_pointers",
+      "textParams": {
+        "target": 30
+      },
       "hints": [
-        "hint.cargo.b.1",
-        "hint.cargo.b.2",
-        "hint.cargo.b.3"
+        "hint.two_pointers.1",
+        "hint.two_pointers.2",
+        "hint.two_pointers.3"
       ],
       "initialState": {
-        "hold": {
-          "cols": 6,
-          "rows": 3
-        },
-        "pieces": [
+        "layout": "row",
+        "tiles": [
           {
-            "w": 2,
-            "h": 1
+            "v": 10
           },
           {
-            "w": 2,
-            "h": 1
+            "v": 13
           },
           {
-            "w": 3,
-            "h": 2
+            "v": 15
           },
           {
-            "w": 2,
-            "h": 2
+            "v": 17
           },
           {
-            "w": 2,
-            "h": 2,
-            "heavy": true
+            "v": 22
+          },
+          {
+            "v": 26
+          },
+          {
+            "v": 29
+          },
+          {
+            "v": 40
           }
         ]
       },
       "validationRules": {
-        "requireAllLoaded": true,
-        "balanceTolerance": 1.0
+        "rule": "sum",
+        "target": 30,
+        "count": 2
       }
     }
   ]

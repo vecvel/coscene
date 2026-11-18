@@ -23,7 +23,8 @@ Paint line(Color color, double width, {StrokeCap cap = StrokeCap.round}) => Pain
 /// A colour at part strength, for ghosts and quiet hints.
 Color faint(Color color, [double opacity = 0.28]) => color.withValues(alpha: opacity);
 
-/// Text centred on [center].
+/// Text centred on [center]. [anchorX] moves the anchor along the text: 0
+/// puts its left edge at [center], 1 its right edge.
 void drawLabel(
   Canvas canvas,
   String text,
@@ -31,15 +32,24 @@ void drawLabel(
   double size = 5,
   Color color = Palette.ink,
   FontWeight weight = FontWeight.w600,
+  bool mono = false,
+  double anchorX = 0.5,
 }) {
   final painter = TextPainter(
     text: TextSpan(
       text: text,
-      style: TextStyle(fontSize: size, color: color, fontWeight: weight, height: 1),
+      style: TextStyle(
+        fontSize: size,
+        color: color,
+        fontWeight: weight,
+        height: 1,
+        fontFamily: mono ? 'Menlo' : null,
+        fontFamilyFallback: mono ? const ['monospace', 'Roboto Mono', 'Courier'] : null,
+      ),
     ),
     textDirection: TextDirection.ltr,
   )..layout();
-  painter.paint(canvas, center - Offset(painter.width / 2, painter.height / 2));
+  painter.paint(canvas, center - Offset(painter.width * anchorX, painter.height / 2));
   painter.dispose();
 }
 

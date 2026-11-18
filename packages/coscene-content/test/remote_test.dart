@@ -30,13 +30,13 @@ void main() {
     version: version,
     minEngineVersion: 1,
     places: const [
-      PlaceInfo(11, 'festival', ['balance_levers']),
+      PlaceInfo(31, 'festival', ['pick']),
     ],
     levels:
         levels ??
         [
           for (var i = 0; i < 3; i++)
-            LevelSpec.fromJson({...base.levels[i].toJson(), 'id': 'p11-l0${i + 1}', 'place': 11, 'index': i + 1}),
+            LevelSpec.fromJson({...base.levels[i].toJson(), 'id': 'p31-l0${i + 1}', 'place': 31, 'index': i + 1}),
         ],
     strings: const {
       'en': {'place.festival.name': 'Festival', 'place.festival.tagline': 'A seasonal visit'},
@@ -87,8 +87,8 @@ void main() {
     for (final pack in await loader().loadCached()) {
       registry.add(pack, verify: true);
     }
-    expect(registry.count, 103);
-    expect(registry.place(11)!.id, 'festival');
+    expect(registry.count, 303);
+    expect(registry.place(31)!.id, 'festival');
     expect(registry.extraStrings('en')['place.festival.name'], 'Festival');
   });
 
@@ -119,19 +119,12 @@ void main() {
   });
 
   test('a pack with an unsolvable level is refused whole', () async {
+    // Four bits can make at most 15, so 99 has no answer.
     final broken = LevelSpec.fromJson({
       ...base.levels.first.toJson(),
-      'id': 'p11-l01',
-      'place': 11,
-      'initialState': {
-        'halfSpan': 2,
-        'fixed': [
-          {'weight': 5, 'slot': -2},
-        ],
-        'movable': [
-          {'weight': 1, 'slot': null},
-        ],
-      },
+      'id': 'p31-l01',
+      'place': 31,
+      'validationRules': {'rule': 'sum', 'target': 99},
     });
     await publish([
       season(levels: [broken]),

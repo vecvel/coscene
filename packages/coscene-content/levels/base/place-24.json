@@ -1,0 +1,663 @@
+{
+  "place": {
+    "number": 24,
+    "id": "topological_sort",
+    "archetypeIds": [
+      "ops"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p24-l01",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 1,
+      "difficulty": 7,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "deps": [
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p24-l02",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 2,
+      "difficulty": 7,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "deps": [
+          [
+            1,
+            4
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p24-l03",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 3,
+      "difficulty": 7,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "deps": [
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p24-l04",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 4,
+      "difficulty": 7,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "deps": [
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p24-l05",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 5,
+      "difficulty": 8,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "deps": [
+          [
+            0,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p24-l06",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 6,
+      "difficulty": 8,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "deps": [
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            5,
+            2
+          ]
+        ]
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p24-l07",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 7,
+      "difficulty": 8,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "deps": [
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p24-l08",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 8,
+      "difficulty": 9,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "deps": [
+          [
+            3,
+            7
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p24-l09",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 9,
+      "difficulty": 9,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "deps": [
+          [
+            4,
+            3
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            7,
+            5
+          ]
+        ]
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p24-l10",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 24,
+      "index": 10,
+      "difficulty": 9,
+      "i18nKey": "scene.topological_sort.tasks",
+      "conceptId": "topological_sort",
+      "hints": [
+        "hint.topological_sort.1",
+        "hint.topological_sort.2",
+        "hint.topological_sort.3"
+      ],
+      "initialState": {
+        "mode": "order",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "deps": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            6,
+            3
+          ],
+          [
+            7,
+            3
+          ]
+        ]
+      },
+      "validationRules": {}
+    }
+  ]
+}

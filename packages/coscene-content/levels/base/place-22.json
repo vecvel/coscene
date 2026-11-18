@@ -1,0 +1,527 @@
+{
+  "place": {
+    "number": 22,
+    "id": "knapsack",
+    "archetypeIds": [
+      "pick"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p22-l01",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 1,
+      "difficulty": 7,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 8
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 5,
+            "w": 8
+          },
+          {
+            "v": 15,
+            "w": 2
+          },
+          {
+            "v": 14,
+            "w": 2
+          },
+          {
+            "v": 15,
+            "w": 2
+          },
+          {
+            "v": 2,
+            "w": 6
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 8,
+        "best": 44
+      }
+    },
+    {
+      "id": "p22-l02",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 2,
+      "difficulty": 7,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 10
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 5,
+            "w": 3
+          },
+          {
+            "v": 7,
+            "w": 3
+          },
+          {
+            "v": 8,
+            "w": 4
+          },
+          {
+            "v": 8,
+            "w": 7
+          },
+          {
+            "v": 9,
+            "w": 3
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 10,
+        "best": 24
+      }
+    },
+    {
+      "id": "p22-l03",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 3,
+      "difficulty": 7,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 6
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 11,
+            "w": 2
+          },
+          {
+            "v": 15,
+            "w": 4
+          },
+          {
+            "v": 15,
+            "w": 3
+          },
+          {
+            "v": 9,
+            "w": 4
+          },
+          {
+            "v": 7,
+            "w": 1
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 6,
+        "best": 33
+      }
+    },
+    {
+      "id": "p22-l04",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 4,
+      "difficulty": 7,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 12
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 8,
+            "w": 4
+          },
+          {
+            "v": 6,
+            "w": 6
+          },
+          {
+            "v": 11,
+            "w": 8
+          },
+          {
+            "v": 11,
+            "w": 2
+          },
+          {
+            "v": 6,
+            "w": 2
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 12,
+        "best": 28
+      }
+    },
+    {
+      "id": "p22-l05",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 5,
+      "difficulty": 8,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 9
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 4,
+            "w": 2
+          },
+          {
+            "v": 3,
+            "w": 3
+          },
+          {
+            "v": 3,
+            "w": 5
+          },
+          {
+            "v": 2,
+            "w": 1
+          },
+          {
+            "v": 2,
+            "w": 7
+          },
+          {
+            "v": 13,
+            "w": 4
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 9,
+        "best": 20
+      }
+    },
+    {
+      "id": "p22-l06",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 6,
+      "difficulty": 8,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 9
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 10,
+            "w": 1
+          },
+          {
+            "v": 15,
+            "w": 6
+          },
+          {
+            "v": 5,
+            "w": 1
+          },
+          {
+            "v": 12,
+            "w": 2
+          },
+          {
+            "v": 9,
+            "w": 3
+          },
+          {
+            "v": 9,
+            "w": 6
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 9,
+        "best": 37
+      }
+    },
+    {
+      "id": "p22-l07",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 7,
+      "difficulty": 8,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 15
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 14,
+            "w": 3
+          },
+          {
+            "v": 13,
+            "w": 7
+          },
+          {
+            "v": 3,
+            "w": 4
+          },
+          {
+            "v": 13,
+            "w": 4
+          },
+          {
+            "v": 5,
+            "w": 7
+          },
+          {
+            "v": 8,
+            "w": 3
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 15,
+        "best": 40
+      }
+    },
+    {
+      "id": "p22-l08",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 8,
+      "difficulty": 9,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 10
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 13,
+            "w": 2
+          },
+          {
+            "v": 5,
+            "w": 2
+          },
+          {
+            "v": 2,
+            "w": 6
+          },
+          {
+            "v": 9,
+            "w": 2
+          },
+          {
+            "v": 4,
+            "w": 3
+          },
+          {
+            "v": 12,
+            "w": 5
+          },
+          {
+            "v": 14,
+            "w": 1
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 10,
+        "best": 48
+      }
+    },
+    {
+      "id": "p22-l09",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 9,
+      "difficulty": 9,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 10
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 14,
+            "w": 3
+          },
+          {
+            "v": 10,
+            "w": 6
+          },
+          {
+            "v": 8,
+            "w": 1
+          },
+          {
+            "v": 6,
+            "w": 1
+          },
+          {
+            "v": 13,
+            "w": 5
+          },
+          {
+            "v": 12,
+            "w": 2
+          },
+          {
+            "v": 12,
+            "w": 4
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 10,
+        "best": 46
+      }
+    },
+    {
+      "id": "p22-l10",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 22,
+      "index": 10,
+      "difficulty": 9,
+      "i18nKey": "scene.knapsack.bag",
+      "conceptId": "knapsack",
+      "textParams": {
+        "cap": 9
+      },
+      "hints": [
+        "hint.knapsack.1",
+        "hint.knapsack.2",
+        "hint.knapsack.3"
+      ],
+      "initialState": {
+        "layout": "items",
+        "tiles": [
+          {
+            "v": 12,
+            "w": 2
+          },
+          {
+            "v": 9,
+            "w": 2
+          },
+          {
+            "v": 15,
+            "w": 6
+          },
+          {
+            "v": 11,
+            "w": 5
+          },
+          {
+            "v": 10,
+            "w": 1
+          },
+          {
+            "v": 14,
+            "w": 1
+          },
+          {
+            "v": 3,
+            "w": 4
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "knapsack",
+        "cap": 9,
+        "best": 47
+      }
+    }
+  ]
+}

@@ -1,0 +1,528 @@
+{
+  "place": {
+    "number": 15,
+    "id": "sliding_window",
+    "archetypeIds": [
+      "pick"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p15-l01",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 1,
+      "difficulty": 4,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 2
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 1
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 6
+          },
+          {
+            "v": 3
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 2,
+        "best": 9
+      }
+    },
+    {
+      "id": "p15-l02",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 2,
+      "difficulty": 4,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 2
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 7
+          },
+          {
+            "v": 9
+          },
+          {
+            "v": 3
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 3
+          },
+          {
+            "v": 8
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 2,
+        "best": 16
+      }
+    },
+    {
+      "id": "p15-l03",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 3,
+      "difficulty": 4,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 2
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 5
+          },
+          {
+            "v": 8
+          },
+          {
+            "v": 8
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 8
+          },
+          {
+            "v": 9
+          },
+          {
+            "v": 1
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 2,
+        "best": 17
+      }
+    },
+    {
+      "id": "p15-l04",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 4,
+      "difficulty": 4,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 2
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 5
+          },
+          {
+            "v": 6
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 3
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 4
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 2,
+        "best": 13
+      }
+    },
+    {
+      "id": "p15-l05",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 5,
+      "difficulty": 5,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 3
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 4
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 8
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 4
+          },
+          {
+            "v": 7
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 3,
+        "best": 20
+      }
+    },
+    {
+      "id": "p15-l06",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 6,
+      "difficulty": 5,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 3
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 2
+          },
+          {
+            "v": 6
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 4
+          },
+          {
+            "v": 8
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 3
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 3,
+        "best": 19
+      }
+    },
+    {
+      "id": "p15-l07",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 7,
+      "difficulty": 5,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 3
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 3
+          },
+          {
+            "v": 6
+          },
+          {
+            "v": 9
+          },
+          {
+            "v": 9
+          },
+          {
+            "v": 8
+          },
+          {
+            "v": 6
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 7
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 3,
+        "best": 26
+      }
+    },
+    {
+      "id": "p15-l08",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 8,
+      "difficulty": 6,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 4
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 1
+          },
+          {
+            "v": 9
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 3
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 6
+          },
+          {
+            "v": 3
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 7
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 4,
+        "best": 26
+      }
+    },
+    {
+      "id": "p15-l09",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 9,
+      "difficulty": 6,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 4
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 9
+          },
+          {
+            "v": 4
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 6
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 8
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 4
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 4,
+        "best": 26
+      }
+    },
+    {
+      "id": "p15-l10",
+      "schemaVersion": 1,
+      "archetypeId": "pick",
+      "place": 15,
+      "index": 10,
+      "difficulty": 6,
+      "i18nKey": "scene.sliding_window.window",
+      "conceptId": "sliding_window",
+      "textParams": {
+        "k": 4
+      },
+      "hints": [
+        "hint.sliding_window.1",
+        "hint.sliding_window.2",
+        "hint.sliding_window.3"
+      ],
+      "initialState": {
+        "layout": "row",
+        "tiles": [
+          {
+            "v": 4
+          },
+          {
+            "v": 6
+          },
+          {
+            "v": 4
+          },
+          {
+            "v": 7
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 9
+          },
+          {
+            "v": 9
+          },
+          {
+            "v": 3
+          }
+        ]
+      },
+      "validationRules": {
+        "rule": "window",
+        "k": 4,
+        "best": 23
+      }
+    }
+  ]
+}

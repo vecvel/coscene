@@ -1,0 +1,393 @@
+{
+  "place": {
+    "number": 18,
+    "id": "heaps",
+    "archetypeIds": [
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p18-l01",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 1,
+      "difficulty": 4,
+      "i18nKey": "scene.heaps.last_out",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+15  +24  +8  +3  −  +10"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          3
+        ]
+      }
+    },
+    {
+      "id": "p18-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 2,
+      "difficulty": 4,
+      "i18nKey": "scene.heaps.last_out",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+30  +3  −  +16  −  +23"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          16
+        ]
+      }
+    },
+    {
+      "id": "p18-l03",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 3,
+      "difficulty": 4,
+      "i18nKey": "scene.heaps.last_out",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+4  +8  +16  +21  +3  −"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          3
+        ]
+      }
+    },
+    {
+      "id": "p18-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 4,
+      "difficulty": 4,
+      "i18nKey": "scene.heaps.last_out",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+4  +5  −  +2  −  +17"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          2
+        ]
+      }
+    },
+    {
+      "id": "p18-l05",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 5,
+      "difficulty": 5,
+      "i18nKey": "scene.heaps.first_last",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+16  +11  +15  +7  −  −"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30,
+            "label": "@field.first_out"
+          },
+          {
+            "mode": "number",
+            "max": 30,
+            "label": "@field.last_out"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          7,
+          11
+        ]
+      }
+    },
+    {
+      "id": "p18-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 6,
+      "difficulty": 5,
+      "i18nKey": "scene.heaps.first_last",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+4  +12  +30  −  −  +2  −  +15"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30,
+            "label": "@field.first_out"
+          },
+          {
+            "mode": "number",
+            "max": 30,
+            "label": "@field.last_out"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4,
+          2
+        ]
+      }
+    },
+    {
+      "id": "p18-l07",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 7,
+      "difficulty": 5,
+      "i18nKey": "scene.heaps.first_last",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+4  +28  −  +20  −  +3  +2  −"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30,
+            "label": "@field.first_out"
+          },
+          {
+            "mode": "number",
+            "max": 30,
+            "label": "@field.last_out"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          4,
+          2
+        ]
+      }
+    },
+    {
+      "id": "p18-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 8,
+      "difficulty": 6,
+      "i18nKey": "scene.heaps.top_size",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+21  +22  −  +16  +29  +24  −  −  −  +14"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30,
+            "label": "@field.top"
+          },
+          {
+            "mode": "number",
+            "max": 12,
+            "label": "@field.size"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          14,
+          2
+        ]
+      }
+    },
+    {
+      "id": "p18-l09",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 9,
+      "difficulty": 6,
+      "i18nKey": "scene.heaps.top_size",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+5  +24  +19  +29  −  +4  −  −  +14  +13"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30,
+            "label": "@field.top"
+          },
+          {
+            "mode": "number",
+            "max": 12,
+            "label": "@field.size"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          13,
+          4
+        ]
+      }
+    },
+    {
+      "id": "p18-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 18,
+      "index": 10,
+      "difficulty": 6,
+      "i18nKey": "scene.heaps.top_size",
+      "conceptId": "heaps",
+      "hints": [
+        "hint.heaps.1",
+        "hint.heaps.2",
+        "hint.heaps.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "+3  +22  +25  −  −  +29  +10  +6  −  +7"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 30,
+            "label": "@field.top"
+          },
+          {
+            "mode": "number",
+            "max": 12,
+            "label": "@field.size"
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          7,
+          4
+        ]
+      }
+    }
+  ]
+}

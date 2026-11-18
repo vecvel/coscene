@@ -8,7 +8,7 @@ enum SceneFeedback {
   /// A part clicked into a valid place.
   snap,
 
-  /// A dial, mirror or valve moved one step.
+  /// A small step: a digit typed, a value nudged, a tile chosen.
   tick,
 
   /// The move was not allowed.
@@ -62,6 +62,13 @@ class PaintContext {
 /// Coordinates are scene units inside [logicalSize]; the view handles
 /// scaling. Call [changed] after every edit to the scene and [feedback]
 /// whenever the player should feel or hear something.
+/// Looks up text drawn inside scenes, such as button captions. The app sets
+/// it to its dictionary; until then keys are drawn as they are.
+String Function(String key) sceneText = (key) => key;
+
+/// Text for a scene label: labels starting with @ are dictionary keys.
+String labelText(String label) => label.startsWith('@') ? sceneText(label.substring(1)) : label;
+
 abstract class SceneDelegate<S extends Scene> {
   SceneDelegate(this.scene);
   final S scene;

@@ -15,14 +15,14 @@ String dailyKey(DateTime date) =>
 LevelSpec dailyLevel(DateTime date, {Engine? engine}) {
   final key = dailyKey(date);
   final seed = Rng.hash('coscene-daily-$key');
-  final archetypes = archetypeShortNames.keys.toList();
   final dayNumber = DateTime.utc(date.year, date.month, date.day).millisecondsSinceEpoch ~/ 86400000;
+  final topic = basePlaces[dayNumber % basePlaces.length];
   return generateLevel(
     id: 'daily-$key',
     place: dailyPlace,
-    index: 1,
-    archetypeId: archetypes[dayNumber % archetypes.length],
-    difficulty: 3 + Rng(seed).nextInt(5),
+    index: 1 + Rng(seed).nextInt(levelsPerPlace),
+    topic: topic.id,
+    difficulty: baseDifficulty(topic.number, 6),
     seed: seed,
     engine: engine,
   );

@@ -56,20 +56,28 @@ void main() {
   final engine = Engine.standard;
 
   for (final id in [
-    'p01-l06',
-    'p02-l08',
-    'p03-l08',
-    'p04-l08',
-    'p05-l08',
-    'p06-l08',
+    'p01-l01',
+    'p01-l02',
+    'p02-l09',
+    'p03-l05',
+    'p05-l05',
+    'p07-l03',
     'p07-l08',
-    'p08-l08',
-    'p09-l02',
-    'p09-l08',
-    'p10-l01',
-    'p10-l03',
-    'p10-l04',
-    'p10-l10',
+    'p08-l04',
+    'p09-l09',
+    'p10-l06',
+    'p12-l01',
+    'p12-l02',
+    'p13-l01',
+    'p15-l02',
+    'p17-l03',
+    'p19-l05',
+    'p21-l03',
+    'p22-l06',
+    'p23-l06',
+    'p24-l08',
+    'p26-l01',
+    'p29-l01',
   ]) {
     testWidgets('paints $id in every state', (tester) async {
       final level = registry.byId(id)!;
@@ -122,9 +130,17 @@ void main() {
       var edits = 0;
       delegate.onChanged = () => edits++;
       delegate.onFeedback = (_) {};
+      // Scenes register their tap targets as they paint, so paint before
+      // every touch, as the app does after each change.
+      void paintOnce() => delegate.paint(
+        Canvas(ui.PictureRecorder()),
+        const PaintContext(playback: null, time: 0, ghost: null, clock: 0, reduceMotion: false),
+      );
       // Sweep a grid of taps and drags across the scene.
-      for (var y = 5.0; y < 100; y += 9) {
-        for (var x = 5.0; x < 100; x += 9) {
+      final size = delegate.logicalSize;
+      for (var y = 3.0; y < size.height; y += 4) {
+        for (var x = 3.0; x < size.width; x += 9) {
+          paintOnce();
           final p = Offset(x, y);
           if (delegate.onDown(p)) {
             // Alternate between a short nudge and a long carry up the scene.

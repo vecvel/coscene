@@ -17,363 +17,301 @@ LevelSpec spec(String archetype, Map<String, dynamic> state, [Map<String, dynami
 void main() {
   final engine = Engine.standard;
 
-  group('balance', () {
-    final level = spec('balance_levers', {
-      'halfSpan': 4,
-      'fixed': [
-        {'weight': 3, 'slot': -2},
-      ],
-      'movable': [
-        {'weight': 2, 'slot': 1},
-      ],
-    });
-
-    test('heavier side wins until weight times distance matches', () {
-      final scene = engine.createScene(level) as BalanceScene;
-      expect(scene.evaluate().kind, 'tips_left');
-      expect(scene.place(1, 4), isTrue);
-      expect(scene.evaluate().kind, 'tips_right');
-      expect(scene.place(1, 3), isTrue);
-      expect(scene.evaluate().success, isTrue);
-    });
-
-    test('rejects occupied, blocked and middle slots', () {
-      final scene = engine.createScene(level) as BalanceScene;
-      expect(scene.place(1, -2), isFalse);
-      expect(scene.place(1, 0), isFalse);
-      expect(scene.place(1, 9), isFalse);
-      expect(scene.place(0, 3), isFalse, reason: 'fixed loads do not move');
-    });
-
-    test('solver finds the single balancing slot', () {
-      expect(engine.solve(level)!.state['slots'], [3]);
-      expect(engine.inspect(level).ok, isTrue);
-    });
-  });
-
-  group('ray', () {
-    Map<String, dynamic> room(double mirrorDegrees) => {
-      'size': 100,
-      'emitter': {'x': 10, 'y': 50, 'degrees': 0},
-      'mirrors': [
-        {'x': 50, 'y': 50, 'length': 16, 'degrees': mirrorDegrees, 'stepDegrees': 45},
-      ],
-      'target': {'x': 50, 'y': 10, 'radius': 4},
-    };
-
-    test('beam leaves a mirror at the angle it arrived', () {
-      final scene = engine.createScene(spec('ray_reflection', room(135))) as RayScene;
-      final t = scene.trace();
-      expect(t.hit, isTrue);
-      expect(t.bounces, 1);
-      expect(t.points[1].x, closeTo(50, 1e-6));
-      expect(t.points[1].y, closeTo(50, 1e-6));
-    });
-
-    test('wrong angle misses and reports the gap', () {
-      final scene = engine.createScene(spec('ray_reflection', room(45))) as RayScene;
-      final o = scene.evaluate();
-      expect(o.kind, 'missed');
-      expect(o.magnitude, greaterThan(0));
-    });
-
-    test('solver turns the mirror to the hitting angle', () {
-      final level = spec('ray_reflection', room(0));
-      expect(engine.solve(level)!.state['steps'], [3]);
-    });
-  });
-
-  group('shadow', () {
+  group('answer', () {
     final level = spec(
-      'area_projection',
+      'answer',
       {
-        'lamp': {
-          'x': {'min': 20, 'max': 60, 'step': 10, 'value': 20},
-          'height': {'min': 60, 'max': 60, 'step': 1, 'value': 60},
-        },
-        'board': {
-          'x': {'min': 40, 'max': 40, 'step': 1, 'value': 40},
-          'width': 10,
-          'height': 30,
-        },
-        'target': {'from': 40, 'to': 60},
+        'board': [
+          {'kind': 'expr', 'text': '13 mod 5'},
+        ],
+        'fields': [
+          {'mode': 'number', 'max': 9},
+          {'mode': 'bool'},
+        ],
       },
-      {'edgeTolerance': 0.5},
+      {
+        'answers': [3, 1],
+      },
     );
 
-    test('shadow is the board scaled from the lamp', () {
-      final scene = engine.createScene(level) as ShadowScene;
-      // Lamp at 20, twice as high as the board: everything doubles its
-      // distance from the lamp.
-      expect(scene.shadow.from, closeTo(60, 1e-9));
-      expect(scene.shadow.to, closeTo(80, 1e-9));
-      expect(scene.evaluate().kind, 'off_right');
-    });
-
-    test('sliding the lamp over the board lines the shadow up', () {
-      final scene = engine.createScene(level) as ShadowScene;
-      scene.lampX.moveTo(40);
-      expect(scene.evaluate().success, isTrue);
-      expect(engine.inspect(level).ok, isTrue);
-    });
-  });
-
-  group('flow', () {
-    final level = spec('volume_flow', {
-      'tanks': [
-        {'width': 2, 'height': 10, 'target': 6},
-        {'width': 1, 'height': 10, 'target': 8},
-      ],
-      'valves': [
-        {'tank': 0, 'max': 4},
-        {'tank': 1, 'max': 4},
-      ],
-      'duration': {'min': 4, 'max': 4, 'step': 1, 'value': 4},
-    });
-
-    test('level is flow times time over width', () {
-      final scene = engine.createScene(level) as FlowScene;
-      scene.setRate(0, 3);
-      scene.setRate(1, 2);
-      expect(scene.levels, [6, 8]);
+    test('every field must hold the right value', () {
+      final scene = engine.createScene(level) as AnswerScene;
+      expect(scene.evaluate().kind, 'empty');
+      scene.fields[0].value = 3;
+      scene.fields[1].value = 0;
+      expect(scene.evaluate().kind, 'some_wrong');
+      scene.fields[1].value = 1;
       expect(scene.evaluate().success, isTrue);
     });
 
-    test('overflow beats every other failure', () {
-      final scene = engine.createScene(level) as FlowScene;
-      scene.setRate(1, 4);
-      expect(scene.evaluate().kind, 'overflow');
+    test('random answers win as often as the fields allow', () {
+      expect(engine.archetype('answer').winFraction(level), closeTo(1 / 20, 1e-9));
     });
 
-    test('a weak pump shares its flow', () {
-      final shared = spec('volume_flow', {...level.initialState, 'supply': 4});
-      final scene = engine.createScene(shared) as FlowScene;
-      scene.setRate(0, 4);
-      scene.setRate(1, 4);
-      expect(scene.pressure, 0.5);
-      expect(scene.levels, [4, 8]);
-    });
-  });
-
-  group('routing', () {
-    final level = spec('network_routing', {
-      'colors': ['red', 'blue'],
-      'items': ['red', 'blue', 'red'],
-      'nodes': [
-        {'id': 'in', 'kind': 'source', 'x': 50, 'y': 5, 'next': 'j'},
-        {'id': 'j', 'kind': 'filter', 'x': 50, 'y': 40, 'left': 'a', 'right': 'b', 'state': 1},
-        {'id': 'a', 'kind': 'bin', 'x': 25, 'y': 90, 'accepts': 'red'},
-        {'id': 'b', 'kind': 'bin', 'x': 75, 'y': 90, 'accepts': 'blue'},
-      ],
-    });
-
-    test('filter sends its colour left and the rest right', () {
-      final scene = engine.createScene(level) as RoutingScene;
-      expect(scene.evaluate().magnitude, 3);
-      scene.cycle('j');
-      expect(scene.evaluate().success, isTrue);
-    });
-
-    test('flip junction alternates sides', () {
-      final flip = spec('network_routing', {
-        'colors': ['red', 'blue'],
-        'items': ['red', 'blue', 'red', 'blue'],
-        'nodes': [
-          {'id': 'in', 'kind': 'source', 'x': 50, 'y': 5, 'next': 'j'},
-          {'id': 'j', 'kind': 'flip', 'x': 50, 'y': 40, 'left': 'a', 'right': 'b', 'state': 1},
-          {'id': 'a', 'kind': 'bin', 'x': 25, 'y': 90, 'accepts': 'red'},
-          {'id': 'b', 'kind': 'bin', 'x': 75, 'y': 90, 'accepts': 'blue'},
-        ],
+    test('answers outside their field are rejected as bad data', () {
+      final bad = spec('answer', level.initialState, {
+        'answers': [12, 1],
       });
-      final scene = engine.createScene(flip) as RoutingScene;
-      expect(scene.evaluate().success, isFalse);
-      scene.cycle('j');
-      expect([for (final t in scene.run()) t.bin], ['a', 'b', 'a', 'b']);
-      expect(scene.evaluate().success, isTrue);
-    });
-
-    test('looping belts are rejected', () {
-      final loop = spec('network_routing', {
-        'colors': ['red'],
-        'items': ['red'],
-        'nodes': [
-          {'id': 'in', 'kind': 'source', 'x': 50, 'y': 5, 'next': 'j'},
-          {'id': 'j', 'kind': 'switch', 'x': 50, 'y': 40, 'left': 'j', 'right': 'a'},
-          {'id': 'a', 'kind': 'bin', 'x': 25, 'y': 90, 'accepts': 'red'},
-        ],
-      });
-      expect(() => engine.createScene(loop), throwsA(isA<LevelFormatException>()));
+      expect(engine.inspect(bad).ok, isFalse);
     });
   });
 
-  group('locks', () {
-    final level = spec('permutation_locks', {
-      'dials': [
-        {'positions': 4, 'value': 3, 'target': 0},
-        {'positions': 4, 'value': 2, 'target': 0},
-      ],
-      'links': [
-        [1, 1],
-        [0, 1],
-      ],
+  group('probe', () {
+    final level = spec('probe', {'mode': 'compare', 'lo': 1, 'hi': 100, 'budget': 6});
+
+    test('halving pins down 100 numbers in 6 checks', () {
+      expect(ProbeArchetype.checksNeeded(100, 'compare'), 6);
+      final report = engine.inspect(level);
+      expect(report.ok, isTrue, reason: report.issues.join(', '));
+      expect(report.solution!.moves, hasLength(6));
     });
 
-    test('turning one dial drags its linked dial', () {
-      final scene = engine.createScene(level) as LockScene;
-      scene.turn(0, 1);
-      expect([for (final d in scene.dials) d.value], [0, 3]);
-      scene.turn(1, 1);
+    test('the hidden number dodges a lucky edge guess', () {
+      final scene = engine.createScene(level) as ProbeScene;
+      expect(scene.check(1), 'higher');
+      expect(scene.candidates, 99);
+    });
+
+    test('each check is progress until the budget runs out', () {
+      final scene = engine.createScene(level) as ProbeScene;
+      for (var i = 0; i < 5; i++) {
+        scene.pick = scene.lo;
+        expect(scene.simulate().outcome.isProgress, isTrue);
+      }
+      scene.pick = scene.lo;
+      expect(scene.simulate().outcome.kind, 'out_of_checks');
+      scene.pick = 50;
+      scene.simulate();
+      expect(scene.checks, hasLength(1), reason: 'a spent search starts over');
+    });
+
+    test('bisect keeps the checked version when it is bad', () {
+      final scene = engine.createScene(spec('probe', {'mode': 'bisect', 'lo': 1, 'hi': 8, 'budget': 3})) as ProbeScene;
+      scene.check(4);
+      expect([scene.lo, scene.hi], anyOf(equals([1, 4]), equals([5, 8])));
+      expect(ProbeArchetype.checksNeeded(8, 'bisect'), 3);
+    });
+  });
+
+  group('pick', () {
+    test('a sum needs the right total and count', () {
+      final scene =
+          engine.createScene(
+                spec(
+                  'pick',
+                  {
+                    'tiles': [
+                      for (final v in [2, 5, 8, 11]) {'v': v},
+                    ],
+                  },
+                  {'rule': 'sum', 'target': 13, 'count': 2},
+                ),
+              )
+              as PickScene;
+      scene.picked.addAll([1, 2]);
       expect(scene.evaluate().success, isTrue);
+      scene.picked
+        ..clear()
+        ..addAll([0, 3]);
+      expect(scene.evaluate().success, isTrue, reason: '2 + 11 also works');
+      scene.picked.remove(0);
+      expect(scene.evaluate().kind, 'wrong_count');
     });
 
-    test('solver returns the shortest list of turns', () {
-      final solution = engine.solve(level)!;
-      expect(solution.effort, 2);
-      final scene = engine.createScene(level) as LockScene;
-      for (final m in solution.moves) {
-        scene.turn(m[0], m[1]);
+    test('an interval choice must be the largest that fits', () {
+      final level = spec(
+        'pick',
+        {
+          'layout': 'bars',
+          'tiles': [
+            {'v': 1, 's': 0, 'e': 4},
+            {'v': 1, 's': 1, 'e': 2},
+            {'v': 1, 's': 2, 'e': 3},
+            {'v': 1, 's': 3, 'e': 5},
+          ],
+        },
+        {'rule': 'intervals', 'best': 3},
+      );
+      final scene = engine.createScene(level) as PickScene;
+      expect(PickArchetype.bestPossible(scene), 3);
+      scene.picked.addAll([0]);
+      expect(scene.evaluate().kind, 'not_best');
+      scene.picked
+        ..clear()
+        ..addAll([1, 2, 3]);
+      expect(scene.evaluate().success, isTrue);
+      scene.picked.add(0);
+      expect(scene.evaluate().kind, 'overlap');
+    });
+
+    test('a knapsack over the limit fails before value counts', () {
+      final level = spec(
+        'pick',
+        {
+          'layout': 'items',
+          'tiles': [
+            {'v': 10, 'w': 5},
+            {'v': 6, 'w': 3},
+            {'v': 6, 'w': 3},
+          ],
+        },
+        {'rule': 'knapsack', 'cap': 6, 'best': 12},
+      );
+      final scene = engine.createScene(level) as PickScene;
+      scene.picked.addAll([0, 1]);
+      expect(scene.evaluate().kind, 'over_cap');
+      scene.picked
+        ..clear()
+        ..addAll([1, 2]);
+      expect(scene.evaluate().success, isTrue, reason: 'two light items beat the most valuable one');
+    });
+  });
+
+  group('ops', () {
+    test('a stack can produce 3 1 2 only with the right pushes and pops', () {
+      final level = spec('ops', {
+        'mode': 'stack',
+        'items': [1, 2, 3],
+        'target': [2, 3, 1],
+      });
+      final scene = engine.createScene(level) as OpsScene;
+      expect(scene.apply(1), isFalse, reason: 'nothing to pop yet');
+      for (final m in [0, 0, 1, 0, 1, 1]) {
+        expect(scene.apply(m), isTrue);
       }
       expect(scene.evaluate().success, isTrue);
+      expect(engine.inspect(level).ok, isTrue);
     });
 
-    test('unreachable targets are reported unsolvable', () {
-      final stuck = spec('permutation_locks', {
-        'dials': [
-          {'positions': 4, 'value': 1, 'target': 0},
-        ],
-        'links': [
-          [2],
-        ],
+    test('sorting by neighbour swaps needs one swap per inversion', () {
+      expect(OpsArchetype.fewestSwaps([3, 1, 2], adjacent: true), 2);
+      expect(OpsArchetype.fewestSwaps([3, 1, 2], adjacent: false), 2);
+      expect(OpsArchetype.fewestSwaps([2, 1, 4, 3], adjacent: false), 2);
+      final level = spec('ops', {
+        'mode': 'swap',
+        'items': [3, 1, 2],
+        'adjacent': true,
+        'budget': 2,
       });
-      expect(engine.solve(stuck), isNull);
-      expect(engine.inspect(stuck).ok, isFalse);
-    });
-  });
-
-  group('gears', () {
-    final level = spec('gear_ratio', {
-      'stages': [
-        {
-          'driver': {'teeth': 24},
-          'driven': {'slot': 0},
-        },
-      ],
-      'tray': [8, 12, 48],
-      'slots': [null],
-      'inputTurns': 1,
-      'target': {'turns': 3},
-    });
-
-    test('a small driven gear spins faster', () {
-      final scene = engine.createScene(level) as GearScene;
-      expect(scene.evaluate().kind, 'missing_gear');
-      scene.assign(0, 2);
-      expect(scene.evaluate().kind, 'too_slow');
-      scene.assign(0, 0);
-      expect(scene.speeds.last, -3);
+      final scene = engine.createScene(level) as OpsScene;
+      expect(scene.apply(0 * 16 + 2), isFalse, reason: 'not neighbours');
+      scene
+        ..apply(0 * 16 + 1)
+        ..apply(1 * 16 + 2);
       expect(scene.evaluate().success, isTrue);
     });
 
-    test('a tray gear can only be on one peg', () {
-      final two = spec('gear_ratio', {
-        'stages': [
-          {
-            'driver': {'slot': 0},
-            'driven': {'slot': 1},
-          },
+    test('a task order must respect every dependency', () {
+      final level = spec('ops', {
+        'mode': 'order',
+        'items': [0, 1, 2],
+        'labels': ['A', 'B', 'C'],
+        'deps': [
+          [0, 1],
+          [1, 2],
         ],
-        'tray': [10, 20],
-        'slots': [0, null],
-        'target': {'turns': 2},
       });
-      final scene = engine.createScene(two) as GearScene;
-      scene.assign(1, 0);
-      expect(scene.slots, [null, 0]);
+      final scene = engine.createScene(level) as OpsScene;
+      for (final t in [1, 0, 2]) {
+        scene.apply(t);
+      }
+      expect(scene.evaluate().kind, 'too_early');
+      expect(engine.archetype('ops').winFraction(level), closeTo(1 / 6, 1e-9));
     });
   });
 
-  group('cargo', () {
+  group('route', () {
     final level = spec(
-      'cargo_packing',
+      'route',
       {
-        'hold': {'cols': 4, 'rows': 2},
-        'pieces': [
-          {'w': 2, 'h': 2, 'heavy': true},
-          {'w': 1, 'h': 2},
-          {'w': 1, 'h': 2},
-        ],
+        'cols': 3,
+        'rows': 3,
+        'cells': [1, 9, 1, 1, 9, 1, 1, 1, 1],
+        'start': [0, 0],
+        'goal': [2, 0],
       },
-      {'balanceTolerance': 0.5},
+      {'best': 6},
     );
 
-    test('crates cannot overlap or leave the hold', () {
-      final scene = engine.createScene(level) as CargoScene;
-      expect(scene.place(0, 0, 0, rotated: false), isTrue);
-      expect(scene.place(1, 1, 0, rotated: false), isFalse);
-      expect(scene.place(1, 3, 1, rotated: false), isFalse);
-      expect(scene.place(1, 2, 0, rotated: false), isTrue);
+    test('the cheapest path goes around the expensive cells', () {
+      final scene = engine.createScene(level) as RouteScene;
+      expect(RouteArchetype.cheapest(scene), [0, 3, 6, 7, 8, 5, 2]);
+      for (final c in [1, 2]) {
+        scene.stepTo(c);
+      }
+      expect(scene.evaluate().kind, 'longer');
     });
 
-    test('heavy crate off-centre makes the ship list', () {
-      final scene = engine.createScene(level) as CargoScene;
-      scene.place(0, 0, 0, rotated: false);
-      scene.place(1, 2, 0, rotated: false);
-      scene.place(2, 3, 0, rotated: false);
-      expect(scene.evaluate().kind, 'lists_left');
-    });
-
-    test('solver centres the heavy crate', () {
-      final solution = engine.solve(level)!;
-      expect((solution.state['pieces'] as List).first, [1, 0, 0]);
-      expect(engine.inspect(level).ok, isTrue);
+    test('stepping back onto the path trims it', () {
+      final scene = engine.createScene(level) as RouteScene;
+      scene
+        ..stepTo(3)
+        ..stepTo(6)
+        ..stepTo(3);
+      expect(scene.path, [0, 3]);
+      expect(scene.stepTo(8), isFalse, reason: 'not a neighbour');
     });
   });
 
   group('session', () {
-    final level = spec('balance_levers', {
-      'halfSpan': 4,
-      'fixed': [
-        {'weight': 3, 'slot': -2},
-      ],
-      'movable': [
-        {'weight': 2, 'slot': 1},
-      ],
-    });
+    final level = spec(
+      'answer',
+      {
+        'board': [
+          {'kind': 'expr', 'text': '2 + 2'},
+        ],
+        'fields': [
+          {'mode': 'number', 'max': 9},
+        ],
+      },
+      {
+        'answers': [4],
+      },
+    );
 
     test('nothing is judged until the player submits', () {
       final session = PlaySession(engine, level);
-      final scene = session.scene as BalanceScene;
-      scene.place(1, 3);
+      (session.scene as AnswerScene).fields.first.value = 4;
       expect(session.solved, isFalse);
       expect(session.attempts, 0);
-      final result = session.submit();
-      expect(result.outcome.success, isTrue);
-      expect(session.solved, isTrue);
+      expect(session.submit().outcome.success, isTrue);
       expect(session.stars, 3);
     });
 
     test('failed tries leave a ghost and cost stars', () {
       final session = PlaySession(engine, level);
-      final scene = session.scene as BalanceScene;
+      final scene = session.scene as AnswerScene;
+      scene.fields.first.value = 5;
       session.submit();
       session.submit();
       expect(session.ghost, {
-        'slots': [1],
+        'values': [5],
       });
       session.revealHint();
-      scene.place(1, 3);
+      scene.fields.first.value = 4;
       session.submit();
       expect(session.failedAttempts, 2);
       expect(session.stars, 2);
+    });
+
+    test('search checks are not failed tries', () {
+      final session = PlaySession(engine, spec('probe', {'mode': 'compare', 'lo': 1, 'hi': 16, 'budget': 4}));
+      final scene = session.scene as ProbeScene;
+      for (var i = 0; i < 4; i++) {
+        scene.pick = (scene.lo + scene.hi) ~/ 2;
+        session.submit();
+      }
+      expect(session.solved, isTrue);
+      expect(session.failedAttempts, 0);
+      expect(session.attempts, 1, reason: 'only the final check counts as a try');
     });
 
     test('playback is identical every time', () {
       final a = PlaySession(engine, level).submit().timeline;
       final b = PlaySession(engine, level).submit().timeline;
       for (var t = 0.0; t < a.duration; t += 0.1) {
-        expect(a.at('angle', t), b.at('angle', t));
+        expect(a.at('shake', t), b.at('shake', t));
       }
-      expect(a.last('angle'), lessThan(0), reason: 'left side is heavier');
     });
   });
 

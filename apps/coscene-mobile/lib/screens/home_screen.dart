@@ -20,91 +20,105 @@ class HomeScreen extends StatelessWidget {
     final next = game.nextUp;
     return Scaffold(
       body: SafeArea(
+        top: false,
         bottom: false,
-        child: ListView(
-          padding: EdgeInsets.fromLTRB(16, 12, 16, scrollEndPadding(context)),
-          children: [
-            Row(
-              children: [
-                const LogoMark(size: 44),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(game.t('app.name'), style: Type.title),
-                      Text(game.t('app.tagline'), style: Type.label),
-                    ],
-                  ),
-                ),
-                _ScoreChip(game: game),
-                const SizedBox(width: 8),
-                PressButton(
-                  icon: GameIcons.settings,
-                  semanticLabel: game.t('ui.settings'),
-                  color: Palette.sand,
-                  foreground: Palette.ink,
-                  height: 44,
-                  onTap: () => Navigator.of(context).push(pageRoute(const SettingsScreen())),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            if (game.newScenesReady) ...[
-              Panel(
-                color: Palette.tealTint,
-                child: Text(game.t('ui.new_scenes'), style: Type.body.copyWith(color: Palette.tealDeep)),
-              ),
-              const SizedBox(height: 12),
-            ],
-            if (next != null) ...[
-              PressButton(
-                label:
-                    '${game.t(game.totalSolved == 0 ? 'ui.play' : 'ui.continue')} · '
-                    '${game.placeName(next.place)} ${next.index}',
-                icon: GameIcons.play,
-                color: Palette.orange,
-                foreground: Palette.white,
-                height: 58,
-                onTap: () => Navigator.of(context).push(pageRoute(PlayScreen(level: next))),
-              ),
-              const SizedBox(height: 12),
-            ],
-            _DailyCard(game: game),
-            const SizedBox(height: 12),
-            Panel(
-              onTap: () => Navigator.of(context).push(pageRoute(const NotebookScreen())),
-              child: Row(
+        child: TopEdgeFade(
+          child: ListView(
+            padding: EdgeInsets.fromLTRB(16, MediaQuery.viewPaddingOf(context).top + 12, 16, scrollEndPadding(context)),
+            children: [
+              Row(
                 children: [
-                  const GameIcon(GameIcons.notebook, color: Palette.ink),
-                  const SizedBox(width: 12),
+                  const LogoMark(size: 44),
+                  const SizedBox(width: 10),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(game.t('ui.notebook'), style: Type.heading),
-                        Text(
-                          game.t('ui.notebook_count', {
-                            'found': game.foundConcepts.length,
-                            'total': game.allConcepts.length,
-                          }),
-                          style: Type.label,
-                        ),
+                        Text(game.t('app.name'), style: Type.title),
+                        Text(game.t('app.tagline'), style: Type.label),
                       ],
                     ),
                   ),
-                  const GameIcon(GameIcons.open, color: Palette.stone),
+                  _ScoreChip(game: game),
+                  const SizedBox(width: 8),
+                  PressButton(
+                    icon: GameIcons.settings,
+                    semanticLabel: game.t('ui.settings'),
+                    color: Palette.sand,
+                    foreground: Palette.ink,
+                    height: 44,
+                    onTap: () => Navigator.of(context).push(pageRoute(const SettingsScreen())),
+                  ),
                 ],
               ),
-            ),
-            const SizedBox(height: 24),
-            Text(game.t('ui.places'), style: Type.heading),
-            const SizedBox(height: 10),
-            for (final place in game.registry.places) ...[
-              _PlaceCard(game: game, place: place),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
+              if (game.newScenesReady) ...[
+                Panel(
+                  color: Palette.tealTint,
+                  child: Text(game.t('ui.new_scenes'), style: Type.body.copyWith(color: Palette.tealDeep)),
+                ),
+                const SizedBox(height: 12),
+              ],
+              if (next != null) ...[
+                PressButton(
+                  label:
+                      '${game.t(game.totalSolved == 0 ? 'ui.play' : 'ui.continue')} · '
+                      '${game.placeName(next.place)} ${next.index}',
+                  icon: GameIcons.play,
+                  color: Palette.orange,
+                  foreground: Palette.white,
+                  height: 58,
+                  onTap: () => Navigator.of(context).push(pageRoute(PlayScreen(level: next))),
+                ),
+                const SizedBox(height: 12),
+              ],
+              _DailyCard(game: game),
+              const SizedBox(height: 12),
+              Panel(
+                onTap: () => Navigator.of(context).push(pageRoute(const NotebookScreen())),
+                child: Row(
+                  children: [
+                    const GameIcon(GameIcons.notebook, color: Palette.ink),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(game.t('ui.notebook'), style: Type.heading),
+                          Text(
+                            game.t('ui.notebook_count', {
+                              'found': game.foundConcepts.length,
+                              'total': game.allConcepts.length,
+                            }),
+                            style: Type.label,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const GameIcon(GameIcons.open, color: Palette.stone),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+              for (var tier = 0; tier < tierIds.length; tier++) ...[
+                if (tier > 0) const SizedBox(height: 14),
+                Text(game.t('tier.${tierIds[tier]}'), style: Type.heading),
+                const SizedBox(height: 2),
+                Text(
+                  game.t('ui.place_progress', {
+                    'solved': game.solvedInTier(tier),
+                    'total': game.registry.places.where((p) => p.tier == tier).length * levelsPerPlace,
+                  }),
+                  style: Type.soft,
+                ),
+                const SizedBox(height: 10),
+                for (final place in game.registry.places.where((p) => p.tier == tier)) ...[
+                  _PlaceCard(game: game, place: place),
+                  const SizedBox(height: 10),
+                ],
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
@@ -199,8 +213,7 @@ class _PlaceCard extends StatelessWidget {
           Navigator.of(context).push(pageRoute(PlaceScreen(place: place)));
           return;
         }
-        final places = game.registry.places;
-        final before = places[places.indexWhere((p) => p.number == place.number) - 1];
+        final before = place.tier - 1;
         ScaffoldMessenger.of(context)
           ..hideCurrentSnackBar()
           ..showSnackBar(
@@ -208,7 +221,10 @@ class _PlaceCard extends StatelessWidget {
               behavior: SnackBarBehavior.floating,
               backgroundColor: Palette.ink,
               content: Text(
-                game.t('ui.locked_place', {'count': levelsToOpenNextPlace, 'place': game.placeName(before.number)}),
+                game.t('ui.locked_tier', {
+                  'count': scenesToOpenNextTier - game.solvedInTier(before),
+                  'tier': game.t('tier.${tierIds[before]}'),
+                }),
               ),
             ),
           );

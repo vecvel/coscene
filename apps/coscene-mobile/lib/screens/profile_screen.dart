@@ -180,82 +180,70 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final name = _name ??= TextEditingController(text: game.name);
     final toNext = pointsToNextRank(game.score);
     return Scaffold(
-      body: SafeArea(
-        bottom: false,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      body: ScrollPage(
+        header: TopBar(title: game.t('ui.profile')),
+        body: SliverList.list(
           children: [
-            TopBar(title: game.t('ui.profile')),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.fromLTRB(16, 4, 16, scrollEndPadding(context)),
+            Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 300),
+                child: AspectRatio(
+                  aspectRatio: ShareCardPainter.cardSize.aspectRatio,
+                  child: CustomPaint(painter: ShareCardPainter(CardData.of(game))),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            PressButton(
+              key: _shareKey,
+              label: game.t('ui.profile_share'),
+              icon: GameIcons.share,
+              color: Palette.orange,
+              foreground: Palette.white,
+              onTap: _sharing ? null : () => _share(game),
+            ),
+            const SizedBox(height: 20),
+            Text(game.t('ui.profile_name'), style: Type.label),
+            const SizedBox(height: 6),
+            TextField(
+              controller: name,
+              maxLength: 24,
+              textCapitalization: TextCapitalization.words,
+              style: Type.body,
+              cursorColor: Palette.ink,
+              decoration: InputDecoration(
+                hintText: game.t('ui.profile_name_default'),
+                hintStyle: Type.soft,
+                counterText: '',
+                filled: true,
+                fillColor: Palette.white,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
+              ),
+              onChanged: (v) => game.update(() => game.name = v),
+            ),
+            const SizedBox(height: 16),
+            Panel(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 300),
-                      child: AspectRatio(
-                        aspectRatio: ShareCardPainter.cardSize.aspectRatio,
-                        child: CustomPaint(painter: ShareCardPainter(CardData.of(game))),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  PressButton(
-                    key: _shareKey,
-                    label: game.t('ui.profile_share'),
-                    icon: GameIcons.share,
-                    color: Palette.orange,
-                    foreground: Palette.white,
-                    onTap: _sharing ? null : () => _share(game),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(game.t('ui.profile_name'), style: Type.label),
+                  _Stat(game.t('ui.profile_rank'), game.t('rank.${game.rank}')),
+                  _Stat(game.t('ui.profile_solved'), '${game.totalSolved} / ${game.registry.count}'),
+                  _Stat(game.t('ui.profile_stars'), '${game.totalStars} / ${game.registry.count * 3}'),
+                  _Stat(game.t('ui.profile_ideas'), '${game.foundConcepts.length} / ${game.allConcepts.length}'),
+                  _Stat(game.t('ui.profile_streak'), '${game.currentStreak}'),
                   const SizedBox(height: 6),
-                  TextField(
-                    controller: name,
-                    maxLength: 24,
-                    textCapitalization: TextCapitalization.words,
-                    style: Type.body,
-                    cursorColor: Palette.ink,
-                    decoration: InputDecoration(
-                      hintText: game.t('ui.profile_name_default'),
-                      hintStyle: Type.soft,
-                      counterText: '',
-                      filled: true,
-                      fillColor: Palette.white,
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
-                    ),
-                    onChanged: (v) => game.update(() => game.name = v),
+                  Text(
+                    toNext == null
+                        ? game.t('ui.profile_top_rank')
+                        : game.t('ui.profile_next_rank', {'points': toNext, 'rank': game.t('rank.${game.rank + 1}')}),
+                    style: Type.soft,
                   ),
-                  const SizedBox(height: 16),
-                  Panel(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _Stat(game.t('ui.profile_rank'), game.t('rank.${game.rank}')),
-                        _Stat(game.t('ui.profile_solved'), '${game.totalSolved} / ${game.registry.count}'),
-                        _Stat(game.t('ui.profile_stars'), '${game.totalStars} / ${game.registry.count * 3}'),
-                        _Stat(game.t('ui.profile_ideas'), '${game.foundConcepts.length} / ${game.allConcepts.length}'),
-                        _Stat(game.t('ui.profile_streak'), '${game.currentStreak}'),
-                        const SizedBox(height: 6),
-                        Text(
-                          toNext == null
-                              ? game.t('ui.profile_top_rank')
-                              : game.t('ui.profile_next_rank', {
-                                  'points': toNext,
-                                  'rank': game.t('rank.${game.rank + 1}'),
-                                }),
-                          style: Type.soft,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(game.t('ui.profile_score_note'), style: Type.soft),
                 ],
               ),
             ),
+            const SizedBox(height: 12),
+            Text(game.t('ui.profile_score_note'), style: Type.soft),
           ],
         ),
       ),

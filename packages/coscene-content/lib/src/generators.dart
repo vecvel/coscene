@@ -2,38 +2,21 @@ import 'dart:math' as math;
 
 import 'package:coscene_core/coscene_core.dart';
 
-import 'places.dart';
-
 /// A level body proposed by a generator, before it is checked by the engine.
-typedef Draft = ({Map<String, dynamic> state, Map<String, dynamic> rules, Map<String, dynamic> params, int minEffort});
+///
+/// [variant] names the kind of question within the topic and picks the
+/// objective text, `scene.<topic>.<variant>.objective`.
+typedef Draft = ({
+  String archetype,
+  String variant,
+  Map<String, dynamic> state,
+  Map<String, dynamic> rules,
+  Map<String, dynamic> params,
+});
 
-typedef DraftBuilder = Draft? Function(Rng rng, int difficulty);
-
-const Map<String, DraftBuilder> draftBuilders = {
-  'balance_levers': _balance,
-  'ray_reflection': _ray,
-  'area_projection': _shadow,
-  'volume_flow': _flow,
-  'network_routing': _routing,
-  'permutation_locks': _locks,
-  'gear_ratio': _gears,
-  'cargo_packing': _cargo,
-};
-
-LevelSpec _probe(String archetype, Map<String, dynamic> state, Map<String, dynamic> rules) => LevelSpec(
-  id: 'probe',
-  archetypeId: archetype,
-  place: 0,
-  index: 0,
-  difficulty: 1,
-  initialState: state,
-  validationRules: rules,
-  hints: const ['-'],
-  i18nKey: '-',
-  conceptId: '-',
-);
-
-double _round2(double v) => (v * 100).round() / 100;
+/// Builds a draft for a topic. [step] is 0, 1 or 2 within the tier and [index]
+/// is the scene's place in its topic (1 to 10), used to vary the questions.
+typedef DraftBuilder = Draft? Function(Rng r, int step, int index);
 
 /// Builds one level that the engine has loaded, solved and graded.
 ///
@@ -43,584 +26,1032 @@ LevelSpec generateLevel({
   required String id,
   required int place,
   required int index,
-  required String archetypeId,
+  required String topic,
   required int difficulty,
   required int seed,
   Engine? engine,
   bool Function(LevelSpec level)? accept,
 }) {
   final eng = engine ?? Engine.standard;
-  final build = draftBuilders[archetypeId];
-  final short = archetypeShortNames[archetypeId];
-  if (build == null || short == null) {
-    throw ArgumentError('no generator for archetype "$archetypeId"');
-  }
-  final tier = tierFor(difficulty);
-  for (var attempt = 0; attempt < 6000; attempt++) {
-    final draft = build(Rng(seed + attempt * 7919), difficulty);
+  final build = topicBuilders[topic];
+  if (build == null) throw ArgumentError('no generator for topic "$topic"');
+  final step = (difficulty - 1) % 3;
+  for (var attempt = 0; attempt < 4000; attempt++) {
+    final draft = build(Rng(seed + attempt * 7919), step, index);
     if (draft == null) continue;
     final level = LevelSpec(
       id: id,
-      archetypeId: archetypeId,
+      archetypeId: draft.archetype,
       place: place,
       index: index,
       difficulty: difficulty,
       initialState: draft.state,
       validationRules: draft.rules,
-      hints: [for (var h = 1; h <= 3; h++) 'hint.$short.$tier.$h'],
-      i18nKey: 'scene.$short.$tier',
-      conceptId: '${short}_$tier',
+      hints: [for (var h = 1; h <= 3; h++) 'hint.$topic.$h'],
+      i18nKey: 'scene.$topic.${draft.variant}',
+      conceptId: topic,
       textParams: draft.params,
     );
     final report = eng.inspect(level);
-    if (!report.ok || report.solution!.effort < draft.minEffort) continue;
+    if (!report.ok) continue;
     if (accept != null && !accept(level)) continue;
     return level;
   }
-  throw StateError('could not generate $archetypeId at difficulty $difficulty (seed $seed)');
+  throw StateError('could not generate $topic at difficulty $difficulty (seed $seed)');
 }
 
-// ---------------------------------------------------------------- balance
+const Map<String, DraftBuilder> topicBuilders = {
+  'binary': _binary,
+  'bitwise': _bitwise,
+  'logic': _logic,
+  'logarithms': _logarithms,
+  'counting': _counting,
+  'modulo': _modulo,
+  'binary_search': _binarySearch,
+  'two_pointers': _twoPointers,
+  'stacks': _stacks,
+  'queues': _queues,
+  'bit_tricks': _bitTricks,
+  'sorting': _sorting,
+  'hashing': _hashing,
+  'recursion': _recursion,
+  'sliding_window': _slidingWindow,
+  'prefix_sums': _prefixSums,
+  'greedy': _greedy,
+  'heaps': _heaps,
+  'bfs': _bfs,
+  'combinatorics': _combinatorics,
+  'dynamic_programming': _dynamicProgramming,
+  'knapsack': _knapsack,
+  'shortest_paths': _shortestPaths,
+  'topological_sort': _topologicalSort,
+  'search_the_answer': _searchTheAnswer,
+  'xor_tricks': _xorTricks,
+  'union_find': _unionFind,
+  'probability': _probability,
+  'caching': _caching,
+  'rate_limiting': _rateLimiting,
+};
 
-Draft? _balance(Rng r, int d) {
-  final half = d <= 2 ? 4 : (d <= 5 ? 5 : 6);
-  final nFixed = d <= 2 ? 1 : (d <= 5 ? r.range(1, 2) : r.range(2, 3));
-  final nMovable = d <= 2 ? 1 : (d <= 4 ? 2 : (d <= 8 ? 3 : 4));
-  final maxWeight = math.min(6, 2 + (d + 1) ~/ 2);
-  final nBlocked = d >= 6 ? r.range(2, 3) : 0;
-  final slots = [
-    for (var s = -half; s <= half; s++)
-      if (s != 0) s,
-  ];
-  r.shuffle(slots);
-  final fixed = [
-    for (var i = 0; i < nFixed; i++) {'weight': r.range(1, maxWeight), 'slot': slots[i]},
-  ]..sort((a, b) => a['slot']!.compareTo(b['slot']!));
-  final blocked = slots.sublist(nFixed, nFixed + nBlocked)..sort();
-  final weights = [for (var i = 0; i < nMovable; i++) r.range(1, maxWeight)]..sort((a, b) => b.compareTo(a));
-  // Past the first level, a single crate should not just mirror the fixed one.
-  if (d > 1 && nFixed == 1 && nMovable == 1 && weights.first == fixed.first['weight']) return null;
-  return (
-    state: {
-      'halfSpan': half,
-      'fixed': fixed,
-      'movable': [
-        for (final w in weights) {'weight': w, 'slot': null},
-      ],
-      if (blocked.isNotEmpty) 'blocked': blocked,
-    },
-    rules: {'torqueTolerance': 0, 'requireAllPlaced': true},
-    params: const {},
-    minEffort: 1,
-  );
+// ------------------------------------------------------------------ helpers
+
+Map<String, dynamic> _expr(String text, {String label = ''}) => {
+  'kind': 'expr',
+  'text': text,
+  if (label.isNotEmpty) 'label': label,
+};
+
+Map<String, dynamic> _cells(List<Object> values, {String label = '', bool index = false, List<int> mark = const []}) =>
+    {
+      'kind': 'cells',
+      'cells': [for (final v in values) '$v'],
+      if (label.isNotEmpty) 'label': label,
+      if (index) 'index': true,
+      if (mark.isNotEmpty) 'mark': mark,
+    };
+
+Map<String, dynamic> _bits(int value, int width, {String label = ''}) => {
+  'kind': 'bits',
+  'cells': [for (var i = width - 1; i >= 0; i--) '${(value >> i) & 1}'],
+  if (label.isNotEmpty) 'label': label,
+};
+
+Map<String, dynamic> _number(int max, {String label = ''}) => {
+  'mode': 'number',
+  'max': max,
+  if (label.isNotEmpty) 'label': label,
+};
+
+Map<String, dynamic> _bool(String label) => {'mode': 'bool', 'label': label};
+
+Draft _answer(
+  String variant,
+  List<Map<String, dynamic>> board,
+  List<Map<String, dynamic>> fields,
+  List<int> answers, [
+  Map<String, dynamic> params = const {},
+]) => (
+  archetype: 'answer',
+  variant: variant,
+  state: {'board': board, 'fields': fields},
+  rules: {'answers': answers},
+  params: params,
+);
+
+/// A number field wide enough for [answer], with room so the size of the
+/// field does not give the answer away.
+Map<String, dynamic> _numberFor(int answer, {String label = ''}) {
+  var max = 9;
+  while (max < answer * 2 + 9) {
+    max = max * 10 + 9;
+  }
+  return _number(max, label: label);
 }
 
-// -------------------------------------------------------------------- ray
-
-Draft? _ray(Rng r, int d) {
-  final count = d <= 2 ? 1 : (d <= 5 ? 2 : 3);
-  final step = d == 1 ? 30.0 : 15.0;
-  final steps = (180 / step).round();
-  final radius = d <= 3 ? 5.0 : 4.0;
-  bool inside(Vec2 p, double margin) => p.x >= margin && p.x <= 100 - margin && p.y >= margin && p.y <= 100 - margin;
-
-  final along = r.range(2, 8) * 10.0;
-  final emitter = switch (r.nextInt(4)) {
-    0 => Vec2(10, along),
-    1 => Vec2(90, along),
-    2 => Vec2(along, 10),
-    _ => Vec2(along, 90),
-  };
-  final emitterDegrees = r.nextInt((360 / step).round()) * step;
-  var dir = Vec2.fromDegrees(emitterDegrees);
-  final toMiddle = (const Vec2(50, 50) - emitter).normalized;
-  if (dir.dot(toMiddle) < 0.5) return null;
-
-  var pos = emitter;
-  final mirrors = <Map<String, dynamic>>[];
-  final answer = <int>[];
-  final keyPoints = <Vec2>[emitter];
-  for (var k = 0; k < count; k++) {
-    final c = pos + dir * r.range(22, 48).toDouble();
-    if (!inside(c, 14)) return null;
-    final options = <int>[];
-    for (var s = 0; s < steps; s++) {
-      final m = Vec2.fromDegrees(s * step);
-      // Skip grazing mirrors and ones that send the beam straight back.
-      if (dir.cross(m).abs() > 0.3 && dir.dot(m).abs() > 0.25) options.add(s);
-    }
-    if (options.isEmpty) return null;
-    final s = r.pick(options);
-    final m = Vec2.fromDegrees(s * step);
-    dir = dir.reflect(m.perpendicular).normalized;
-    final center = Vec2(_round2(c.x), _round2(c.y));
-    mirrors.add({'x': center.x, 'y': center.y, 'length': 14, 'degrees': s * step, 'stepDegrees': step});
-    answer.add(s);
-    keyPoints.add(center);
-    pos = center;
+int _popcount(int n) {
+  var c = 0;
+  for (var x = n; x > 0; x >>= 1) {
+    c += x & 1;
   }
-  final end = pos + dir * r.range(22, 46).toDouble();
-  if (!inside(end, 10)) return null;
-  final target = Vec2(_round2(end.x), _round2(end.y));
-  keyPoints.add(target);
-  for (var i = 0; i < keyPoints.length; i++) {
-    for (var j = i + 1; j < keyPoints.length; j++) {
-      if (keyPoints[i].distanceTo(keyPoints[j]) < 17) return null;
-    }
-  }
-
-  Map<String, dynamic> state(List<int> mirrorSteps, List<Map<String, dynamic>> walls) => {
-    'size': 100,
-    'emitter': {'x': emitter.x, 'y': emitter.y, 'degrees': emitterDegrees},
-    'mirrors': [
-      for (var i = 0; i < mirrors.length; i++) {...mirrors[i], 'degrees': mirrorSteps[i] * step},
-    ],
-    if (walls.isNotEmpty) 'walls': walls,
-    'target': {'x': target.x, 'y': target.y, 'radius': radius},
-  };
-  final rules = {'hitTolerance': radius, 'minBounces': 0, 'maxBounces': 12};
-
-  bool answerWorks(List<Map<String, dynamic>> walls) {
-    final t = RayScene(_probe('ray_reflection', state(answer, walls), rules)).trace();
-    return t.hit && t.bounces == count;
-  }
-
-  // True when some setup reaches the sensor without using every mirror.
-  bool hasShortcut(List<Map<String, dynamic>> walls) {
-    final scene = RayScene(_probe('ray_reflection', state(answer, walls), rules));
-    var found = false;
-    void go(int k) {
-      if (found) return;
-      if (k == count) {
-        final t = scene.trace();
-        if (t.hit && t.bounces < count) found = true;
-        return;
-      }
-      for (var s = 0; s < steps; s++) {
-        scene.mirrors[k].step = s;
-        go(k + 1);
-      }
-    }
-
-    go(0);
-    return found;
-  }
-
-  if (!answerWorks(const [])) return null;
-
-  final walls = <Map<String, dynamic>>[];
-  if (d >= 6) {
-    final wanted = d >= 8 ? 2 : 1;
-    for (var tries = 0; tries < 40 && walls.length < wanted; tries++) {
-      final c = Vec2(r.range(18, 82).toDouble(), r.range(18, 82).toDouble());
-      if (keyPoints.any((p) => p.distanceTo(c) < 13)) continue;
-      final half = Vec2.fromDegrees(r.nextInt(4) * 45.0, r.range(7, 11).toDouble());
-      final a = c - half, b = c + half;
-      final wall = {'x1': _round2(a.x), 'y1': _round2(a.y), 'x2': _round2(b.x), 'y2': _round2(b.y)};
-      if (answerWorks([...walls, wall])) walls.add(wall);
-    }
-    if (walls.isEmpty) return null;
-  }
-  if (hasShortcut(walls)) return null;
-
-  final start = [for (final s in answer) (s + r.range(1, steps - 1)) % steps];
-  return (state: state(start, walls), rules: rules, params: const {}, minEffort: 1);
+  return c;
 }
 
-// ----------------------------------------------------------------- shadow
-
-Draft? _shadow(Rng r, int d) {
-  final boardWidth = r.pick([10.0, 12.0, 15.0, 20.0]);
-  final boardHeight = r.pick([20.0, 25.0, 30.0]);
-  final raise = d >= 3;
-  final slideBoard = d >= 6;
-
-  final heightMin = boardHeight + 20;
-  final heightChoices = raise ? [for (var i = 0; i < 5; i++) heightMin + i * 10] : [boardHeight * 2];
-  final lampXChoices = [for (var x = 10.0; x <= 90; x += 5) x];
-  final boardXChoices = slideBoard ? [for (var x = 20.0; x <= 70; x += 5) x] : [r.range(6, 12) * 5.0];
-
-  final lampX = r.pick(lampXChoices);
-  final lampH = r.pick(heightChoices);
-  final boardX = r.pick(boardXChoices);
-  double project(double x) => lampX + (x - lampX) * lampH / (lampH - boardHeight);
-  final from = _round2(project(boardX));
-  final to = _round2(project(boardX + boardWidth));
-  if (from < 3 || to > 97 || to - from > 60) return null;
-
-  Map<String, dynamic> axis(List<double> choices, double value) => {
-    'min': choices.first,
-    'max': choices.last,
-    'step': choices.length > 1 ? choices[1] - choices[0] : 1,
-    'value': value,
-  };
-  return (
-    state: {
-      'lamp': {'x': axis(lampXChoices, r.pick(lampXChoices)), 'height': axis(heightChoices, r.pick(heightChoices))},
-      'board': {'x': axis(boardXChoices, r.pick(boardXChoices)), 'width': boardWidth, 'height': boardHeight},
-      'target': {'from': from, 'to': to},
-      'ground': {'min': 0, 'max': 100},
-    },
-    rules: {'edgeTolerance': 0.75},
-    params: const {},
-    minEffort: 1,
-  );
+int _choose(int n, int k) {
+  if (k < 0 || k > n) return 0;
+  var r = 1;
+  for (var i = 1; i <= k; i++) {
+    r = r * (n - k + i) ~/ i;
+  }
+  return r;
 }
 
-// ------------------------------------------------------------------- flow
+int _factorial(int n) => n <= 1 ? 1 : n * _factorial(n - 1);
 
-Draft? _flow(Rng r, int d) {
-  final count = d == 1 ? 1 : (d <= 3 ? 2 : 3);
-  final widthPool = d == 1 ? [2] : (d == 2 ? [1, 2] : [1, 2, 3, 4]);
-  final maxRate = d <= 2 ? 4 : (d <= 5 ? 5 : 6);
-  final timed = d >= 6;
-  final seconds = timed ? r.range(3, 7) : r.pick([4, 6]);
-
-  final tanks = <Map<String, dynamic>>[];
-  final rates = <int>[];
-  final seenLevels = <double>{};
-  for (var i = 0; i < count; i++) {
-    final width = r.pick(widthPool);
-    final rate = r.range(1, maxRate);
-    final level = rate * seconds / width;
-    if (level < 2 || level > 11 || (level * 2).roundToDouble() != level * 2) return null;
-    seenLevels.add(level);
-    rates.add(rate);
-    tanks.add({'width': width, 'height': math.min(12, level.ceil() + r.range(1, 3)), 'target': level});
-  }
-  if (count > 1 && seenLevels.length == 1) return null;
-  if (d >= 3 && tanks.map((t) => t['width']).toSet().length == 1) return null;
-
-  final Map<String, dynamic> duration;
-  if (timed) {
-    final others = [
-      for (var s = 2; s <= 8; s++)
-        if (s != seconds) s,
-    ];
-    duration = {'min': 2, 'max': 8, 'step': 1, 'value': r.pick(others)};
-  } else {
-    duration = {'min': seconds, 'max': seconds, 'step': 1, 'value': seconds};
-  }
-  return (
-    state: {
-      'tanks': tanks,
-      'valves': [
-        for (var i = 0; i < count; i++) {'tank': i, 'max': maxRate, 'rate': 0},
-      ],
-      'duration': duration,
-      if (d >= 7) 'supply': rates.fold<int>(0, (a, b) => a + b),
-    },
-    rules: {'levelTolerance': 0.25},
-    params: const {},
-    minEffort: 1,
-  );
-}
-
-// ---------------------------------------------------------------- routing
-
-class _Branch {
-  _Branch(this.depth);
-  final int depth;
-  _Branch? left;
-  _Branch? right;
-  String id = '';
-  String kind = 'switch';
-  double x = 0;
-}
-
-Draft? _routing(Rng r, int d) {
-  final junctionCount = d <= 1 ? 2 : (d <= 5 ? 3 : 4);
-  final colorCount = d <= 1 ? 2 : (d <= 7 ? 3 : 4);
-  final itemCount = d <= 2 ? 4 : (d <= 5 ? 5 : 6);
-  final kinds = d <= 2
-      ? ['filter', 'switch']
-      : (d <= 5 ? ['filter', 'filter', 'switch'] : ['filter', 'filter', 'flip', 'switch']);
-  const palette = ['coral', 'teal', 'mustard', 'slate'];
-  final colors = palette.sublist(0, colorCount);
-
-  // Grow a random tree of junctions at most three deep.
-  final root = _Branch(0);
-  final all = <_Branch>[root];
-  final open = <(_Branch, bool)>[(root, true), (root, false)];
-  while (all.length < junctionCount) {
-    final grow = [
-      for (final o in open)
-        if (o.$1.depth < 2) o,
-    ];
-    if (grow.isEmpty) return null;
-    final slot = r.pick(grow);
-    open.remove(slot);
-    final child = _Branch(slot.$1.depth + 1);
-    if (slot.$2) {
-      slot.$1.left = child;
-    } else {
-      slot.$1.right = child;
-    }
-    all.add(child);
-    open.addAll([(child, true), (child, false)]);
-  }
-  for (var i = 0; i < all.length; i++) {
-    all[i].id = 'j${i + 1}';
-    all[i].kind = r.pick(kinds);
-  }
-  if (d >= 6 && !all.any((j) => j.kind == 'flip')) return null;
-  if (!all.any((j) => j.kind == 'filter')) return null;
-
-  // Lay leaves out evenly along the bottom, junctions above their children.
-  final binCount = junctionCount + 1;
-  final bins = <Map<String, dynamic>>[];
-  final nodes = <Map<String, dynamic>>[];
-  const depthY = [26.0, 48.0, 68.0];
-  String leaf() {
-    final k = bins.length;
-    final id = 'b${k + 1}';
-    bins.add({'id': id, 'kind': 'bin', 'x': _round2(12 + k * 76 / (binCount - 1)), 'y': 90, 'accepts': colors[0]});
-    return id;
-  }
-
-  (String, double) place(_Branch? b) {
-    if (b == null) {
-      final id = leaf();
-      return (id, bins.last['x'] as double);
-    }
-    final (leftId, leftX) = place(b.left);
-    final (rightId, rightX) = place(b.right);
-    b.x = _round2((leftX + rightX) / 2);
-    nodes.add({
-      'id': b.id,
-      'kind': b.kind,
-      'x': b.x,
-      'y': depthY[b.depth],
-      'left': leftId,
-      'right': rightId,
-      'state': 0,
-    });
-    return (b.id, b.x);
-  }
-
-  place(root);
-  nodes.insert(0, {'id': 'in', 'kind': 'source', 'x': root.x, 'y': 6, 'next': root.id});
-
-  final items = [for (var i = 0; i < itemCount; i++) r.pick(colors)];
-  if (colors.any((c) => !items.contains(c))) return null;
-
-  Map<String, dynamic> state(Map<String, int> states) => {
-    'colors': colors,
-    'items': items,
-    'nodes': [
-      for (final n in nodes)
-        if (states.containsKey(n['id'])) {...n, 'state': states[n['id']]} else n,
-      ...bins,
-    ],
-  };
-  int stateCount(_Branch j) => j.kind == 'filter' ? colorCount : 2;
-
-  // Pick the answer first, then label the bins to match where items land.
-  final answer = {for (final j in all) j.id: r.nextInt(stateCount(j))};
-  final trips = RoutingScene(_probe('network_routing', state(answer), const {})).run();
-  final landed = <String, Set<String>>{};
-  final visited = <String>{};
-  for (final t in trips) {
-    landed.putIfAbsent(t.bin, () => {}).add(t.color);
-    visited.addAll(t.path);
-  }
-  if (landed.values.any((c) => c.length > 1) || landed.length < 2) return null;
-  if (all.any((j) => !visited.contains(j.id))) return null;
-  for (final b in bins) {
-    b['accepts'] = landed[b['id']]?.first ?? r.pick(colors);
-  }
-
-  final start = {for (final j in all) j.id: r.nextInt(stateCount(j))};
-  return (state: state(start), rules: const {'allSorted': true}, params: const {}, minEffort: 1);
-}
-
-// ------------------------------------------------------------------ locks
-
-Draft? _locks(Rng r, int d) {
-  final count = d <= 2 ? 2 : (d <= 8 ? 3 : 4);
-  final positions = d == 1 ? 4 : (d <= 5 ? 6 : r.pick([6, 8]));
-  final linkCount = d <= 2 ? 1 : (d <= 5 ? r.range(2, 3) : r.range(3, 5));
-  final links = [
-    for (var i = 0; i < count; i++) [for (var j = 0; j < count; j++) i == j ? 1 : 0],
-  ];
-  var placed = 0;
-  for (var tries = 0; tries < 60 && placed < linkCount; tries++) {
-    final i = r.nextInt(count), j = r.nextInt(count);
-    if (i == j || links[i][j] != 0) continue;
-    links[i][j] = d <= 3 ? 1 : r.pick([1, 1, -1]);
-    placed++;
-  }
-  if (placed < linkCount) return null;
-
-  // Scramble backwards from the open position, so it can always be reached.
-  final values = List<int>.filled(count, 0);
-  for (var m = 0; m < 4 + d; m++) {
-    final i = r.nextInt(count);
-    final delta = r.chance(0.5) ? 1 : -1;
-    for (var j = 0; j < count; j++) {
-      values[j] = (values[j] + links[i][j] * delta) % positions;
-      if (values[j] < 0) values[j] += positions;
-    }
-  }
-  return (
-    state: {
-      'dials': [
-        for (final v in values) {'positions': positions, 'value': v, 'target': 0},
-      ],
-      'links': links,
-    },
-    rules: const {'allAligned': true},
-    params: const {},
-    minEffort: d <= 2 ? 2 : (d <= 5 ? 3 : 5),
-  );
-}
-
-// ------------------------------------------------------------------ gears
-
-const _teethPool = [8, 10, 12, 15, 16, 18, 20, 24, 30, 32, 36, 40, 48];
-
-Draft? _gears(Rng r, int d) {
-  // true marks a peg the player fills; false is a gear bolted in place.
-  final layout = switch (d) {
-    1 => [(false, true)],
-    2 => [(true, false)],
-    3 => [(false, true), (true, false)],
-    4 || 5 => [(true, true), (true, false)],
-    6 || 7 => [(true, true), (true, true)],
-    _ => [(true, true), (true, false), (false, true)],
-  };
-  final slotCount = layout.fold<int>(0, (a, s) => a + (s.$1 ? 1 : 0) + (s.$2 ? 1 : 0));
-  final trayCount = d <= 3 ? 4 : (d <= 5 ? 5 : 6);
-  final pool = List<int>.of(_teethPool);
+List<int> _distinct(Rng r, int count, int lo, int hi) {
+  final pool = [for (var v = lo; v <= hi; v++) v];
   r.shuffle(pool);
-  final tray = pool.sublist(0, trayCount);
-  final fixedPool = pool.sublist(trayCount);
-  final answer = List<int>.generate(trayCount, (i) => i);
-  r.shuffle(answer);
+  return pool.sublist(0, count);
+}
 
-  var slot = 0;
-  var fixed = 0;
-  var num = 1, den = 1;
-  final stages = <Map<String, dynamic>>[];
-  Map<String, dynamic> spot(bool isSlot, void Function(int teeth) use) {
-    if (isSlot) {
-      use(tray[answer[slot]]);
-      return {'slot': slot++};
-    }
-    final teeth = fixedPool[fixed++];
-    use(teeth);
-    return {'teeth': teeth};
+// --------------------------------------------------------------------- easy
+
+Draft? _binary(Rng r, int step, int index) {
+  final width = 4 + step;
+  final n = r.range(3, (1 << width) - 1);
+  if (_popcount(n) < 2 || n < (1 << (width - 1))) return null;
+  if (index.isOdd) {
+    return (
+      archetype: 'pick',
+      variant: 'to_binary',
+      state: {
+        'layout': 'bits',
+        'tiles': [
+          for (var i = width - 1; i >= 0; i--) {'v': 1 << i},
+        ],
+      },
+      rules: {'rule': 'sum', 'target': n},
+      params: {'n': n},
+    );
   }
+  return _answer('from_binary', [_bits(n, width)], [_number((1 << width) - 1)], [n]);
+}
 
-  for (final (driverSlot, drivenSlot) in layout) {
-    final driver = spot(driverSlot, (t) => num *= t);
-    final driven = spot(drivenSlot, (t) => den *= t);
-    stages.add({'driver': driver, 'driven': driven});
+Draft? _bitwise(Rng r, int step, int index) {
+  final width = [4, 6, 8][step];
+  final a = r.range(1, (1 << width) - 1), b = r.range(1, (1 << width) - 1);
+  if (index >= 8) {
+    final s = r.range(1, 3);
+    final left = index.isEven;
+    final value = left ? a << s : a >> s;
+    if (value == 0) return null;
+    return _answer('shift', [_bits(a, width, label: 'a'), _expr(left ? 'a << $s' : 'a >> $s')], [_numberFor(value)], [
+      value,
+    ]);
   }
-  final g = num.gcd(den);
-  final turns = num ~/ g, crank = den ~/ g;
-  if (turns == crank || turns > 8 || crank > 4) return null;
-  final sizes = [...tray, ...fixedPool.sublist(0, fixed)];
-  if (sizes.reduce(math.max) / sizes.reduce(math.min) > 5) return null;
-
-  return (
-    state: {
-      'stages': stages,
-      'tray': tray,
-      'slots': List<int?>.filled(slotCount, null),
-      'inputTurns': crank,
-      'target': {'turns': turns},
-    },
-    rules: {'turnsTolerance': 0.001},
-    params: {'turns': turns, 'crank': crank},
-    minEffort: 1,
+  final op = ['&', '|', '^'][index % 3];
+  final value = switch (op) {
+    '&' => a & b,
+    '|' => a | b,
+    _ => a ^ b,
+  };
+  if (value == 0 || a == b) return null;
+  return _answer(
+    'combine',
+    [_bits(a, width, label: 'a'), _bits(b, width, label: 'b'), _expr('a $op b')],
+    [_number((1 << width) - 1)],
+    [value],
   );
 }
 
-// ------------------------------------------------------------------ cargo
-
-Draft? _cargo(Rng r, int d) {
-  final (cols, rows) = switch (d) {
-    1 => (4, 2),
-    2 => (4, 3),
-    3 => (5, 3),
-    4 || 5 => (6, 3),
-    6 || 7 => (6, 4),
-    _ => (7, 4),
-  };
-  // From difficulty 6 one square of the hold is blocked, so cut one extra.
-  final wanted = switch (d) {
-    1 => 3,
-    2 || 3 => 4,
-    4 || 5 => 5,
-    6 || 7 => 7,
-    _ => 8,
-  };
-  // Cut the hold into rectangles until there are enough small crates.
-  final rects = <List<int>>[
-    [0, 0, cols, rows],
+Draft? _logic(Rng r, int step, int index) {
+  final a = r.chance(0.5), b = r.chance(0.5), c = r.chance(0.5);
+  final pool = <(String, bool)>[
+    ...[
+      ('A && B', a && b),
+      ('A || B', a || b),
+      ('!A', !a),
+      ('A && !B', a && !b),
+      ('!A || B', !a || b),
+      ('!(A || B)', !(a || b)),
+    ].take(step == 0 ? 6 : 0),
+    if (step >= 1) ...[
+      ('(A || B) && C', (a || b) && c),
+      ('A && (B || C)', a && (b || c)),
+      ('!(A && B)', !(a && b)),
+      ('!A && !B', !a && !b),
+      ('A || (B && !C)', a || (b && !c)),
+      ('(A && B) || C', (a && b) || c),
+    ],
+    if (step == 2) ...[
+      ('A != B', a != b),
+      ('(A && B) || (!A && C)', (a && b) || (!a && c)),
+      ('!(A || !B) && C', !(a || !b) && c),
+      ('(A == B) || !C', (a == b) || !c),
+    ],
   ];
-  bool tooBig(List<int> q) => q[2] > 3 || q[3] > 3 || q[2] * q[3] > 6;
-  while (rects.length < wanted || rects.any(tooBig)) {
-    if (rects.length > wanted + 2) return null;
-    final candidates = rects.where((q) => q[2] > 1 || q[3] > 1).toList()
-      ..sort((a, b) => (b[2] * b[3]).compareTo(a[2] * a[3]));
-    if (candidates.isEmpty) return null;
-    final big = candidates.where(tooBig).toList();
-    final q = big.isNotEmpty ? r.pick(big) : candidates.first;
-    rects.remove(q);
-    final vertical = q[3] == 1 || (q[2] > 1 && (q[2] > q[3] || (q[2] == q[3] && r.chance(0.5))));
-    if (vertical) {
-      final k = r.range(1, q[2] - 1);
-      rects.add([q[0], q[1], k, q[3]]);
-      rects.add([q[0] + k, q[1], q[2] - k, q[3]]);
-    } else {
-      final k = r.range(1, q[3] - 1);
-      rects.add([q[0], q[1], q[2], k]);
-      rects.add([q[0], q[1] + k, q[2], q[3] - k]);
-    }
-  }
+  r.shuffle(pool);
+  final picked = pool.take(3).toList();
+  // A spread of true and false, so a row of the same answer never wins.
+  final trues = picked.where((p) => p.$2).length;
+  if (trues == 0 || trues == 3) return null;
+  String show(bool v) => v ? 'true' : 'false';
+  final values = step == 0 ? 'A = ${show(a)}    B = ${show(b)}' : 'A = ${show(a)}   B = ${show(b)}   C = ${show(c)}';
+  return _answer(
+    'evaluate',
+    [_expr(values), for (var i = 0; i < 3; i++) _expr(picked[i].$1, label: '${i + 1}')],
+    [for (var i = 0; i < 3; i++) _bool('${i + 1}')],
+    [for (final p in picked) p.$2 ? 1 : 0],
+  );
+}
 
-  final blocked = <List<int>>[];
-  if (d >= 6) {
-    final singles = rects.where((q) => q[2] == 1 && q[3] == 1).toList();
-    if (singles.isEmpty) return null;
-    final q = r.pick(singles);
-    rects.remove(q);
-    blocked.add([q[0], q[1]]);
+Draft? _logarithms(Rng r, int step, int index) {
+  if (index % 3 == 0) {
+    final n = r.range([9, 40, 200][step], [30, 200, 5000][step]);
+    final halvings = (math.log(n) / math.ln2 - 1e-9).ceil();
+    if (n & (n - 1) == 0) return null;
+    return _answer('halvings', [], [_number(30)], [halvings], {'n': n});
   }
-
-  final balanced = d >= 3;
-  final heavy = <List<int>>{};
-  if (balanced) {
-    final pool = rects.where((q) => q[2] * q[3] >= 2).toList();
-    r.shuffle(pool);
-    heavy.addAll(pool.take(d >= 6 ? 2 : 1));
-    if (heavy.isEmpty) return null;
-    var moment = 0.0;
-    for (final q in rects) {
-      moment += q[2] * q[3] * (heavy.contains(q) ? 3 : 1) * (q[0] + q[2] / 2 - cols / 2);
-    }
-    if (moment.abs() > 1.0) return null;
+  switch (step) {
+    case 0:
+      final k = r.range(3, 8);
+      return _answer('value', [_expr('log₂ ${1 << k}')], [_number(20)], [k]);
+    case 1:
+      final base = r.pick([3, 4, 5, 10]);
+      final k = r.range(2, base == 10 ? 5 : 4);
+      return _answer('value', [_expr('log${_sub(base)} ${math.pow(base, k).toInt()}')], [_number(20)], [k]);
+    default:
+      if (index.isEven) {
+        final p = r.range(2, 6), q = r.range(2, 6);
+        return _answer('value', [_expr('log₂ ${1 << p} + log₂ ${1 << q}')], [_number(30)], [p + q]);
+      }
+      final n = r.range(20, 1000);
+      if (n & (n - 1) == 0) return null;
+      final floor = (math.log(n) / math.ln2 + 1e-9).floor();
+      return _answer('value', [_expr('⌊log₂ $n⌋')], [_number(20)], [floor]);
   }
+}
 
-  r.shuffle(rects);
+String _sub(int n) => n.toString().split('').map((d) => '₀₁₂₃₄₅₆₇₈₉'[int.parse(d)]).join();
+
+Draft? _counting(Rng r, int step, int index) {
+  switch (step) {
+    case 0:
+      if (index.isOdd) {
+        final n = r.range(3, 5);
+        return _answer('line_up', [_expr('$n!')], [_numberFor(_factorial(n))], [_factorial(n)], {'n': n});
+      }
+      final a = r.range(3, 7), b = r.range(2, 6);
+      return _answer('outfits', [], [_numberFor(a * b)], [a * b], {'a': a, 'b': b});
+    case 1:
+      final n = r.range(5, 9), k = r.range(2, 3);
+      final ways = _factorial(n) ~/ _factorial(n - k);
+      return _answer('podium', [_expr('P($n, $k)')], [_numberFor(ways)], [ways], {'n': n, 'k': k});
+    default:
+      final n = r.range(6, 12), k = r.range(2, 4);
+      final ways = _choose(n, k);
+      return _answer('team', [_expr('C($n, $k)')], [_numberFor(ways)], [ways], {'n': n, 'k': k});
+  }
+}
+
+Draft? _modulo(Rng r, int step, int index) {
+  switch (step) {
+    case 0:
+      final m = r.range(3, 9), a = r.range(m + 2, 60);
+      if (a % m == 0) return null;
+      return _answer('remainder', [_expr('$a mod $m')], [_number(9)], [a % m]);
+    case 1:
+      final h = r.range(1, 12), k = r.range(13, 100);
+      return _answer('clock', [], [_number(12)], [(h - 1 + k) % 12 + 1], {'h': h, 'k': k});
+    default:
+      final base = r.pick([2, 3, 7, 8, 9]), k = r.range(10, 60);
+      var last = 1;
+      for (var i = 0; i < k; i++) {
+        last = last * base % 10;
+      }
+      return _answer('last_digit', [_expr('$base^$k mod 10')], [_number(9)], [last], {'b': base, 'k': k});
+  }
+}
+
+Draft? _binarySearch(Rng r, int step, int index) {
+  final bisect = index >= 8;
+  final hi = r.range([16, 40, 100][step], [32, 100, 250][step]);
+  final mode = bisect ? 'bisect' : 'compare';
+  final budget = ProbeArchetype.checksNeeded(hi, mode);
   return (
+    archetype: 'probe',
+    variant: mode,
+    state: {'mode': mode, 'lo': 1, 'hi': hi, 'budget': budget},
+    rules: const {},
+    params: {'hi': hi, 'budget': budget},
+  );
+}
+
+Draft? _twoPointers(Rng r, int step, int index) {
+  final n = 6 + step;
+  final values = _distinct(r, n, 1, 12 + step * 14)..sort();
+  final i = r.nextInt(n - 1), j = i + 1 + r.nextInt(n - 1 - i);
+  final target = values[i] + values[j];
+  var pairs = 0;
+  for (var x = 0; x < n; x++) {
+    for (var y = x + 1; y < n; y++) {
+      if (values[x] + values[y] == target) pairs++;
+    }
+  }
+  if (pairs != 1 || j - i == n - 1) return null;
+  return (
+    archetype: 'pick',
+    variant: 'pair_sum',
     state: {
-      'hold': {'cols': cols, 'rows': rows, if (blocked.isNotEmpty) 'blocked': blocked},
-      'pieces': [
-        for (final q in rects)
-          {
-            // Store each crate lying on its long side, so its outline gives
-            // nothing away about how it fits.
-            'w': math.max(q[2], q[3]),
-            'h': math.min(q[2], q[3]),
-            if (heavy.contains(q)) 'heavy': true,
-          },
+      'layout': 'row',
+      'tiles': [
+        for (final v in values) {'v': v},
       ],
     },
-    rules: {'requireAllLoaded': true, if (balanced) 'balanceTolerance': 1.0},
+    rules: {'rule': 'sum', 'target': target, 'count': 2},
+    params: {'target': target},
+  );
+}
+
+Draft? _stacks(Rng r, int step, int index) {
+  final n = 4 + step;
+  final items = [for (var i = 1; i <= n; i++) i];
+  // Random pushes and pops always give an order a stack can make.
+  final stack = <int>[], out = <int>[];
+  var next = 0;
+  while (out.length < n) {
+    if (next < n && (stack.isEmpty || r.chance(0.5))) {
+      stack.add(items[next++]);
+    } else {
+      out.add(stack.removeLast());
+    }
+  }
+  final straight = List.generate(n, (i) => out[i] == items[i]).every((x) => x);
+  final reversed = List.generate(n, (i) => out[i] == items[n - 1 - i]).every((x) => x);
+  if (straight || (step > 0 && reversed)) return null;
+  return (
+    archetype: 'ops',
+    variant: step == 2 ? 'stack_cap' : 'stack',
+    state: {'mode': 'stack', 'items': items, 'target': out, if (step == 2) 'cap': 3},
+    rules: const {},
+    params: {if (step == 2) 'cap': 3},
+  );
+}
+
+Draft? _queues(Rng r, int step, int index) {
+  final start = [for (var i = 0; i < r.range(1, 3); i++) r.range(1, 9)];
+  final queue = [...start];
+  final ops = <String>[];
+  final removed = <int>[];
+  final count = [5, 7, 9][step];
+  for (var i = 0; i < count; i++) {
+    if (queue.isNotEmpty && r.chance(0.45)) {
+      removed.add(queue.removeAt(0));
+      ops.add('←');
+    } else {
+      final v = r.range(1, 9);
+      queue.add(v);
+      ops.add('→$v');
+    }
+  }
+  if (queue.isEmpty || removed.isEmpty) return null;
+  final board = [_cells(start, label: 'queue'), _expr(ops.join('  '))];
+  if (step == 0) return _answer('front', board, [_number(9)], [queue.first]);
+  if (step == 1) {
+    return _answer(
+      'front_size',
+      board,
+      [_number(9, label: '@field.front'), _number(12, label: '@field.size')],
+      [queue.first, queue.length],
+    );
+  }
+  return _answer(
+    'front_last',
+    board,
+    [_number(9, label: '@field.front'), _number(9, label: '@field.last_out')],
+    [queue.first, removed.last],
+  );
+}
+
+// ------------------------------------------------------------------- medium
+
+Draft? _bitTricks(Rng r, int step, int index) {
+  switch (index % 3) {
+    case 0:
+      final n = r.range([20, 60, 120][step], [63, 200, 1000][step]);
+      return _answer('popcount', [_expr('n = $n')], [_number(12)], [_popcount(n)], {'n': n});
+    case 1:
+      final n = r.range([12, 40, 100][step], [63, 255, 999][step]);
+      if (_popcount(n) < 2) return null;
+      return _answer('clear_low', [_expr('n = $n'), _expr('n & (n − 1)')], [_numberFor(n)], [n & (n - 1)]);
+    default:
+      final values = <int>[];
+      while (values.length < 3) {
+        final v = r.chance(0.5) ? 1 << r.range(3, 4 + step * 3) : r.range(10, 40 << step);
+        if (!values.contains(v)) values.add(v);
+      }
+      final answers = [for (final v in values) v & (v - 1) == 0 ? 1 : 0];
+      if (answers.every((a) => a == answers.first)) return null;
+      return _answer('power_of_two', [], [for (final v in values) _bool('$v')], answers);
+  }
+}
+
+Draft? _sorting(Rng r, int step, int index) {
+  final adjacent = index.isOdd;
+  final n = (adjacent ? 4 : 5) + step;
+  final items = _distinct(r, n, 1, 30);
+  final budget = OpsArchetype.fewestSwaps(items, adjacent: adjacent);
+  if (budget < 2 + step) return null;
+  return (
+    archetype: 'ops',
+    variant: adjacent ? 'bubble' : 'any_swap',
+    state: {'mode': 'swap', 'items': items, 'adjacent': adjacent, 'budget': budget},
+    rules: const {},
+    params: {'budget': budget},
+  );
+}
+
+Draft? _hashing(Rng r, int step, int index) {
+  final m = r.range(7, 11);
+  final keys = _distinct(r, 4 + step, 10, 99);
+  final hash = _expr('h(k) = k mod $m');
+  switch (index % 3) {
+    case 0:
+      return _answer(
+        'bucket',
+        [_cells(keys, label: 'keys'), hash],
+        [_number(m - 1, label: 'h(${keys[0]})'), _number(m - 1, label: 'h(${keys[1]})')],
+        [keys[0] % m, keys[1] % m],
+      );
+    case 1:
+      final used = <int>{};
+      var hits = 0;
+      for (final k in keys) {
+        if (!used.add(k % m)) hits++;
+      }
+      if (hits == 0) return null;
+      return _answer('collisions', [_cells(keys, label: 'keys'), hash], [_number(keys.length)], [hits]);
+    default:
+      final table = List<int?>.filled(m, null);
+      var last = 0;
+      var moved = false;
+      for (final k in keys) {
+        var slot = k % m;
+        while (table[slot] != null) {
+          slot = (slot + 1) % m;
+          moved = true;
+        }
+        table[slot] = k;
+        last = slot;
+      }
+      if (!moved) return null;
+      return _answer('probing', [_cells(keys, label: 'keys'), hash], [_number(m - 1)], [last], {'last': keys.last});
+  }
+}
+
+Draft? _recursion(Rng r, int step, int index) {
+  if (index % 3 == 0) {
+    final n = r.range(4 + step, 6 + step);
+    final calls = List<int>.filled(n + 1, 1);
+    for (var i = 2; i <= n; i++) {
+      calls[i] = 1 + calls[i - 1] + calls[i - 2];
+    }
+    return _answer(
+      'calls',
+      [_expr('fib(n) = fib(n − 1) + fib(n − 2)'), _expr('fib(0), fib(1): no more calls')],
+      [_numberFor(calls[n])],
+      [calls[n]],
+      {'n': n},
+    );
+  }
+  final kinds = [
+    ('f(0) = 0', 'f(n) = f(n − 1) + n', (int n) => n * (n + 1) ~/ 2),
+    ('f(0) = 1', 'f(n) = 2 · f(n − 1)', (int n) => 1 << n),
+    ('f(0) = 1', 'f(n) = 2 · f(n − 1) + 1', (int n) => (1 << (n + 1)) - 1),
+    ('f(0) = 0, f(1) = 1', 'f(n) = f(n − 1) + f(n − 2)', _fib),
+    ('f(0) = 2', 'f(n) = 3 · f(n − 1) − 1', (int n) => (math.pow(3, n).toInt() + 3) ~/ 2),
+  ];
+  final kind = kinds[r.nextInt(step == 0 ? 3 : kinds.length)];
+  final n = r.range(3 + step, 5 + step * 2);
+  final value = kind.$3(n);
+  if (value > 9999) return null;
+  return _answer('value', [_expr(kind.$1), _expr(kind.$2), _expr('f($n) = ?')], [_numberFor(value)], [value]);
+}
+
+int _fib(int n) => n < 2 ? n : _fib(n - 1) + _fib(n - 2);
+
+Draft? _slidingWindow(Rng r, int step, int index) {
+  final n = 7 + step;
+  final k = 2 + step;
+  final values = [for (var i = 0; i < n; i++) r.range(1, 9)];
+  var best = 0, ties = 0;
+  for (var i = 0; i + k <= n; i++) {
+    final s = values.sublist(i, i + k).fold(0, (a, b) => a + b);
+    if (s > best) {
+      best = s;
+      ties = 1;
+    } else if (s == best) {
+      ties++;
+    }
+  }
+  if (ties > 1) return null;
+  return (
+    archetype: 'pick',
+    variant: 'window',
+    state: {
+      'layout': 'row',
+      'tiles': [
+        for (final v in values) {'v': v},
+      ],
+    },
+    rules: {'rule': 'window', 'k': k, 'best': best},
+    params: {'k': k},
+  );
+}
+
+Draft? _prefixSums(Rng r, int step, int index) {
+  final n = 6 + step;
+  final a = [for (var i = 0; i < n; i++) r.range(1, 9 + step * 5)];
+  final i = r.nextInt(n - 2), j = i + 2 + r.nextInt(n - i - 2);
+  final sum = a.sublist(i, j + 1).fold(0, (x, y) => x + y);
+  final range = _expr('a[$i] + … + a[$j]');
+  if (step == 0 || index.isOdd) {
+    return _answer('range', [_cells(a, label: 'a', index: true), range], [_numberFor(sum)], [sum]);
+  }
+  final prefix = <int>[];
+  var run = 0;
+  for (final v in a) {
+    run += v;
+    prefix.add(run);
+  }
+  return _answer('from_prefix', [_cells(prefix, label: 'P', index: true), range], [_numberFor(sum)], [sum]);
+}
+
+Draft? _greedy(Rng r, int step, int index) {
+  final n = 5 + step;
+  final tiles = <Map<String, int>>[];
+  for (var i = 0; i < n; i++) {
+    final s = r.range(0, 10), len = r.range(1, 4);
+    tiles.add({'v': 1, 's': s, 'e': math.min(12, s + len)});
+  }
+  final probe = LevelSpec(
+    id: 'probe',
+    archetypeId: 'pick',
+    place: 0,
+    index: 0,
+    difficulty: 1,
+    initialState: {'layout': 'bars', 'tiles': tiles},
+    validationRules: {'rule': 'intervals', 'best': 0},
+    hints: const ['-'],
+    i18nKey: '-',
+    conceptId: '-',
+  );
+  final best = PickArchetype.bestPossible(PickScene(probe));
+  if (best < 2 || best >= n - 1) return null;
+  return (
+    archetype: 'pick',
+    variant: 'meetings',
+    state: {'layout': 'bars', 'tiles': tiles},
+    rules: {'rule': 'intervals', 'best': best},
     params: const {},
-    minEffort: 1,
+  );
+}
+
+Draft? _heaps(Rng r, int step, int index) {
+  final heap = <int>[];
+  final ops = <String>[];
+  final out = <int>[];
+  final count = [6, 8, 10][step];
+  for (var i = 0; i < count; i++) {
+    if (heap.length >= 2 && r.chance(0.4)) {
+      heap.sort();
+      out.add(heap.removeAt(0));
+      ops.add('−');
+    } else {
+      final v = r.range(1, 30);
+      if (heap.contains(v)) continue;
+      heap.add(v);
+      ops.add('+$v');
+    }
+  }
+  if (out.isEmpty || heap.isEmpty) return null;
+  heap.sort();
+  final board = [_expr(ops.join('  '))];
+  if (step == 0) return _answer('last_out', board, [_number(30)], [out.last]);
+  if (step == 1) {
+    return _answer(
+      'first_last',
+      board,
+      [_number(30, label: '@field.first_out'), _number(30, label: '@field.last_out')],
+      [out.first, out.last],
+    );
+  }
+  if (out.length < 2) return null;
+  return _answer(
+    'top_size',
+    board,
+    [_number(30, label: '@field.top'), _number(12, label: '@field.size')],
+    [heap.first, heap.length],
+  );
+}
+
+Map<String, dynamic> _grid(int cols, int rows, List<int> cells, int start, int goal) => {
+  'cols': cols,
+  'rows': rows,
+  'cells': cells,
+  'start': [start % cols, start ~/ cols],
+  'goal': [goal % cols, goal ~/ cols],
+};
+
+Draft? _bfs(Rng r, int step, int index) {
+  final size = 5 + step;
+  final cells = [for (var i = 0; i < size * size; i++) r.chance(0.28) ? -1 : 1];
+  final start = r.nextInt(size), goal = size * size - 1 - r.nextInt(size);
+  cells[start] = 1;
+  cells[goal] = 1;
+  final probe = RouteScene(_routeProbe(_grid(size, size, cells, start, goal)));
+  final path = RouteArchetype.cheapest(probe);
+  if (path == null) return null;
+  final best = path.length - 1;
+  final straight = (start % size - goal % size).abs() + (start ~/ size - goal ~/ size).abs();
+  if (best < straight + (step == 0 ? 0 : 2)) return null;
+  return (
+    archetype: 'route',
+    variant: 'fewest_steps',
+    state: _grid(size, size, cells, start, goal),
+    rules: {'best': best},
+    params: const {},
+  );
+}
+
+LevelSpec _routeProbe(Map<String, dynamic> state) => LevelSpec(
+  id: 'probe',
+  archetypeId: 'route',
+  place: 0,
+  index: 0,
+  difficulty: 1,
+  initialState: state,
+  validationRules: const {'best': 0},
+  hints: const ['-'],
+  i18nKey: '-',
+  conceptId: '-',
+);
+
+Draft? _combinatorics(Rng r, int step, int index) {
+  switch (index % 4) {
+    case 0:
+      final n = r.range(8, 12), k = r.range(3, 5);
+      return _answer('choose', [_expr('C($n, $k)')], [_numberFor(_choose(n, k))], [_choose(n, k)]);
+    case 1:
+      final k = r.range(4, 6 + step * 2), n = r.range(2, 4);
+      final ways = _choose(k + n - 1, n - 1);
+      return _answer('sweets', [], [_numberFor(ways)], [ways], {'k': k, 'n': n});
+    case 2:
+      final c = r.range(3, 6), m = r.range(2, 2 + step);
+      final need = c * (m - 1) + 1;
+      return _answer('socks', [], [_numberFor(need)], [need], {'c': c, 'm': m});
+    default:
+      final n = r.range(30, 60 + step * 40), a = r.range(2, 5), b = r.range(a + 1, 7);
+      if (b % a == 0) return null;
+      final lcm = a * b ~/ _gcd(a, b);
+      final count = n ~/ a + n ~/ b - n ~/ lcm;
+      return _answer('divisible', [], [_numberFor(count)], [count], {'n': n, 'a': a, 'b': b});
+  }
+}
+
+int _gcd(int a, int b) => b == 0 ? a : _gcd(b, a % b);
+
+// --------------------------------------------------------------------- hard
+
+Draft? _dynamicProgramming(Rng r, int step, int index) {
+  switch (index % 3) {
+    case 0:
+      final three = step > 0 && r.chance(0.5);
+      final n = three ? r.range(6, 10) : r.range(8, 14);
+      final ways = List<int>.filled(n + 1, 0)..[0] = 1;
+      for (var i = 1; i <= n; i++) {
+        ways[i] = ways[i - 1] + (i >= 2 ? ways[i - 2] : 0) + (three && i >= 3 ? ways[i - 3] : 0);
+      }
+      return _answer('stairs', [_expr(three ? '1, 2 or 3' : '1 or 2')], [_numberFor(ways[n])], [ways[n]], {'n': n});
+    case 1:
+      final coins = r.pick([
+        [1, 3, 4],
+        [1, 5, 6],
+        [1, 4, 6],
+        [1, 7, 10],
+      ]);
+      final amount = r.range(8, 20 + step * 10);
+      final best = List<int>.filled(amount + 1, 1 << 20)..[0] = 0;
+      for (var v = 1; v <= amount; v++) {
+        for (final c in coins) {
+          if (c <= v && best[v - c] + 1 < best[v]) best[v] = best[v - c] + 1;
+        }
+      }
+      // Only worth asking when taking the biggest coin first goes wrong.
+      var greedy = 0, left = amount;
+      for (final c in coins.reversed) {
+        greedy += left ~/ c;
+        left %= c;
+      }
+      if (greedy == best[amount]) return null;
+      return _answer('coins', [_cells(coins, label: 'coins')], [_number(30)], [best[amount]], {'amount': amount});
+    default:
+      final size = 4 + step;
+      final blocked = <int>{};
+      for (var i = 0; i < size; i++) {
+        final cell = r.nextInt(size * size);
+        if (cell != 0 && cell != size * size - 1) blocked.add(cell);
+      }
+      final paths = List<int>.filled(size * size, 0);
+      for (var y = 0; y < size; y++) {
+        for (var x = 0; x < size; x++) {
+          final i = y * size + x;
+          if (blocked.contains(i)) continue;
+          paths[i] = i == 0 ? 1 : (x > 0 ? paths[i - 1] : 0) + (y > 0 ? paths[i - size] : 0);
+        }
+      }
+      final total = paths.last;
+      if (total < 3) return null;
+      return _answer(
+        'grid_paths',
+        [
+          for (var y = 0; y < size; y++)
+            _cells([for (var x = 0; x < size; x++) blocked.contains(y * size + x) ? '■' : '·']),
+        ],
+        [_numberFor(total)],
+        [total],
+      );
+  }
+}
+
+Draft? _knapsack(Rng r, int step, int index) {
+  final n = 5 + step;
+  final tiles = [
+    for (var i = 0; i < n; i++) {'v': r.range(2, 15), 'w': r.range(1, 8)},
+  ];
+  final totalW = tiles.fold(0, (a, t) => a + t['w']!);
+  final cap = (totalW * (0.4 + r.nextDouble() * 0.2)).round();
+  final probe = LevelSpec(
+    id: 'probe',
+    archetypeId: 'pick',
+    place: 0,
+    index: 0,
+    difficulty: 1,
+    initialState: {'layout': 'items', 'tiles': tiles},
+    validationRules: {'rule': 'knapsack', 'cap': cap, 'best': 0},
+    hints: const ['-'],
+    i18nKey: '-',
+    conceptId: '-',
+  );
+  final best = PickArchetype.bestPossible(PickScene(probe));
+  // Greedy by value per weight should fall short, so the puzzle needs real thought.
+  final order = [for (var i = 0; i < n; i++) i]
+    ..sort((a, b) => (tiles[b]['v']! * tiles[a]['w']!).compareTo(tiles[a]['v']! * tiles[b]['w']!));
+  var w = 0, v = 0;
+  for (final i in order) {
+    if (w + tiles[i]['w']! <= cap) {
+      w += tiles[i]['w']!;
+      v += tiles[i]['v']!;
+    }
+  }
+  if (step > 0 && v == best) return null;
+  return (
+    archetype: 'pick',
+    variant: 'bag',
+    state: {'layout': 'items', 'tiles': tiles},
+    rules: {'rule': 'knapsack', 'cap': cap, 'best': best},
+    params: {'cap': cap},
+  );
+}
+
+Draft? _shortestPaths(Rng r, int step, int index) {
+  final size = 5 + (step == 2 ? 1 : 0);
+  final cells = [for (var i = 0; i < size * size; i++) r.chance(0.12) ? -1 : r.range(1, 9)];
+  const start = 0;
+  final goal = size * size - 1;
+  cells[start] = 1;
+  cells[goal] = r.range(1, 9);
+  final probe = RouteScene(_routeProbe(_grid(size, size, cells, start, goal)));
+  final path = RouteArchetype.cheapest(probe);
+  if (path == null) return null;
+  final best = path.skip(1).fold(0, (a, c) => a + cells[c]);
+  // The cheapest path should not be one of the shortest ones in steps.
+  if (step > 0 && path.length - 1 == 2 * (size - 1)) return null;
+  return (
+    archetype: 'route',
+    variant: 'cheapest',
+    state: _grid(size, size, cells, start, goal),
+    rules: {'best': best},
+    params: const {},
+  );
+}
+
+Draft? _topologicalSort(Rng r, int step, int index) {
+  final n = 5 + step + (index > 6 ? 1 : 0);
+  final order = [for (var i = 0; i < n; i++) i];
+  r.shuffle(order);
+  final deps = <List<int>>[];
+  for (var a = 0; a < n; a++) {
+    for (var b = a + 1; b < n; b++) {
+      if (r.chance(0.32)) deps.add([order[a], order[b]]);
+    }
+  }
+  if (deps.length < n - 1) return null;
+  return (
+    archetype: 'ops',
+    variant: 'tasks',
+    state: {
+      'mode': 'order',
+      'items': [for (var i = 0; i < n; i++) i],
+      'labels': [for (var i = 0; i < n; i++) String.fromCharCode(65 + i)],
+      'deps': deps,
+    },
+    rules: const {},
+    params: const {},
+  );
+}
+
+Draft? _searchTheAnswer(Rng r, int step, int index) {
+  if (index % 3 == 0) {
+    final n = r.range([50, 400, 2000][step], [400, 2000, 9999][step]);
+    final root = math.sqrt(n).floor();
+    if (root * root == n) return null;
+    return _answer('isqrt', [], [_number(99)], [root], {'n': n});
+  }
+  final count = 5 + step;
+  final weights = [for (var i = 0; i < count; i++) r.range(1, 12)];
+  final days = r.range(2, 3 + step);
+  bool fits(int cap) {
+    var used = 1, load = 0;
+    for (final w in weights) {
+      if (w > cap) return false;
+      if (load + w > cap) {
+        used++;
+        load = 0;
+      }
+      load += w;
+    }
+    return used <= days;
+  }
+
+  var cap = weights.reduce(math.max);
+  while (!fits(cap)) {
+    cap++;
+  }
+  if (cap == weights.reduce(math.max)) return null;
+  return _answer('ship', [_cells(weights, label: 'kg')], [_number(99)], [cap], {'days': days});
+}
+
+Draft? _xorTricks(Rng r, int step, int index) {
+  if (index.isOdd) {
+    final n = 5 + step;
+    final values = _distinct(r, n, 1, 31);
+    var target = 0;
+    var size = 0;
+    for (final v in values) {
+      if (r.chance(0.5)) {
+        target ^= v;
+        size++;
+      }
+    }
+    if (size < 2 || target == 0 || values.contains(target)) return null;
+    return (
+      archetype: 'pick',
+      variant: 'subset',
+      state: {
+        'layout': 'row',
+        'tiles': [
+          for (final v in values) {'v': v},
+        ],
+      },
+      rules: {'rule': 'xor', 'target': target},
+      params: {'target': target},
+    );
+  }
+  if (index == 10) {
+    final a = r.range(3, 15), b = r.range(3, 15);
+    if (a == b) return null;
+    return _answer(
+      'swap',
+      [_expr('a = $a,  b = $b'), _expr('a ^= b;  b ^= a;  a ^= b')],
+      [_number(15, label: 'a'), _number(15, label: 'b')],
+      [b, a],
+    );
+  }
+  final pairs = _distinct(r, 3 + step, 1, 40);
+  final single = pairs.removeLast();
+  final row = [...pairs, ...pairs, single];
+  r.shuffle(row);
+  return _answer('single', [_cells(row)], [_number(40)], [single]);
+}
+
+Draft? _unionFind(Rng r, int step, int index) {
+  final n = 6 + step * 2;
+  final parent = [for (var i = 0; i <= n; i++) i];
+  int find(int x) => parent[x] == x ? x : parent[x] = find(parent[x]);
+  final links = <String>[];
+  final count = n - 2 - r.nextInt(2);
+  for (var i = 0; i < count; i++) {
+    final a = r.range(1, n), b = r.range(1, n);
+    if (a == b) continue;
+    links.add('$a–$b');
+    parent[find(a)] = find(b);
+  }
+  final sizes = <int, int>{};
+  for (var i = 1; i <= n; i++) {
+    sizes.update(find(i), (v) => v + 1, ifAbsent: () => 1);
+  }
+  if (sizes.length < 2) return null;
+  final board = [_expr('1 … $n'), _expr(links.join('   '))];
+  if (step < 2) return _answer('groups', board, [_number(n)], [sizes.length], {'n': n});
+  return _answer(
+    'groups_biggest',
+    board,
+    [_number(n, label: '@field.groups'), _number(n, label: '@field.biggest')],
+    [sizes.length, sizes.values.reduce(math.max)],
+    {'n': n},
+  );
+}
+
+Draft? _probability(Rng r, int step, int index) {
+  switch (index % 3) {
+    case 0:
+      final s = r.range(3, 11);
+      final ways = 6 - (s - 7).abs();
+      return _answer('dice_sum', [], [_number(36)], [ways], {'s': s});
+    case 1:
+      final n = r.range(4, 6 + step), k = r.range(1, n - 1);
+      return _answer('heads', [_expr('2^$n outcomes')], [_numberFor(_choose(n, k))], [_choose(n, k)], {'n': n, 'k': k});
+    default:
+      final n = r.range(2, 4);
+      final ways = math.pow(6, n).toInt() - math.pow(5, n).toInt();
+      return _answer('at_least_one_six', [_expr('6^$n outcomes')], [_numberFor(ways)], [ways], {'n': n});
+  }
+}
+
+Draft? _caching(Rng r, int step, int index) {
+  final cap = 2 + step;
+  final letters = 'ABCDEF'.substring(0, cap + 2).split('');
+  final requests = [for (var i = 0; i < 8 + step * 2; i++) r.pick(letters)];
+  final lru = index.isOdd;
+  final cache = <String>[];
+  var misses = 0;
+  for (final q in requests) {
+    if (cache.contains(q)) {
+      if (lru) {
+        cache
+          ..remove(q)
+          ..add(q);
+      }
+      continue;
+    }
+    misses++;
+    if (cache.length == cap) cache.removeAt(0);
+    cache.add(q);
+  }
+  if (misses == requests.toSet().length) return null; // no evictions mattered
+  return _answer(lru ? 'lru' : 'fifo', [_cells(requests)], [_number(requests.length)], [misses], {'cap': cap});
+}
+
+Draft? _rateLimiting(Rng r, int step, int index) {
+  if (index % 3 == 0) {
+    final m = r.range(4, 9), n = r.range(20, 200);
+    return _answer('round_robin', [], [_number(m)], [(n - 1) % m + 1], {'m': m, 'n': n});
+  }
+  if (step == 2 && index.isEven) {
+    final servers = 3;
+    final jobs = [for (var i = 0; i < 7; i++) r.range(1, 9)];
+    final load = List<int>.filled(servers, 0);
+    for (final j in jobs) {
+      var low = 0;
+      for (var s = 1; s < servers; s++) {
+        if (load[s] < load[low]) low = s;
+      }
+      load[low] += j;
+    }
+    return _answer(
+      'least_loaded',
+      [_cells(jobs, label: 'jobs')],
+      [_number(60)],
+      [load.reduce(math.max)],
+      {'servers': servers},
+    );
+  }
+  final cap = r.range(2, 4), rate = 1;
+  final perSecond = [for (var i = 0; i < 5 + step; i++) r.range(0, 4)];
+  var tokens = cap, allowed = 0;
+  for (var t = 0; t < perSecond.length; t++) {
+    if (t > 0) tokens = math.min(cap, tokens + rate);
+    final ok = math.min(tokens, perSecond[t]);
+    allowed += ok;
+    tokens -= ok;
+  }
+  final total = perSecond.fold(0, (a, b) => a + b);
+  if (allowed == total || allowed == 0) return null;
+  return _answer(
+    'token_bucket',
+    [_cells(perSecond, label: 's', index: true)],
+    [_number(total)],
+    [allowed],
+    {'cap': cap, 'rate': rate},
   );
 }

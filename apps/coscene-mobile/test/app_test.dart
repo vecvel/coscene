@@ -39,20 +39,26 @@ void main() {
       expect(game.rank, 1);
       expect(game.nextUp!.id, 'p01-l01');
       expect(game.isLevelOpen(game.registry.byId('p01-l02')!), isFalse);
-      expect(game.isPlaceOpen(2), isFalse);
+      expect(game.isPlaceOpen(10), isTrue, reason: 'every easy topic is open');
+      expect(game.isPlaceOpen(11), isFalse);
     });
 
-    test('solving opens the next scene and, after seven, the next place', () async {
+    test('solving opens the next scene, and thirty easy scenes open medium', () async {
       final game = await GameState.load(MemorySaveStore());
-      final levels = game.registry.levelsOf(1);
-      for (var i = 0; i < 7; i++) {
-        expect(game.isLevelOpen(levels[i]), isTrue);
-        game.recordSolve(solve(game, levels[i]));
-        if (i < 6) expect(game.isPlaceOpen(2), isFalse);
+      var solved = 0;
+      for (var place = 1; place <= 10; place++) {
+        final levels = game.registry.levelsOf(place);
+        for (var i = 0; i < 3; i++) {
+          expect(game.isLevelOpen(levels[i]), isTrue, reason: levels[i].id);
+          expect(game.isPlaceOpen(11), solved >= scenesToOpenNextTier);
+          game.recordSolve(solve(game, levels[i]));
+          solved++;
+        }
       }
-      expect(game.isPlaceOpen(2), isTrue);
-      expect(game.solvedIn(1), 7);
-      expect(game.starsIn(1), 21);
+      expect(game.solvedInTier(0), 30);
+      expect(game.isPlaceOpen(11), isTrue);
+      expect(game.isPlaceOpen(21), isFalse, reason: 'hard needs thirty medium scenes');
+      expect(game.starsIn(1), 9);
       expect(game.score, greaterThan(scoreFloor));
     });
 
@@ -62,7 +68,7 @@ void main() {
       expect(game.recordSolve(solve(game, levels[0])), isTrue);
       expect(game.recordSolve(solve(game, levels[1])), isFalse, reason: 'same idea as the first scene');
       expect(game.foundConcepts, {levels[0].conceptId});
-      expect(game.allConcepts, hasLength(24));
+      expect(game.allConcepts, hasLength(30));
     });
 
     test('a better replay raises the stars, a worse one never lowers them', () async {
@@ -112,17 +118,17 @@ void main() {
       expect(game.language, 'hi');
     });
 
-    test('all hundred scenes solved with three stars is the top score', () async {
+    test('all three hundred scenes solved with three stars is the top score', () async {
       final game = await GameState.load(MemorySaveStore());
       for (final level in game.registry.levels) {
         game.recordSolve(solve(game, level));
       }
-      expect(game.totalSolved, 100);
-      expect(game.totalStars, 300);
+      expect(game.totalSolved, 300);
+      expect(game.totalStars, 900);
       expect(game.score, scoreCeiling);
       expect(game.rank, 6);
       expect(game.nextUp, isNull);
-      expect(game.foundConcepts, hasLength(24));
+      expect(game.foundConcepts, hasLength(30));
     });
 
     test('every language has a title for every rank', () async {
@@ -165,7 +171,8 @@ void main() {
     testWidgets('launches to the home screen', (tester) async {
       await launch(tester);
       expect(find.text('coscene'), findsOneWidget);
-      expect(find.text('Dockyard'), findsOneWidget);
+      expect(find.text('Easy'), findsOneWidget);
+      expect(find.text('Binary'), findsOneWidget);
       expect(find.text('Daily scene'), findsOneWidget);
       expect(find.textContaining('Play'), findsOneWidget);
     });
@@ -174,14 +181,14 @@ void main() {
       await launch(tester);
       await tester.tap(find.textContaining('Play'));
       await tester.pumpAndSettle();
-      expect(find.text('Hang the loose crate so the arm stays level.'), findsOneWidget);
+      expect(find.textContaining('Light the bits that make'), findsWidgets);
       expect(find.byType(SceneView), findsOneWidget);
 
-      await tester.tap(find.text('Lift'));
+      await tester.tap(find.text('Check'));
       for (var i = 0; i < 40; i++) {
         await tester.pump(const Duration(milliseconds: 100));
       }
-      expect(find.textContaining('A crate is still on the ground.'), findsOneWidget);
+      expect(find.textContaining('Pick some tiles first.'), findsOneWidget);
       expect(find.textContaining('Adjust it and try again.'), findsOneWidget);
     });
 
@@ -191,10 +198,10 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(icon(GameIcons.hint));
       await tester.pumpAndSettle();
-      expect(find.text('A crate pulls harder the farther out it hangs.'), findsNothing);
+      expect(find.text('Each bit is worth double the one to its right.'), findsNothing);
       await tester.tap(find.text('Show a hint'));
       await tester.pumpAndSettle();
-      expect(find.text('A crate pulls harder the farther out it hangs.'), findsOneWidget);
+      expect(find.text('Each bit is worth double the one to its right.'), findsOneWidget);
       expect(find.text('Show another hint'), findsOneWidget);
     });
 

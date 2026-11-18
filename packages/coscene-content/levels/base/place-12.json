@@ -1,0 +1,325 @@
+{
+  "place": {
+    "number": 12,
+    "id": "sorting",
+    "archetypeIds": [
+      "ops"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p12-l01",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 1,
+      "difficulty": 4,
+      "i18nKey": "scene.sorting.bubble",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 3
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          14,
+          6,
+          16,
+          9
+        ],
+        "adjacent": true,
+        "budget": 3
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p12-l02",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 2,
+      "difficulty": 4,
+      "i18nKey": "scene.sorting.any_swap",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 2
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          5,
+          18,
+          10,
+          9,
+          15
+        ],
+        "adjacent": false,
+        "budget": 2
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p12-l03",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 3,
+      "difficulty": 4,
+      "i18nKey": "scene.sorting.bubble",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 2
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          18,
+          24,
+          7,
+          28
+        ],
+        "adjacent": true,
+        "budget": 2
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p12-l04",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 4,
+      "difficulty": 4,
+      "i18nKey": "scene.sorting.any_swap",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 3
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          24,
+          8,
+          2,
+          27,
+          21
+        ],
+        "adjacent": false,
+        "budget": 3
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p12-l05",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 5,
+      "difficulty": 5,
+      "i18nKey": "scene.sorting.bubble",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 3
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          9,
+          7,
+          1,
+          16,
+          28
+        ],
+        "adjacent": true,
+        "budget": 3
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p12-l06",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 6,
+      "difficulty": 5,
+      "i18nKey": "scene.sorting.any_swap",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 3
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          17,
+          6,
+          3,
+          8,
+          25,
+          19
+        ],
+        "adjacent": false,
+        "budget": 3
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p12-l07",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 7,
+      "difficulty": 5,
+      "i18nKey": "scene.sorting.bubble",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 4
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          19,
+          13,
+          28,
+          30,
+          15
+        ],
+        "adjacent": true,
+        "budget": 4
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p12-l08",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 8,
+      "difficulty": 6,
+      "i18nKey": "scene.sorting.any_swap",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 5
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          16,
+          30,
+          18,
+          23,
+          24,
+          5,
+          15
+        ],
+        "adjacent": false,
+        "budget": 5
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p12-l09",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 9,
+      "difficulty": 6,
+      "i18nKey": "scene.sorting.bubble",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 8
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          15,
+          30,
+          4,
+          14,
+          8,
+          16
+        ],
+        "adjacent": true,
+        "budget": 8
+      },
+      "validationRules": {}
+    },
+    {
+      "id": "p12-l10",
+      "schemaVersion": 1,
+      "archetypeId": "ops",
+      "place": 12,
+      "index": 10,
+      "difficulty": 6,
+      "i18nKey": "scene.sorting.any_swap",
+      "conceptId": "sorting",
+      "textParams": {
+        "budget": 5
+      },
+      "hints": [
+        "hint.sorting.1",
+        "hint.sorting.2",
+        "hint.sorting.3"
+      ],
+      "initialState": {
+        "mode": "swap",
+        "items": [
+          13,
+          21,
+          16,
+          17,
+          5,
+          30,
+          6
+        ],
+        "adjacent": false,
+        "budget": 5
+      },
+      "validationRules": {}
+    }
+  ]
+}

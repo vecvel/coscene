@@ -6,7 +6,7 @@ import 'generated/base_pack.g.dart';
 import 'level_pack.dart';
 import 'places.dart';
 
-/// The 100 levels shipped inside the app, playable with no connection.
+/// The 300 levels shipped inside the app, playable with no connection.
 LevelPack loadBundledPack() => LevelPack.fromJson(jsonDecode(basePackJson) as Map<String, dynamic>);
 
 /// Every level the app can currently play, from the bundled pack plus any

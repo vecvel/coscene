@@ -1,0 +1,428 @@
+{
+  "place": {
+    "number": 14,
+    "id": "recursion",
+    "archetypeIds": [
+      "answer"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p14-l01",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 1,
+      "difficulty": 4,
+      "i18nKey": "scene.recursion.value",
+      "conceptId": "recursion",
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "f(0) = 1"
+          },
+          {
+            "kind": "expr",
+            "text": "f(n) = 2 · f(n − 1)"
+          },
+          {
+            "kind": "expr",
+            "text": "f(3) = ?"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          8
+        ]
+      }
+    },
+    {
+      "id": "p14-l02",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 2,
+      "difficulty": 4,
+      "i18nKey": "scene.recursion.value",
+      "conceptId": "recursion",
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "f(0) = 0"
+          },
+          {
+            "kind": "expr",
+            "text": "f(n) = f(n − 1) + n"
+          },
+          {
+            "kind": "expr",
+            "text": "f(4) = ?"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          10
+        ]
+      }
+    },
+    {
+      "id": "p14-l03",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 3,
+      "difficulty": 4,
+      "i18nKey": "scene.recursion.calls",
+      "conceptId": "recursion",
+      "textParams": {
+        "n": 5
+      },
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "fib(n) = fib(n − 1) + fib(n − 2)"
+          },
+          {
+            "kind": "expr",
+            "text": "fib(0), fib(1): no more calls"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          15
+        ]
+      }
+    },
+    {
+      "id": "p14-l04",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 4,
+      "difficulty": 4,
+      "i18nKey": "scene.recursion.value",
+      "conceptId": "recursion",
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "f(0) = 0"
+          },
+          {
+            "kind": "expr",
+            "text": "f(n) = f(n − 1) + n"
+          },
+          {
+            "kind": "expr",
+            "text": "f(5) = ?"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          15
+        ]
+      }
+    },
+    {
+      "id": "p14-l05",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 5,
+      "difficulty": 5,
+      "i18nKey": "scene.recursion.value",
+      "conceptId": "recursion",
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "f(0) = 2"
+          },
+          {
+            "kind": "expr",
+            "text": "f(n) = 3 · f(n − 1) − 1"
+          },
+          {
+            "kind": "expr",
+            "text": "f(4) = ?"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          42
+        ]
+      }
+    },
+    {
+      "id": "p14-l06",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 6,
+      "difficulty": 5,
+      "i18nKey": "scene.recursion.calls",
+      "conceptId": "recursion",
+      "textParams": {
+        "n": 7
+      },
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "fib(n) = fib(n − 1) + fib(n − 2)"
+          },
+          {
+            "kind": "expr",
+            "text": "fib(0), fib(1): no more calls"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "p14-l07",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 7,
+      "difficulty": 5,
+      "i18nKey": "scene.recursion.value",
+      "conceptId": "recursion",
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "f(0) = 1"
+          },
+          {
+            "kind": "expr",
+            "text": "f(n) = 2 · f(n − 1)"
+          },
+          {
+            "kind": "expr",
+            "text": "f(4) = ?"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          16
+        ]
+      }
+    },
+    {
+      "id": "p14-l08",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 8,
+      "difficulty": 6,
+      "i18nKey": "scene.recursion.value",
+      "conceptId": "recursion",
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "f(0) = 0"
+          },
+          {
+            "kind": "expr",
+            "text": "f(n) = f(n − 1) + n"
+          },
+          {
+            "kind": "expr",
+            "text": "f(7) = ?"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          28
+        ]
+      }
+    },
+    {
+      "id": "p14-l09",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 9,
+      "difficulty": 6,
+      "i18nKey": "scene.recursion.calls",
+      "conceptId": "recursion",
+      "textParams": {
+        "n": 6
+      },
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "fib(n) = fib(n − 1) + fib(n − 2)"
+          },
+          {
+            "kind": "expr",
+            "text": "fib(0), fib(1): no more calls"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 99
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          25
+        ]
+      }
+    },
+    {
+      "id": "p14-l10",
+      "schemaVersion": 1,
+      "archetypeId": "answer",
+      "place": 14,
+      "index": 10,
+      "difficulty": 6,
+      "i18nKey": "scene.recursion.value",
+      "conceptId": "recursion",
+      "hints": [
+        "hint.recursion.1",
+        "hint.recursion.2",
+        "hint.recursion.3"
+      ],
+      "initialState": {
+        "board": [
+          {
+            "kind": "expr",
+            "text": "f(0) = 1"
+          },
+          {
+            "kind": "expr",
+            "text": "f(n) = 2 · f(n − 1)"
+          },
+          {
+            "kind": "expr",
+            "text": "f(7) = ?"
+          }
+        ],
+        "fields": [
+          {
+            "mode": "number",
+            "max": 999
+          }
+        ]
+      },
+      "validationRules": {
+        "answers": [
+          128
+        ]
+      }
+    }
+  ]
+}

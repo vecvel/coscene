@@ -1,0 +1,686 @@
+{
+  "place": {
+    "number": 19,
+    "id": "bfs",
+    "archetypeIds": [
+      "route"
+    ]
+  },
+  "levels": [
+    {
+      "id": "p19-l01",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 1,
+      "difficulty": 4,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 5,
+        "rows": 5,
+        "cells": [
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "start": [
+          4,
+          0
+        ],
+        "goal": [
+          2,
+          4
+        ]
+      },
+      "validationRules": {
+        "best": 6
+      }
+    },
+    {
+      "id": "p19-l02",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 2,
+      "difficulty": 4,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 5,
+        "rows": 5,
+        "cells": [
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1
+        ],
+        "start": [
+          1,
+          0
+        ],
+        "goal": [
+          4,
+          4
+        ]
+      },
+      "validationRules": {
+        "best": 7
+      }
+    },
+    {
+      "id": "p19-l03",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 3,
+      "difficulty": 4,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 5,
+        "rows": 5,
+        "cells": [
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "start": [
+          2,
+          0
+        ],
+        "goal": [
+          1,
+          4
+        ]
+      },
+      "validationRules": {
+        "best": 5
+      }
+    },
+    {
+      "id": "p19-l04",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 4,
+      "difficulty": 4,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 5,
+        "rows": 5,
+        "cells": [
+          1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "start": [
+          3,
+          0
+        ],
+        "goal": [
+          2,
+          4
+        ]
+      },
+      "validationRules": {
+        "best": 5
+      }
+    },
+    {
+      "id": "p19-l05",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 5,
+      "difficulty": 5,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 6,
+        "rows": 6,
+        "cells": [
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "start": [
+          1,
+          0
+        ],
+        "goal": [
+          4,
+          5
+        ]
+      },
+      "validationRules": {
+        "best": 10
+      }
+    },
+    {
+      "id": "p19-l06",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 6,
+      "difficulty": 5,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 6,
+        "rows": 6,
+        "cells": [
+          -1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "start": [
+          1,
+          0
+        ],
+        "goal": [
+          1,
+          5
+        ]
+      },
+      "validationRules": {
+        "best": 9
+      }
+    },
+    {
+      "id": "p19-l07",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 7,
+      "difficulty": 5,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 6,
+        "rows": 6,
+        "cells": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "start": [
+          0,
+          0
+        ],
+        "goal": [
+          0,
+          5
+        ]
+      },
+      "validationRules": {
+        "best": 7
+      }
+    },
+    {
+      "id": "p19-l08",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 8,
+      "difficulty": 6,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 7,
+        "rows": 7,
+        "cells": [
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "start": [
+          2,
+          0
+        ],
+        "goal": [
+          5,
+          6
+        ]
+      },
+      "validationRules": {
+        "best": 11
+      }
+    },
+    {
+      "id": "p19-l09",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 9,
+      "difficulty": 6,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 7,
+        "rows": 7,
+        "cells": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "start": [
+          4,
+          0
+        ],
+        "goal": [
+          4,
+          6
+        ]
+      },
+      "validationRules": {
+        "best": 16
+      }
+    },
+    {
+      "id": "p19-l10",
+      "schemaVersion": 1,
+      "archetypeId": "route",
+      "place": 19,
+      "index": 10,
+      "difficulty": 6,
+      "i18nKey": "scene.bfs.fewest_steps",
+      "conceptId": "bfs",
+      "hints": [
+        "hint.bfs.1",
+        "hint.bfs.2",
+        "hint.bfs.3"
+      ],
+      "initialState": {
+        "cols": 7,
+        "rows": 7,
+        "cells": [
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "start": [
+          5,
+          0
+        ],
+        "goal": [
+          4,
+          6
+        ]
+      },
+      "validationRules": {
+        "best": 9
+      }
+    }
+  ]
+}

@@ -8,6 +8,12 @@ class Outcome {
 
   const Outcome.failed(this.kind, {this.magnitude = 0, this.detail = const {}}) : success = false;
 
+  /// A step in a puzzle that is played over several submissions, such as one
+  /// check in a search. Neither a win nor a failed try.
+  const Outcome.progress([this.detail = const {}]) : success = false, kind = 'progress', magnitude = 0;
+
+  bool get isProgress => kind == 'progress';
+
   final bool success;
 
   /// `solved`, or the way it went wrong (for example `tips_left`). The app
